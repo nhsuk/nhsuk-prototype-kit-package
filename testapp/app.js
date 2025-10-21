@@ -30,8 +30,6 @@ nunjucksConfig.express = app;
 
 let nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig);
 
-NHSPrototypeKit.nunjucksFilters.addAll(nunjucksAppEnv)
-
 // Use session
 app.use(session({
   secret: 'nhsuk-prototype-kit',
@@ -46,7 +44,7 @@ app.set('view engine', 'html');
 
 app.use('/', express.static(path.join(__dirname, 'static')))
 
-app.use(NHSPrototypeKit)
+NHSPrototypeKit.init(app, nunjucksAppEnv)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
