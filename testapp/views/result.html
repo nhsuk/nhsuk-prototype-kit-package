@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <p>You typed in: <b>{{ data.test }}</b>.</p>
+
+  {{ data.test | log }}
+  <p>This has also been output to the JavaScript console.</p>
+
+{% endblock %}

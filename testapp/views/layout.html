@@ -1,0 +1,41 @@
+{% extends "prototype-kit-template.njk" %}
+
+{% block head %}
+  <link href="/app.css" rel="stylesheet">
+{% endblock %}
+
+{% block pageTitle %}
+  NHS prototype kit
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    "service": {
+        "name": "Test app",
+        "href": "/"
+      },
+      "showNav": "false",
+      "showSearch": "false"
+    })
+  }}
+{% endblock %}
+
+
+<!-- Edit the footer -->
+<!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
+{% block footer %}
+  {{ footer({
+    meta: {
+      items: [
+        {
+          href: "/",
+          text: "Home"
+        },
+        {
+          href: "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
+          text: "Reset data"
+        }
+      ]
+    }
+  }) }}
+{% endblock %}

@@ -1,0 +1,22 @@
+{
+  "name": "test-middleware",
+  "version": "0.0.1",
+  "description": "TODO",
+  "scripts": {
+    "build": "npx sass --load-path=node_modules --quiet-deps app.scss static/app.css",
+    "start": "npm run build && node app.js"
+  },
+  "author": "https://github.com/frankieroberto/",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nhsuk-frontend": "^10.1.0",
+    "nunjucks": "^3.2.4",
+    "sass-embedded": "^1.77.5",
+    "nhsuk-prototype-kit": "../"
+  },
+  "files": [],
+  "engines": {
+    "node": "^22"
+  }
+}
