@@ -1,9 +1,16 @@
+const { describe, it } = require('node:test')
+const assert = require('node:assert')
 const startsWith = require('../../lib/nunjucks-filters/starts-with')
 
-test('startsWith matches string', () => {
-  expect(startsWith('NHS England', 'NHS')).toBe(true)
-})
 
-test('startsWith does not match string', () => {
-  expect(startsWith('DHSC', 'NHS')).toBe(false)
+describe('startsWith', () => {
+
+  it('matches string', () => {
+    assert.strictEqual(startsWith('NHS England', 'NHS'), true)
+  })
+  
+  it('does not match string', () => {
+    assert.strictEqual(startsWith('DHSC', 'NHS'), false)
+  })
+
 })
