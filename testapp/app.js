@@ -4,8 +4,6 @@ const app = express()
 const path = require('path');
 const nunjucks = require('nunjucks');
 const session = require('express-session')
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 
 const { join } = require('node:path')
 
@@ -36,9 +34,6 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
-
-// Use cookie middleware to parse cookies
-app.use(cookieParser());
 
 app.set('view engine', 'html');
 
