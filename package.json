@@ -1,6 +1,6 @@
 {
   "name": "nhsuk-prototype-kit",
-  "version": "0.0.1",
+  "version": "8.0.0",
   "description": "TODO",
   "main": "lib/index.js",
   "scripts": {
