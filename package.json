@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "express": "^5.1.0",
-    "supertest": "1.1.0"
+    "supertest": "7.1.4"
   },
   "files": [
     "lib"
