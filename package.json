@@ -10,11 +10,13 @@
   "author": "https://github.com/frankieroberto/",
   "license": "MIT",
   "dependencies": {
-    "express-session": "^1.18.1",
     "body-parser": "^2.2.0",
-    "cookie-parser": "^1.4.7"
+    "cookie-parser": "^1.4.7",
+    "express-session": "^1.18.1"
   },
   "devDependencies": {
+    "express": "^5.1.0",
+    "supertest": "1.1.0"
   },
   "files": [
     "lib"
