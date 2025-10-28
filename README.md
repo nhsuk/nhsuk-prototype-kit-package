@@ -39,5 +39,3 @@ If you only want to use the Nunjucks filters, you can use this:
 ```js
 NHSPrototypeKit.nunjucksFilters.addAll(nunjucksEnv)
 ```
-
-
