@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "node --test",
-    "test:ci": "node --test"
+    "test:ci": "node --test",
+    "prettier": ""
   },
   "author": "https://github.com/frankieroberto/",
   "license": "MIT",
@@ -16,7 +17,8 @@
   },
   "devDependencies": {
     "express": "^5.1.0",
-    "supertest": "7.1.4"
+    "supertest": "7.1.4",
+    "prettier": "^3.6.2"
   },
   "files": [
     "lib"
