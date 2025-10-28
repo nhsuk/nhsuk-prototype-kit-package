@@ -1,0 +1,10 @@
+# Temporary only
+.cache/
+
+# Node.js modules
+node_modules/
+
+# Files to ignore
+*.html
+*.min.js
+package-lock.json

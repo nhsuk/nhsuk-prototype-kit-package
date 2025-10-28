@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node --test",
     "test:ci": "node --test",
-    "prettier": ""
+    "lint:prettier": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check .",
+    "lint:prettier:fix": "prettier --write ."
   },
   "author": "https://github.com/frankieroberto/",
   "license": "MIT",
