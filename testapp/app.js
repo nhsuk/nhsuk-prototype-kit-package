@@ -1,8 +1,8 @@
 const express = require('express')
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
 const app = express()
-const path = require('path');
-const nunjucks = require('nunjucks');
+const path = require('path')
+const nunjucks = require('nunjucks')
 const session = require('express-session')
 
 const { join } = require('node:path')
@@ -21,21 +21,23 @@ const appViews = [
 
 const nunjucksConfig = {
   autoescape: true,
-  noCache: true,
-};
+  noCache: true
+}
 
-nunjucksConfig.express = app;
+nunjucksConfig.express = app
 
-let nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig);
+let nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
 
 // Use session
-app.use(session({
-  secret: 'nhsuk-prototype-kit',
-  resave: false,
-  saveUninitialized: true
-}))
+app.use(
+  session({
+    secret: 'nhsuk-prototype-kit',
+    resave: false,
+    saveUninitialized: true
+  })
+)
 
-app.set('view engine', 'html');
+app.set('view engine', 'html')
 
 app.use('/', express.static(path.join(__dirname, 'static')))
 
