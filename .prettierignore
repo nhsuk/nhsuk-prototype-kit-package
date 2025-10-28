@@ -4,6 +4,9 @@
 # Node.js modules
 node_modules/
 
+# Compiled output from test app
+testapp/static/
+
 # Files to ignore
 *.html
 *.min.js
