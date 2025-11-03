@@ -12,7 +12,6 @@ const port = 3000
 // Nunjucks configuration for application
 const appViews = [
   join(__dirname, 'views/'),
-  join(__dirname, 'node_modules/nhsuk-prototype-kit/lib/views/'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/components'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/macros'),
   join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'),
