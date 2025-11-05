@@ -18,7 +18,7 @@ const appViews = [
   join(__dirname, 'node_modules/nhsuk-frontend/dist')
 ]
 
-let nunjucksAppEnv = nunjucks.configure(appViews, {express: app})
+let nunjucksAppEnv = nunjucks.configure(appViews, { express: app })
 
 // Use session
 app.use(
