@@ -18,14 +18,7 @@ const appViews = [
   join(__dirname, 'node_modules/nhsuk-frontend/dist')
 ]
 
-const nunjucksConfig = {
-  autoescape: true,
-  noCache: true
-}
-
-nunjucksConfig.express = app
-
-let nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
+let nunjucksAppEnv = nunjucks.configure(appViews, {express: app})
 
 // Use session
 app.use(
