@@ -5,6 +5,7 @@ This repo contains the code for the NHS Prototype kit that will be distributed a
 The code contains:
 
 - an Express middleware app
+- some useful default settings for Express
 - some Nunjucks filters
 - Nunjucks views, including a template
 
