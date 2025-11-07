@@ -4,8 +4,9 @@ const app = express()
 const path = require('path')
 const nunjucks = require('nunjucks')
 const session = require('express-session')
-
 const { join } = require('node:path')
+
+const routes = require('./routes')
 
 const port = 3000
 
@@ -35,6 +36,8 @@ app.use(
 app.use('/', express.static(path.join(__dirname, 'static')))
 
 NHSPrototypeKit.init(app, nunjucksAppEnv)
+
+app.use('/', routes)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
