@@ -4,6 +4,8 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      <p>This index page is being auto-routed.</p>
+
       <form action="/result" method="post" novalidate="">
       
         {{ input({
@@ -17,6 +19,8 @@
         }) }}
         {{ button({ text: "Save" }) }}
       </form>
+
+      <p><a href="/custom-route">Custom route</a>.</p>
     </div>
   </div>
 {% endblock %}
