@@ -35,7 +35,10 @@ app.use(
 
 app.use('/', express.static(path.join(__dirname, 'static')))
 
-NHSPrototypeKit.init(app, nunjucksAppEnv)
+NHSPrototypeKit.init({
+  express: app,
+  nunjucks: nunjucksAppEnv
+})
 
 app.use('/', routes)
 

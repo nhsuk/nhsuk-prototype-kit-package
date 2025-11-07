@@ -34,7 +34,10 @@ const NHSPrototypeKit = require('nhsuk-prototype-kit')
 and then after your app and nunjucks configuration code, add this:
 
 ```js
-NHSPrototypeKit.init(app, nunjucksAppEnv)
+NHSPrototypeKit.init({ 
+  express: app, 
+  nunjucks: nunjucks
+})
 ```
 
 ### Using the Nunjucks filters only
