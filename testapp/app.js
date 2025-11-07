@@ -37,10 +37,9 @@ app.use('/', express.static(path.join(__dirname, 'static')))
 
 NHSPrototypeKit.init({
   express: app,
-  nunjucks: nunjucksAppEnv
+  nunjucks: nunjucksAppEnv,
+  routes: routes
 })
-
-app.use('/', routes)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
