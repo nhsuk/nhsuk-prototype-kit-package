@@ -1,6 +1,5 @@
 const express = require('express')
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
-const app = express()
 const path = require('path')
 const nunjucks = require('nunjucks')
 const { join } = require('node:path')
@@ -8,6 +7,7 @@ const { join } = require('node:path')
 const routes = require('./routes')
 const sessionDataDefaults = require('./data/session-data-defaults')
 
+const app = express()
 const port = 3000
 
 // Nunjucks configuration for application
