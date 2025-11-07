@@ -3,7 +3,6 @@ const NHSPrototypeKit = require('nhsuk-prototype-kit')
 const app = express()
 const path = require('path')
 const nunjucks = require('nunjucks')
-const session = require('express-session')
 const { join } = require('node:path')
 
 const routes = require('./routes')
@@ -24,15 +23,6 @@ let nunjucksAppEnv = nunjucks.configure(appViews, {
   express: app,
   noCache: true
 })
-
-// Use session
-app.use(
-  session({
-    secret: 'nhsuk-prototype-kit',
-    resave: false,
-    saveUninitialized: true
-  })
-)
 
 app.use('/', express.static(path.join(__dirname, 'static')))
 
