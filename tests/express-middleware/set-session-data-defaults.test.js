@@ -59,8 +59,16 @@ describe('setSessionDataDefaults middleware', () => {
     middleware(req, res, next)
 
     // Existing values should be preserved, defaults should be added
-    assert.strictEqual(req.session.data.name, 'Jane Smith', 'existing name should be preserved')
-    assert.strictEqual(req.session.data.email, 'jane@example.com', 'existing email should be preserved')
+    assert.strictEqual(
+      req.session.data.name,
+      'Jane Smith',
+      'existing name should be preserved'
+    )
+    assert.strictEqual(
+      req.session.data.email,
+      'jane@example.com',
+      'existing email should be preserved'
+    )
     assert.strictEqual(req.session.data.age, 30, 'default age should be added')
     assert.strictEqual(nextCalled, true)
   })
