@@ -10,14 +10,11 @@
 
 {% block header %}
   {{ header({
-    "service": {
-        "name": "Test app",
-        "href": "/"
-      },
-      "showNav": "false",
-      "showSearch": "false"
-    })
-  }}
+    service: {
+      text: serviceName,
+      href: "/"
+    }
+  }) }}
 {% endblock %}
 
 
