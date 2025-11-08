@@ -28,6 +28,7 @@ let nunjucksAppEnv = nunjucks.configure(appViews, {
 app.use('/', express.static(path.join(__dirname, 'static')))
 
 NHSPrototypeKit.init({
+  serviceName: 'Test service',
   express: app,
   nunjucks: nunjucksAppEnv,
   routes: routes,

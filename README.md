@@ -35,6 +35,7 @@ and then after your app and nunjucks configuration code, add this:
 
 ```js
 NHSPrototypeKit.init({
+  serviceName: 'Your service name',
   express: app,
   nunjucks: nunjucks,
   routes: routes,
