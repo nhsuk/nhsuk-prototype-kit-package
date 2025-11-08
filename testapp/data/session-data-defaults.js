@@ -1,3 +1,4 @@
 module.exports = {
-  test: 'Default value'
+  test: 'Default value',
+  organisationName: 'NHS'
 }
