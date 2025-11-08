@@ -6,6 +6,7 @@ const { join } = require('node:path')
 
 const routes = require('./routes')
 const sessionDataDefaults = require('./data/session-data-defaults')
+const locals = require('./locals')
 
 const app = express()
 const port = 3000
@@ -30,6 +31,7 @@ NHSPrototypeKit.init({
   express: app,
   nunjucks: nunjucksAppEnv,
   routes: routes,
+  locals: locals,
   sessionDataDefaults: sessionDataDefaults
 })
 
