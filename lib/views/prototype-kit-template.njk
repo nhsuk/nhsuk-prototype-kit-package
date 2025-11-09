@@ -43,3 +43,9 @@
 {%- endblock %}
 
 {% set assetPath = '/nhsuk-frontend/assets' %}
+
+{% block bodyEnd %}
+  <script src="/nhsuk-prototype-kit-assets/javascript/send-unchecked-checkboxes.js"></script>
+  {{ super() }}
+{% endblock %}
+
