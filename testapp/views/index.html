@@ -16,11 +16,36 @@
           name: "test",
           label: {
             text: "Test",
-            isPageHeading: true,
-            classes: "nhsuk-label--l"
+            classes: "nhsuk-label--s"
           },
           value: data.test
         }) }}
+
+        {{ checkboxes({
+          name: "preferences",
+          fieldset: {
+            legend: {
+              text: "Checkboxes test",
+              classes: "nhsuk-fieldset__legend--s"
+            }
+          },
+          values: data.preferences,
+          items: [
+            {
+              text: "A",
+              value: "A"
+            },
+            {
+              text: "B",
+              value: "B"
+            },
+            {
+              text: "C",
+              value: "C"
+            }
+          ]
+        }) }}
+
         {{ button({ text: "Save" }) }}
       </form>
 
@@ -28,3 +53,4 @@
     </div>
   </div>
 {% endblock %}
+
