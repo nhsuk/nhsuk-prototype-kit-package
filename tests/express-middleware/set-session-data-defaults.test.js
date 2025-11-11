@@ -1,9 +1,7 @@
-const setSessionDataDefaults = require('../../lib/express-middleware/set-session-data-defaults')
-const http = require('http')
-const request = require('supertest')
-const express = require('express')
-const { describe, it, beforeEach } = require('node:test')
 const assert = require('node:assert')
+const { describe, it, beforeEach } = require('node:test')
+
+const setSessionDataDefaults = require('../../lib/express-middleware/set-session-data-defaults')
 
 describe('setSessionDataDefaults middleware', () => {
   let req, res, nextCalled

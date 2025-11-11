@@ -1,7 +1,10 @@
-const { describe, it } = require('node:test')
 const assert = require('node:assert')
-const setTrustProxy = require('../../lib/express-settings/trust-proxy')
+const { describe, it } = require('node:test')
+
 const express = require('express')
+
+const setTrustProxy = require('../../lib/express-settings/trust-proxy')
+
 const app = express()
 
 describe('setTrustProxy', () => {

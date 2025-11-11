@@ -1,7 +1,10 @@
-const { describe, it } = require('node:test')
 const assert = require('node:assert')
-const setQueryParser = require('../../lib/express-settings/query-parser')
+const { describe, it } = require('node:test')
+
 const express = require('express')
+
+const setQueryParser = require('../../lib/express-settings/query-parser')
+
 const app = express()
 
 describe('setQueryParser', () => {

@@ -1,5 +1,6 @@
-const { describe, it } = require('node:test')
 const assert = require('node:assert')
+const { describe, it } = require('node:test')
+
 const startsWith = require('../../lib/nunjucks-filters/starts-with')
 
 describe('startsWith', () => {

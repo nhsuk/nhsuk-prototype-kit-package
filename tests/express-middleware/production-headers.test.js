@@ -1,9 +1,11 @@
-const productionHeaders = require('../../lib/express-middleware/production-headers')
 const http = require('http')
-const request = require('supertest')
-const express = require('express')
-const { describe, it } = require('node:test')
 const assert = require('node:assert')
+const { describe, it } = require('node:test')
+
+const express = require('express')
+const request = require('supertest')
+
+const productionHeaders = require('../../lib/express-middleware/production-headers')
 
 const app = express()
 app.use(productionHeaders)

@@ -1,12 +1,13 @@
+const { join } = require('node:path')
+const path = require('path')
+
 const express = require('express')
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
-const path = require('path')
 const nunjucks = require('nunjucks')
-const { join } = require('node:path')
 
-const routes = require('./routes')
 const sessionDataDefaults = require('./data/session-data-defaults')
 const locals = require('./locals')
+const routes = require('./routes')
 
 const app = express()
 const port = 3000
@@ -20,7 +21,7 @@ const appViews = [
   join(__dirname, 'node_modules/nhsuk-frontend/dist')
 ]
 
-let nunjucksAppEnv = nunjucks.configure(appViews, {
+const nunjucksAppEnv = nunjucks.configure(appViews, {
   express: app,
   noCache: true
 })
@@ -37,9 +38,9 @@ NHSPrototypeKit.init({
   serviceName: 'Test service',
   express: app,
   nunjucks: nunjucksAppEnv,
-  routes: routes,
-  locals: locals,
-  sessionDataDefaults: sessionDataDefaults
+  routes,
+  locals,
+  sessionDataDefaults
 })
 
 app.listen(port, () => {
