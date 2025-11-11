@@ -1,5 +1,5 @@
-const http = require('http')
 const assert = require('node:assert')
+const http = require('node:http')
 const { describe, it } = require('node:test')
 
 const express = require('express')
