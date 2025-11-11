@@ -1,5 +1,6 @@
-const { describe, it } = require('node:test')
 const assert = require('node:assert')
+const { describe, it } = require('node:test')
+
 const formatNhsNumber = require('../../lib/nunjucks-filters/format-nhs-number')
 
 describe('formatNhsNumber', () => {

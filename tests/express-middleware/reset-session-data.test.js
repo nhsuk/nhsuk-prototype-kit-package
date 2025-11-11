@@ -1,6 +1,7 @@
-const resetSessionData = require('../../lib/express-middleware/reset-session-data')
-const { describe, it, beforeEach } = require('node:test')
 const assert = require('node:assert')
+const { describe, it, beforeEach } = require('node:test')
+
+const resetSessionData = require('../../lib/express-middleware/reset-session-data')
 
 describe('resetSessionData middleware', () => {
   let req, res, nextCalled

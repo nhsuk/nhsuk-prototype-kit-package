@@ -1,7 +1,10 @@
-const { describe, it } = require('node:test')
 const assert = require('node:assert')
-const setViewEngine = require('../../lib/express-settings/view-engine')
+const { describe, it } = require('node:test')
+
 const express = require('express')
+
+const setViewEngine = require('../../lib/express-settings/view-engine')
+
 const app = express()
 
 describe('setViewEngine', () => {

@@ -11,7 +11,7 @@
     "express": "^5.1.0",
     "nhsuk-frontend": "^10.1.0",
     "nunjucks": "^3.2.4",
-    "nhsuk-prototype-kit": "../"
+    "nhsuk-prototype-kit": "*"
   },
   "files": [],
   "engines": {
