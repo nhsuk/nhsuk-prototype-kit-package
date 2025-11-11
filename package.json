@@ -13,7 +13,18 @@
     "lint": "npm run lint:prettier && npm run lint:js",
     "lint:fix": "npm run lint:prettier:fix && npm run lint:js:fix"
   },
-  "author": "https://github.com/frankieroberto/",
+  "bugs": {
+    "url": "https://github.com/nhsuk/nhsuk-prototype-kit-package/issues"
+  },
+  "author": {
+    "name": "NHS England",
+    "url": "https://www.england.nhs.uk"
+  },
+  "contributors": [
+    {
+      "name": "Frankie Roberto"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "body-parser": "^2.2.0",
