@@ -41,7 +41,10 @@
   "files": [
     "lib"
   ],
-  "workspaces": [".", "testapp"],
+  "workspaces": [
+    ".",
+    "testapp"
+  ],
   "engines": {
     "node": "^22"
   }
