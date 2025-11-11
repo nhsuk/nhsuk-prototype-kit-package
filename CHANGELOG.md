@@ -1,10 +1,30 @@
 # NHS prototype kit Changelog
 
-## Unreleased
+## 8.0.0 – Unreleased
 
 ### Breaking changes
 
 The NHS Prototype kit is now published as an NPM package.
+
+To use it, you should add `nhsuk-prototype-kit` to your `package.json` file and then run `npm install`. Then in your `app.js` file, add:
+
+```
+const NHSPrototypeKit = require('nhsuk-prototype-kit')
+
+NHSPrototypeKit.init({
+  serviceName: 'Your service name',
+  express: app,
+  nunjucks: nunjucks,
+  routes: routes,
+  sessionDataDefaults: sessionDataDefaults
+})
+```
+
+If you are upgrading a prototype which used a previous version of the kit, see [detailed upgrade guide](https://prototype-kit.service-manual.nhs.uk/install/updating-the-kit/) online.
+
+### :new: **New features**
+
+- A more helpful 404 error page if you visit a path which doesn’t match a route or a template.
 
 ## 7.1.0 - 20 October 2025
 
