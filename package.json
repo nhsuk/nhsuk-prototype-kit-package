@@ -16,9 +16,9 @@
   "author": "https://github.com/frankieroberto/",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^2.2",
-    "cookie-parser": "^1.4",
-    "express-session": "^1.18"
+    "body-parser": "^2.2.0",
+    "cookie-parser": "^1.4.7",
+    "express-session": "^1.18.1"
   },
   "peerDependencies": {
     "express": "^5.0",
