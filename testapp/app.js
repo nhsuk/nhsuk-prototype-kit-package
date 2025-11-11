@@ -27,6 +27,12 @@ let nunjucksAppEnv = nunjucks.configure(appViews, {
 
 app.use('/', express.static(path.join(__dirname, 'static')))
 
+// Use assets from NHS frontend
+app.use(
+  '/nhsuk-frontend',
+  express.static(join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'))
+)
+
 NHSPrototypeKit.init({
   serviceName: 'Test service',
   express: app,
