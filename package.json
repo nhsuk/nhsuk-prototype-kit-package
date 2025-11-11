@@ -15,13 +15,14 @@
   },
   "author": "https://github.com/frankieroberto/",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "body-parser": "^2.2",
+    "cookie-parser": "^1.4",
+    "express-session": "^1.18"
+  },
   "peerDependencies": {
-    "express": "^5.1.0",
-    "nhsuk-frontend": "^10.0.0",
-    "body-parser": "^2.2.0",
-    "cookie-parser": "^1.4.7",
-    "express-session": "^1.18.1"
+    "express": "^5.0",
+    "nhsuk-frontend": "^10.0"
   },
   "devDependencies": {
     "@eslint/compat": "^1.4.1",
