@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Page not found</h1>
+
+      <p>There is no page at <strong>{{ path }}</strong></p>
+
+      <p>This may be because:</p>
+
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li>you typed or pasted the web address incorrectly</li>
+        <li>a link in your code is wrong</li>
+        <li>a form in your code is wrong</li>
+        <li>you have not created the page yet</li>
+      </ul>
+
+      <p class="govuk-body">
+        You can try and fix this yourself or <a class="nhsuk-link" href="https://prototype-kit.service-manual.nhs.uk/support/">contact the NHS prototype kit team</a> if you need help.
+      </p>
+
+    </div>
+  </div>
+{% endblock %}
+
