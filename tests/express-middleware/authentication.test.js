@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser')
 const express = require('express')
 const request = require('supertest')
 
+const authentication = require('../../lib/express-middleware/authentication')
+
 describe('authentication', () => {
   let app, originalPassword
 
@@ -14,21 +16,9 @@ describe('authentication', () => {
 
   afterEach(() => {
     process.env.PROTOTYPE_PASSWORD = originalPassword
-    // Clear module cache to ensure fresh authentication module
-    const authModulePath = require.resolve(
-      '../../lib/express-middleware/authentication'
-    )
-    Reflect.deleteProperty(require.cache, authModulePath)
   })
 
   const createApp = () => {
-    // Reload the authentication module to pick up the current password
-    const authModulePath = require.resolve(
-      '../../lib/express-middleware/authentication'
-    )
-    Reflect.deleteProperty(require.cache, authModulePath)
-    const authentication = require('../../lib/express-middleware/authentication')
-
     app = express()
     app.use(cookieParser())
     app.use(authentication)
