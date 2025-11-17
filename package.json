@@ -33,7 +33,9 @@
   "dependencies": {
     "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",
-    "express-session": "^1.18.1"
+    "express-session": "^1.18.1",
+    "@inquirer/prompts": "^7.9.0",
+    "portscanner": "^2.2.0"
   },
   "peerDependencies": {
     "express": "^5.0",
