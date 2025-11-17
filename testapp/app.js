@@ -10,7 +10,7 @@ const locals = require('./locals')
 const routes = require('./routes')
 
 const app = express()
-const port = 3000
+let port = 3000
 
 // Nunjucks configuration for application
 const appViews = [
@@ -43,6 +43,15 @@ NHSPrototypeKit.init({
   sessionDataDefaults
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+NHSPrototypeKit.utils
+  .findAvailablePort(port)
+  .then((availablePort) => {
+    app.listen(availablePort, () => {
+      console.log(`Example app listening on port ${availablePort}`)
+    })
+    return
+  })
+  .catch((error) => {
+    console.error('Failed to find available port:', error)
+    throw error
+  })
