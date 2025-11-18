@@ -60,6 +60,14 @@
   "files": [
     "lib"
   ],
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./utils": {
+      "default": "./lib/utils/index.js"
+    }
+  },
   "workspaces": [
     "."
   ],
