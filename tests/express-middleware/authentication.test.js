@@ -12,6 +12,7 @@ describe('authentication', () => {
 
   beforeEach(() => {
     originalPassword = process.env.PROTOTYPE_PASSWORD
+    createApp()
   })
 
   afterEach(() => {
@@ -34,9 +35,6 @@ describe('authentication', () => {
   describe('when no password is set', () => {
     it('should show an error and a link to the online guidance', async () => {
       delete process.env.PROTOTYPE_PASSWORD
-
-      const app = createApp()
-
       const response = await request(app).get('/')
 
       assert.strictEqual(response.statusCode, 200)
@@ -56,8 +54,6 @@ describe('authentication', () => {
 
     describe('accessing allowed paths', () => {
       it('should allow access to /prototype-admin/password', async () => {
-        const app = createApp()
-
         const response = await request(app).get('/prototype-admin/password')
 
         assert.strictEqual(response.statusCode, 200)
@@ -65,24 +61,18 @@ describe('authentication', () => {
       })
 
       it('should allow access to /css/main.css', async () => {
-        const app = createApp()
-
         const response = await request(app).get('/css/main.css')
 
         assert.strictEqual(response.statusCode, 200)
       })
 
       it('should allow access to /css/main.css.map', async () => {
-        const app = createApp()
-
         const response = await request(app).get('/css/main.css.map')
 
         assert.strictEqual(response.statusCode, 200)
       })
 
       it('should allow access to /nhsuk-frontend/nhsuk-frontend.min.js', async () => {
-        const app = createApp()
-
         const response = await request(app).get(
           '/nhsuk-frontend/nhsuk-frontend.min.js'
         )
@@ -91,24 +81,18 @@ describe('authentication', () => {
       })
 
       it('should allow access to /js/auto-store-data.js', async () => {
-        const app = createApp()
-
         const response = await request(app).get('/js/auto-store-data.js')
 
         assert.strictEqual(response.statusCode, 200)
       })
 
       it('should allow access to /js/main.js', async () => {
-        const app = createApp()
-
         const response = await request(app).get('/js/main.js')
 
         assert.strictEqual(response.statusCode, 200)
       })
 
       it('should allow access to NHS Frontend assets', async () => {
-        const app = createApp()
-
         const response = await request(app).get(
           '/nhsuk-frontend/assets/logos/logo.svg'
         )
@@ -117,8 +101,6 @@ describe('authentication', () => {
       })
 
       it('should allow access to other NHS Frontend assets', async () => {
-        const app = createApp()
-
         const response = await request(app).get(
           '/nhsuk-frontend/assets/images/favicon.svg'
         )
@@ -129,8 +111,6 @@ describe('authentication', () => {
 
     describe('with valid authentication cookie', () => {
       it('should allow access to protected pages', async () => {
-        const app = createApp()
-
         // Hash of 'testpassword' using SHA256
         const { createHash } = require('node:crypto')
         const hash = createHash('sha256')
@@ -146,8 +126,6 @@ describe('authentication', () => {
       })
 
       it('should allow access to root path', async () => {
-        const app = createApp()
-
         // Hash of 'testpassword' using SHA256
         const { createHash } = require('node:crypto')
         const hash = createHash('sha256')
@@ -165,8 +143,6 @@ describe('authentication', () => {
 
     describe('without valid authentication cookie', () => {
       it('should redirect to password page', async () => {
-        const app = createApp()
-
         const response = await request(app).get('/some-protected-page')
 
         assert.strictEqual(response.statusCode, 302)
@@ -177,8 +153,6 @@ describe('authentication', () => {
       })
 
       it('should include returnURL in redirect', async () => {
-        const app = createApp()
-
         const response = await request(app).get('/some-protected-page')
 
         assert.strictEqual(response.statusCode, 302)
@@ -188,8 +162,6 @@ describe('authentication', () => {
       })
 
       it('should preserve query parameters in returnURL', async () => {
-        const app = createApp()
-
         const response = await request(app).get('/some-page?foo=bar&baz=qux')
 
         assert.strictEqual(response.statusCode, 302)
@@ -202,8 +174,6 @@ describe('authentication', () => {
       })
 
       it('should redirect root path to password page', async () => {
-        const app = createApp()
-
         const response = await request(app).get('/')
 
         assert.strictEqual(response.statusCode, 302)
@@ -215,8 +185,6 @@ describe('authentication', () => {
 
     describe('with invalid authentication cookie', () => {
       it('should redirect to password page', async () => {
-        const app = createApp()
-
         const response = await request(app)
           .get('/some-protected-page')
           .set('Cookie', 'authentication=invalidhash')
