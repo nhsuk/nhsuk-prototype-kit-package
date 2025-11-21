@@ -3,6 +3,7 @@ const path = require('node:path')
 
 const express = require('express')
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
+const { findAvailablePort } = require('nhsuk-prototype-kit/utils')
 const nunjucks = require('nunjucks')
 
 const sessionDataDefaults = require('./data/session-data-defaults')
@@ -43,8 +44,7 @@ NHSPrototypeKit.init({
   sessionDataDefaults
 })
 
-NHSPrototypeKit.utils
-  .findAvailablePort(port)
+findAvailablePort(port)
   .then((availablePort) => {
     app.listen(availablePort, () => {
       console.log(`Example app listening on port ${availablePort}`)

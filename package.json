@@ -47,6 +47,7 @@
     "@eslint/markdown": "^7.5.1",
     "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsdoc": "^61.1.12",
     "eslint-plugin-n": "^17.23.1",
@@ -60,6 +61,11 @@
   "files": [
     "lib"
   ],
+  "exports": {
+    ".": "./lib/index.js",
+    "./utils": "./lib/utils/index.js",
+    "./utils/*": "./lib/utils/*"
+  },
   "workspaces": [
     "."
   ],
