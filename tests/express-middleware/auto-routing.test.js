@@ -10,13 +10,11 @@ const request = require('supertest')
 const { matchRoutes } = require('../../lib/express-middleware/auto-routing')
 
 describe('matchRoutes', () => {
-  let app, server
-
   // Create test templates directory
   const templatesDir = join(__dirname, 'test-templates')
 
   // Setup Express app with Nunjucks
-  app = express()
+  const app = express()
   app.set('view engine', 'html')
   nunjucks.configure([templatesDir], {
     express: app,
@@ -37,7 +35,7 @@ describe('matchRoutes', () => {
     res.status(500).send('Template error')
   })
 
-  server = http.createServer(app)
+  const server = http.createServer(app)
 
   describe('root path', () => {
     it('should render index.html for root path', async () => {
