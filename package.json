@@ -67,7 +67,8 @@
     "./utils/*": "./lib/utils/*"
   },
   "workspaces": [
-    "."
+    ".",
+    "testapp"
   ],
   "engines": {
     "node": "^20.13.0 || ^22.11.0 || ^24.11.0"

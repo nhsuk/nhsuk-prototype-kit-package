@@ -3,7 +3,6 @@ const path = require('node:path')
 
 const express = require('express')
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
-const { findAvailablePort } = require('nhsuk-prototype-kit/utils')
 const nunjucks = require('nunjucks')
 
 const sessionDataDefaults = require('./data/session-data-defaults')
@@ -16,10 +15,10 @@ let port = 3000
 // Nunjucks configuration for application
 const appViews = [
   join(__dirname, 'views/'),
-  join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/components'),
-  join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/macros'),
-  join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'),
-  join(__dirname, 'node_modules/nhsuk-frontend/dist')
+  join(__dirname, '../node_modules/nhsuk-frontend/dist/nhsuk/components'),
+  join(__dirname, '../node_modules/nhsuk-frontend/dist/nhsuk/macros'),
+  join(__dirname, '../node_modules/nhsuk-frontend/dist/nhsuk'),
+  join(__dirname, '../node_modules/nhsuk-frontend/dist')
 ]
 
 const nunjucksAppEnv = nunjucks.configure(appViews, {
@@ -32,10 +31,10 @@ app.use('/', express.static(path.join(__dirname, 'static')))
 // Use assets from NHS frontend
 app.use(
   '/nhsuk-frontend',
-  express.static(join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'))
+  express.static(join(__dirname, '../node_modules/nhsuk-frontend/dist/nhsuk'))
 )
 
-NHSPrototypeKit.init({
+const prototype = NHSPrototypeKit.init({
   serviceName: 'Test service',
   express: app,
   nunjucks: nunjucksAppEnv,
@@ -44,14 +43,4 @@ NHSPrototypeKit.init({
   sessionDataDefaults
 })
 
-findAvailablePort(port)
-  .then((availablePort) => {
-    app.listen(availablePort, () => {
-      console.log(`Example app listening on port ${availablePort}`)
-    })
-    return
-  })
-  .catch((error) => {
-    console.error('Failed to find available port:', error)
-    throw error
-  })
+prototype.start(port)

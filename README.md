@@ -34,7 +34,7 @@ const NHSPrototypeKit = require('nhsuk-prototype-kit')
 and then after your app and nunjucks configuration code, add this:
 
 ```js
-NHSPrototypeKit.init({
+const prototype = NHSPrototypeKit.init({
   serviceName: 'Your service name',
   express: app,
   nunjucks: nunjucks,
@@ -43,10 +43,35 @@ NHSPrototypeKit.init({
 })
 ```
 
+You can then start the prototype using this:
+
+```js
+prototype.start()
+```
+
 ### Using the Nunjucks filters only
 
 If you only want to use the Nunjucks filters, you can use this:
 
 ```js
 NHSPrototypeKit.nunjucksFilters.addAll(nunjucksEnv)
+```
+
+### Using the Express middleware only
+
+If you only want to use the Express middleware, you can do this to use everything:
+
+```js
+app.use(NHSPrototypeKit.expressMiddleware.all({
+  serviceName: 'Your service name',
+  routes: routes,
+  locals: locals,
+  sessionDataDefaults: sessionDataDefaults
+}))
+```
+
+Or you can choose to only use individual middleware functions like this:
+
+```js
+app.use(NHSPrototypeKit.expressMiddleware.autoRouting)
 ```
