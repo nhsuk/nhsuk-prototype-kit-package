@@ -3,6 +3,7 @@ const path = require('node:path')
 
 const express = require('express')
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
+const { findAvailablePort } = require('nhsuk-prototype-kit/utils')
 const nunjucks = require('nunjucks')
 
 const sessionDataDefaults = require('./data/session-data-defaults')

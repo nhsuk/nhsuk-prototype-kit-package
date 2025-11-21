@@ -19,3 +19,12 @@ jobs:
         run: npm ci
       - name: Run javascript tests
         run: npm run test:ci
+      - name: Test resolving entry paths
+        run: |
+          node --eval "console.log(require.resolve('nhsuk-prototype-kit'))" --conditions import
+          node --eval "console.log(require.resolve('nhsuk-prototype-kit/utils'))" --conditions import
+          node --eval "console.log(require.resolve('nhsuk-prototype-kit/utils/find-available-port.js'))" --conditions import
+
+          node --eval "console.log(require.resolve('nhsuk-prototype-kit'))"
+          node --eval "console.log(require.resolve('nhsuk-prototype-kit/utils'))"
+          node --eval "console.log(require.resolve('nhsuk-prototype-kit/utils/find-available-port.js'))"
