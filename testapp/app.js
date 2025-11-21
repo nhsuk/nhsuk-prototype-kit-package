@@ -15,10 +15,10 @@ let port = 3000
 // Nunjucks configuration for application
 const appViews = [
   join(__dirname, 'views/'),
-  join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/components'),
-  join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk/macros'),
-  join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'),
-  join(__dirname, 'node_modules/nhsuk-frontend/dist')
+  join(__dirname, '../node_modules/nhsuk-frontend/dist/nhsuk/components'),
+  join(__dirname, '../node_modules/nhsuk-frontend/dist/nhsuk/macros'),
+  join(__dirname, '../node_modules/nhsuk-frontend/dist/nhsuk'),
+  join(__dirname, '../node_modules/nhsuk-frontend/dist')
 ]
 
 const nunjucksAppEnv = nunjucks.configure(appViews, {
@@ -31,7 +31,7 @@ app.use('/', express.static(path.join(__dirname, 'static')))
 // Use assets from NHS frontend
 app.use(
   '/nhsuk-frontend',
-  express.static(join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'))
+  express.static(join(__dirname, '../node_modules/nhsuk-frontend/dist/nhsuk'))
 )
 
 const prototype = NHSPrototypeKit.init({
