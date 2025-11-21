@@ -95,7 +95,8 @@ export default defineConfig([
     },
     settings: {
       'import/resolver': {
-        node: true
+        node: true,
+        typescript: true
       }
     }
   },
