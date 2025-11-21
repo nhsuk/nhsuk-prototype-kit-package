@@ -1,11 +1,9 @@
 {
-  "name": "test-middleware",
-  "version": "0.0.1",
-  "description": "TODO",
+  "name": "test-nhsuk-prototype-kit",
+  "description": "This is used to test the kit before releasing.",
   "scripts": {
     "start": "node app.js"
   },
-  "author": "https://github.com/frankieroberto/",
   "license": "MIT",
   "dependencies": {
     "express": "^5.1.0",
@@ -16,5 +14,6 @@
   "files": [],
   "engines": {
     "node": "^22"
-  }
+  },
+  "private": true
 }
