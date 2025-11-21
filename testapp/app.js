@@ -34,7 +34,7 @@ app.use(
   express.static(join(__dirname, 'node_modules/nhsuk-frontend/dist/nhsuk'))
 )
 
-NHSPrototypeKit.init({
+const prototype = NHSPrototypeKit.init({
   serviceName: 'Test service',
   express: app,
   nunjucks: nunjucksAppEnv,
@@ -43,15 +43,4 @@ NHSPrototypeKit.init({
   sessionDataDefaults
 })
 
-NHSPrototypeKit.utils
-  .findAvailablePort(port)
-  .then((availablePort) => {
-    app.listen(availablePort, () => {
-      console.log(`Example app listening on port ${availablePort}`)
-    })
-    return
-  })
-  .catch((error) => {
-    console.error('Failed to find available port:', error)
-    throw error
-  })
+prototype.start(port)
