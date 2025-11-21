@@ -11,13 +11,15 @@ To use it, you should add `nhsuk-prototype-kit` to your `package.json` file and 
 ```
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
 
-NHSPrototypeKit.init({
+const prototype = NHSPrototypeKit.init({
   serviceName: 'Your service name',
   express: app,
   nunjucks: nunjucks,
   routes: routes,
   sessionDataDefaults: sessionDataDefaults
 })
+
+prototype.start()
 ```
 
 If you are upgrading a prototype which used a previous version of the kit, see [detailed upgrade guide](https://prototype-kit.service-manual.nhs.uk/install/updating-the-kit/) online.
