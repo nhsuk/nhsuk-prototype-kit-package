@@ -132,7 +132,14 @@ export default defineConfig([
     },
     rules: {
       '@typescript-eslint/no-require-imports': 'off',
-      '@typescript-eslint/unbound-method': 'off'
+      '@typescript-eslint/unbound-method': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_'
+        }
+      ]
     }
   },
   {
