@@ -59,6 +59,16 @@ describe('matchRoutes', () => {
         'text/html; charset=utf-8'
       )
     })
+
+    it('should render simple.html for /simple.html path', async () => {
+      const response = await request(server).get('/simple.html')
+      assert.strictEqual(response.status, 200)
+      assert.strictEqual(response.text, 'Simple test page\n')
+      assert.strictEqual(
+        response.headers['content-type'],
+        'text/html; charset=utf-8'
+      )
+    })
   })
 
   describe('nested path with index', () => {
