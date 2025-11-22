@@ -30,8 +30,7 @@ describe('matchRoutes', () => {
   })
 
   // Add error handler
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  app.use((err, req, res, next) => {
+  app.use((_err, _req, res, _next) => {
     res.status(500).send('Template error')
   })
 
