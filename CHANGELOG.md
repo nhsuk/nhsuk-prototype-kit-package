@@ -27,6 +27,7 @@ If you are upgrading a prototype which used a previous version of the kit, see [
 ### :new: **New features**
 
 - A more helpful 404 error page if you visit a path which doesn’t match a route or a template.
+- A more helpful error page if you have an error in your template
 
 ## 7.1.0 - 20 October 2025
 
