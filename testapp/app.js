@@ -26,7 +26,8 @@ const nunjucksAppEnv = nunjucks.configure(appViews, {
   noCache: true
 })
 
-app.use('/', express.static(path.join(__dirname, 'static')))
+// Use our own compiled assets
+app.use('/', express.static(path.join(__dirname, 'public')))
 
 // Use assets from NHS frontend
 app.use(
@@ -44,6 +45,10 @@ const prototype = NHSPrototypeKit.init({
   serviceName: 'Test service',
   express: app,
   nunjucks: nunjucksAppEnv,
+  esbuild: {
+    entryPoints: ['assets/sass/*.scss', 'assets/javascript/*.js'],
+    sassLoadPaths: ['../node_modules']
+  },
   routes,
   locals,
   sessionDataDefaults

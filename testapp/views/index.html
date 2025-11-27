@@ -6,6 +6,8 @@
 
       <h1>{{ serviceName }}</h1>
 
+      <p>Custom CSS: <span class="app-test">test</span>. Custom JavaScript: <span data-module="app-test"></span></p>
+
       <p>This index page is being auto-routed.</p>
 
       <p><code>organisationName</code>: {{ organisationName }}.</p>
@@ -40,8 +42,12 @@
               value: "B"
             },
             {
+              divider: 'or'
+            },
+            {
               text: "C",
-              value: "C"
+              value: "C",
+              exclusive: true
             }
           ]
         }) }}
