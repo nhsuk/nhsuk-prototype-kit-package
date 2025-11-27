@@ -169,7 +169,7 @@ export default defineConfig([
   globalIgnores([
     '**/app/**',
     '**/public/**',
-    'testapp/assets/javascript/application.js'
+    'testapp/assets/javascript/application.js',
 
     // Enable dotfile linting
     '!.*',
