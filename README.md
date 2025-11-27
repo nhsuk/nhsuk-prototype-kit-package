@@ -39,7 +39,10 @@ const prototype = NHSPrototypeKit.init({
   express: app,
   nunjucks: nunjucks,
   routes: routes,
-  sessionDataDefaults: sessionDataDefaults
+  sessionDataDefaults: sessionDataDefaults,
+  esbuild: {
+    entryPoints: ['assets/sass/*.scss', 'assets/javascript/*.js']
+  }
 })
 ```
 
