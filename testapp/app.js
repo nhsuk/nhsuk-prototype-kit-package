@@ -34,6 +34,12 @@ app.use(
   express.static(join(__dirname, '../node_modules/nhsuk-frontend/dist/nhsuk'))
 )
 
+// Use assets from NHS Prototype Kit
+app.use(
+  '/nhsuk-prototype-kit-assets',
+  express.static(join(__dirname, '../lib/assets'))
+)
+
 const prototype = NHSPrototypeKit.init({
   serviceName: 'Test service',
   express: app,
