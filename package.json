@@ -61,8 +61,7 @@
   "files": [
     "lib",
     "!lib/**/*.test.js",
-    "!lib/**/test-templates",
-    "!lib/express-middleware/*.html"
+    "!lib/**/test-templates"
   ],
   "exports": {
     ".": "./lib/index.js",
