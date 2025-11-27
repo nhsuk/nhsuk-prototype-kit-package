@@ -59,7 +59,9 @@
     "supertest": "7.1.4"
   },
   "files": [
-    "lib"
+    "lib",
+    "!lib/**/*.test.js",
+    "!lib/**/test-templates"
   ],
   "exports": {
     ".": "./lib/index.js",
