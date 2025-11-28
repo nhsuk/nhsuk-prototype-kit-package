@@ -45,8 +45,9 @@ const prototype = NHSPrototypeKit.init({
   serviceName: 'Test service',
   express: app,
   nunjucks: nunjucksAppEnv,
-  esbuild: {
-    entryPoints: ['assets/sass/*.scss', 'assets/javascript/*.js'],
+  frontend: {
+    stylesheets: 'assets/sass/*.scss',
+    javascripts: 'assets/javascript/*.js',
     sassLoadPaths: ['../node_modules']
   },
   routes,
