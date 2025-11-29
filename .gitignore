@@ -17,3 +17,6 @@ Thumbs.db
 
 # ESlint cache
 .cache
+
+# Compiled assets for the test app
+testapp/public

@@ -1,0 +1,10 @@
+// Import NHS.UK frontend library
+@import "nhsuk-frontend/dist/nhsuk";
+
+// Test custom CSS
+.app-test {
+  background-color: nhsuk-colour("pale-yellow");
+  color: nhsuk-colour("orange");
+  padding-left: nhsuk-spacing(1);
+  padding-right: nhsuk-spacing(1);
+}
