@@ -36,7 +36,7 @@
     "cookie-parser": "^1.4.7",
     "express-session": "^1.18.1",
     "http-proxy-middleware": "^3.0.5",
-    "@inquirer/prompts": "^7.9.0",
+    "@inquirer/prompts": "^8.0.1",
     "portscanner": "^2.2.0",
     "esbuild": "^0.27.0",
     "esbuild-sass-plugin": "^3.3.1"
