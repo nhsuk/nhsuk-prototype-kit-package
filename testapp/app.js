@@ -1,13 +1,16 @@
-const { join } = require('node:path')
-const path = require('node:path')
+import { join, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const express = require('express')
-const NHSPrototypeKit = require('nhsuk-prototype-kit')
-const nunjucks = require('nunjucks')
+import express from 'express'
+import NHSPrototypeKit from 'nhsuk-prototype-kit'
+import nunjucks from 'nunjucks'
 
-const sessionDataDefaults = require('./data/session-data-defaults')
-const locals = require('./locals')
-const routes = require('./routes')
+import sessionDataDefaults from './data/session-data-defaults.js'
+import locals from './locals.js'
+import routes from './routes.js'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const app = express()
 let port = 3000
@@ -27,7 +30,7 @@ const nunjucksAppEnv = nunjucks.configure(appViews, {
 })
 
 // Use our own compiled assets
-app.use('/', express.static(path.join(__dirname, 'public')))
+app.use('/', express.static(join(__dirname, 'public')))
 
 // Use assets from NHS frontend
 app.use(

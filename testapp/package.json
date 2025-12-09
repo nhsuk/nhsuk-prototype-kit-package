@@ -1,6 +1,7 @@
 {
   "name": "test-nhsuk-prototype-kit",
   "description": "This is used to test the kit before releasing.",
+  "type": "module",
   "scripts": {
     "start": "node app.js"
   },
