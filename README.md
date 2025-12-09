@@ -28,7 +28,13 @@ npm install nhsuk-prototype-kit
 Then, within your `app.js` file, add this line to the top:
 
 ```js
-const NHSPrototypeKit = require('nhsuk-prototype-kit')
+import NHSPrototypeKit from 'nhsuk-prototype-kit'
+```
+
+Or, if using CommonJS:
+
+```js
+const NHSPrototypeKit = await import('nhsuk-prototype-kit').then(m => m.default)
 ```
 
 and then after your app and nunjucks configuration code, add this:
