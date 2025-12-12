@@ -34,7 +34,7 @@ import NHSPrototypeKit from 'nhsuk-prototype-kit'
 Or, if using CommonJS:
 
 ```js
-const NHSPrototypeKit = await import('nhsuk-prototype-kit').then(m => m.default)
+const NHSPrototypeKit = require('nhsuk-prototype-kit')
 ```
 
 and then after your app and nunjucks configuration code, add this:
