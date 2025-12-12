@@ -44,7 +44,7 @@
   },
   "peerDependencies": {
     "express": "^5.0",
-    "nhsuk-frontend": "^10.0"
+    "nhsuk-frontend": "^10.2.2"
   },
   "devDependencies": {
     "@eslint/compat": "^1.4.1",
