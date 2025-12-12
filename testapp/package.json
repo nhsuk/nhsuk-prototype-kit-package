@@ -1,6 +1,7 @@
 {
   "name": "test-nhsuk-prototype-kit",
   "description": "This is used to test the kit before releasing.",
+  "type": "module",
   "scripts": {
     "start": "node app.js"
   },
@@ -13,7 +14,7 @@
   },
   "files": [],
   "engines": {
-    "node": "^22"
+    "node": "^22.16.0 || ^24.11.0"
   },
   "private": true
 }

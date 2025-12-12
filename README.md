@@ -28,6 +28,12 @@ npm install nhsuk-prototype-kit
 Then, within your `app.js` file, add this line to the top:
 
 ```js
+import NHSPrototypeKit from 'nhsuk-prototype-kit'
+```
+
+Or, if using CommonJS:
+
+```js
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
 ```
 

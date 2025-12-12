@@ -3,4 +3,4 @@ function setLocals(req, res, next) {
   next()
 }
 
-module.exports = setLocals
+export default setLocals

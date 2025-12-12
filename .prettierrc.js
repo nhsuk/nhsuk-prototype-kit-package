@@ -1,7 +1,7 @@
 /**
  * @type {Config}
  */
-module.exports = {
+export default {
   quoteProps: 'consistent',
   semi: false,
   singleQuote: true,
