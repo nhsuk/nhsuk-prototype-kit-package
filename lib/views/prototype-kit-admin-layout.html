@@ -1,0 +1,23 @@
+{% extends "prototype-kit-template.njk" %}
+
+{% block head %}
+  <link href="/main.css" rel="stylesheet">
+{% endblock %}
+
+{% block header %}
+  {{ header({
+    service: {
+      text: serviceName
+    }
+  }) }}
+{% endblock %}
+
+
+{% block footer %}
+  {{ footer() }}
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="/application.js" defer></script>
+  {{ super() }}
+{% endblock %}
