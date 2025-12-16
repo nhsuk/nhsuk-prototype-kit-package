@@ -1,6 +1,6 @@
 # NHS prototype kit Changelog
 
-## 8.0.0 – Unreleased
+## 8.0.0 – Beta release
 
 ### Breaking changes
 
