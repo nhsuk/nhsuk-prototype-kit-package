@@ -28,23 +28,6 @@ const nunjucksAppEnv = nunjucks.configure(appViews, {
   noCache: true
 })
 
-// Use our own compiled assets
-app.use('/', express.static(join(import.meta.dirname, 'public')))
-
-// Use assets from NHS frontend
-app.use(
-  '/nhsuk-frontend',
-  express.static(
-    join(import.meta.dirname, '../node_modules/nhsuk-frontend/dist/nhsuk')
-  )
-)
-
-// Use assets from NHS Prototype Kit
-app.use(
-  '/nhsuk-prototype-kit-assets',
-  express.static(join(import.meta.dirname, '../lib/assets'))
-)
-
 const prototype = NHSPrototypeKit.init({
   serviceName: 'Test service',
   express: app,
