@@ -71,7 +71,7 @@ NHSPrototypeKit.nunjucksFilters.addAll(nunjucksEnv)
 If you only want to use the Express middleware, you can do this to use everything:
 
 ```js
-app.use(NHSPrototypeKit.expressMiddleware.all({
+app.use(NHSPrototypeKit.middleware.all({
   serviceName: 'Your service name',
   routes: routes,
   locals: locals,
@@ -82,5 +82,5 @@ app.use(NHSPrototypeKit.expressMiddleware.all({
 Or you can choose to only use individual middleware functions like this:
 
 ```js
-app.use(NHSPrototypeKit.expressMiddleware.autoRouting)
+app.use(NHSPrototypeKit.middleware.autoRoutes)
 ```
