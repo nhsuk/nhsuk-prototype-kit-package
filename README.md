@@ -82,5 +82,5 @@ app.use(NHSPrototypeKit.middleware.all({
 Or you can choose to only use individual middleware functions like this:
 
 ```js
-app.use(NHSPrototypeKit.middleware.autoRouting)
+app.use(NHSPrototypeKit.middleware.autoRoutes)
 ```
