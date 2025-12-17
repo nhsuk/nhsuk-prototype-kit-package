@@ -1,4 +1,4 @@
-import { dirname, join } from 'node:path'
+import { join } from 'node:path'
 
 import express from 'express'
 import NHSPrototypeKit from 'nhsuk-prototype-kit'
