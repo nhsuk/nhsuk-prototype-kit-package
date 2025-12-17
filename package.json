@@ -9,8 +9,8 @@
     "test:ci": "node --test",
     "lint:prettier": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check .",
     "lint:prettier:fix": "prettier --write .",
-    "lint:js": "eslint '**/*.js'",
-    "lint:js:fix": "eslint '**/*.js' --fix",
+    "lint:js": "eslint .",
+    "lint:js:fix": "eslint . --fix",
     "lint": "npm run lint:prettier && npm run lint:js",
     "lint:fix": "npm run lint:prettier:fix && npm run lint:js:fix"
   },
