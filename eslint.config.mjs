@@ -1,9 +1,9 @@
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import markdown from '@eslint/markdown'
 import { includeIgnoreFile } from '@eslint/compat'
 import eslint from '@eslint/js'
+import markdown from '@eslint/markdown'
 import { defineConfig, globalIgnores } from 'eslint/config'
 import configPrettier from 'eslint-config-prettier/flat'
 import pluginImport from 'eslint-plugin-import'
@@ -15,13 +15,6 @@ import pluginTypeScript from 'typescript-eslint'
 
 const rootPath = resolve(fileURLToPath(new URL('.', import.meta.url)))
 const gitignorePath = join(rootPath, '.gitignore')
-
-// import prettier from 'eslint-config-prettier'
-// import importPlugin from 'eslint-plugin-import'
-// import jsdoc from 'eslint-plugin-jsdoc'
-// import markdown from '@eslint/markdown'
-// import globals from 'globals'
-// import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
   {

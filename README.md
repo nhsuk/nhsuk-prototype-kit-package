@@ -21,7 +21,7 @@ From there, select 'Use this as a template' and follow the instructions.
 
 You can also add the kit to an existing Express app by running:
 
-```
+```sh
 npm install nhsuk-prototype-kit
 ```
 
