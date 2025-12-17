@@ -73,6 +73,7 @@ If you only want to use the Express middleware, you can do this to use everythin
 ```js
 app.use(NHSPrototypeKit.middleware.all({
   serviceName: 'Your service name',
+  express: app,
   routes: routes,
   locals: locals,
   sessionDataDefaults: sessionDataDefaults
