@@ -1,5 +1,4 @@
 import { dirname, join } from 'node:path'
-import { fileURLToPath } from 'node:url'
 
 import express from 'express'
 import NHSPrototypeKit from 'nhsuk-prototype-kit'
@@ -12,19 +11,8 @@ import routes from './routes.js'
 const app = express()
 let port = 3000
 
-// NHS.UK frontend package path
-const frontendPath = fileURLToPath(
-  dirname(import.meta.resolve('nhsuk-frontend/package.json'))
-)
-
 // Nunjucks configuration for application
-const appViews = [
-  join(import.meta.dirname, 'views'),
-  join(frontendPath, 'dist/nhsuk/components'),
-  join(frontendPath, 'dist/nhsuk/macros'),
-  join(frontendPath, 'dist/nhsuk'),
-  join(frontendPath, 'dist')
-]
+const appViews = [join(import.meta.dirname, 'views')]
 
 const nunjucksAppEnv = nunjucks.configure(appViews, {
   express: app,
