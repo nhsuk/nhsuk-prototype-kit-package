@@ -2,8 +2,9 @@
   "name": "test-nhsuk-prototype-kit",
   "description": "This is used to test the kit before releasing.",
   "type": "module",
+  "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node ."
   },
   "license": "MIT",
   "dependencies": {
