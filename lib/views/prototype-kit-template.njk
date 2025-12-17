@@ -48,11 +48,11 @@
 
 {% block bodyEnd %}
   <script type="module" src="/nhsuk-frontend/nhsuk-frontend.min.js"></script>
+  <script type="module" src="/nhsuk-prototype-kit-assets/javascript/send-unchecked-checkboxes.js"></script>
   <script type="module">
     import { initAll } from '/nhsuk-frontend/nhsuk-frontend.min.js'
     initAll()
   </script>
-  <script src="/nhsuk-prototype-kit-assets/javascript/send-unchecked-checkboxes.js"></script>
   {{ super() }}
 {% endblock %}
 
