@@ -59,8 +59,16 @@ export default defineConfig([
         }
       ],
 
-      // JSDoc blocks are optional by default
-      'jsdoc/require-jsdoc': 'off',
+      // JSDoc blocks are optional but must be valid
+      'jsdoc/require-jsdoc': [
+        'error',
+        {
+          enableFixer: false,
+          require: {
+            FunctionDeclaration: false
+          }
+        }
+      ],
 
       // Require hyphens before param description
       // Aligns with TSDoc style: https://tsdoc.org/pages/tags/param/
