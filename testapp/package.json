@@ -8,10 +8,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "express": "^5.1.0",
+    "express": "^5.2.1",
     "nhsuk-frontend": "^10.2.2",
-    "nunjucks": "^3.2.4",
-    "nhsuk-prototype-kit": "*"
+    "nhsuk-prototype-kit": "*",
+    "nunjucks": "^3.2.4"
   },
   "files": [],
   "engines": {
