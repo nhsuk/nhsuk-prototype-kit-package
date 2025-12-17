@@ -1,12 +1,58 @@
 version: 2
+
 updates:
-  - package-ecosystem: 'github-actions'
-    directory: '/'
+  # Update npm packages
+  - package-ecosystem: npm
+    directory: /
+
+    # Group packages into shared PR
+    groups:
+      application:
+        patterns:
+          - 'body-parser'
+          - 'cookie-parser'
+          - 'express'
+          - 'express-*'
+          - 'nhsuk-frontend'
+          - 'nunjucks'
+
+      build:
+        patterns:
+          - 'esbuild'
+          - 'esbuild-*'
+
+      lint:
+        patterns:
+          - '@eslint/*'
+          - 'eslint'
+          - 'eslint-*'
+          - 'globals'
+          - 'prettier'
+          - 'typescript-eslint'
+
+      test:
+        patterns:
+          - 'supertest'
+
+      tools:
+        patterns:
+          - '@inquirer/prompts'
+          - 'browser-sync'
+          - 'http-proxy-middleware'
+          - 'portscanner'
+
     schedule:
-      interval: 'weekly'
-  - package-ecosystem: 'npm'
-    directory: '/'
+      interval: weekly
+    cooldown:
+      default-days: 4
+
+    versioning-strategy: increase
+
+  # Update GitHub Actions
+  - package-ecosystem: github-actions
+    directory: /
+
     schedule:
-      interval: 'weekly'
+      interval: weekly
     cooldown:
       default-days: 4
