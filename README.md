@@ -77,28 +77,53 @@ const prototype = NHSPrototypeKit.init({
 
 ### Using the Nunjucks filters only
 
-If you only want to use the Nunjucks filters, you can use this:
+If you only want to use the Nunjucks filters, you can import them separately:
 
 ```js
-NHSPrototypeKit.nunjucksFilters.addAll(nunjucksEnv)
+import { nunjucksFilters } from 'nhsuk-prototype-kit'
+
+nunjucksFilters.addAll(nunjucksEnv)
+```
+
+Or import individual filters:
+
+```js
+import { nunjucksFilters } from 'nhsuk-prototype-kit'
+
+nunjucksEnv.addFilter('formatNhsNumber', nunjucksFilters.formatNhsNumber)
+nunjucksEnv.addFilter('startsWith', nunjucksFilters.startsWith)
 ```
 
 ### Using the Express middleware only
 
-If you only want to use the Express middleware, you can do this to use everything:
+If you only want to use the Express middleware, you can import it separately:
 
 ```js
-NHSPrototypeKit.middleware.configure({
+import { middleware } from 'nhsuk-prototype-kit'
+
+middleware.configure({
   app: app,
   serviceName: serviceName,
   locals: locals,
   routes: routes,
   sessionDataDefaults: sessionDataDefaults
-}))
+})
 ```
 
-Or you can choose to only use individual middleware functions like this:
+Or you can choose to only use individual middleware functions:
 
 ```js
-app.use(NHSPrototypeKit.middleware.autoRoutes)
+import { middleware } from 'nhsuk-prototype-kit'
+
+app.use(middleware.autoRoutes)
+```
+
+### Using the utilities
+
+You can also import the utility functions separately:
+
+```js
+import { utils } from 'nhsuk-prototype-kit'
+
+const port = await utils.findAvailablePort(3000)
 ```
