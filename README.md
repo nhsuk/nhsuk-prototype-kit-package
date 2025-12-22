@@ -73,6 +73,7 @@ const prototype = NHSPrototypeKit.init({
   locals,
   sessionDataDefaults
 })
+```
 
 ### Using the Nunjucks filters only
 
