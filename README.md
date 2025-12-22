@@ -37,18 +37,17 @@ Or, if using CommonJS:
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
 ```
 
-and then after your app and nunjucks configuration code, add this:
+Initialise the prototype with a reference to your custom routes like this:
 
 ```js
+import routes from './routes.js'
+
 const prototype = NHSPrototypeKit.init({
   serviceName: 'Your service name',
-  express: app,
-  nunjucks: nunjucks,
-  routes: routes,
-  sessionDataDefaults: sessionDataDefaults,
   buildOptions: {
-    entryPoints: ['assets/sass/*.scss', 'assets/javascript/*.js']
-  }
+    entryPoints: ['assets/sass/*.scss']
+  },
+  routes
 })
 ```
 
@@ -56,6 +55,24 @@ You can then start the prototype using this:
 
 ```js
 prototype.start()
+```
+
+If you want to set session data defaults, or locals, pass them to the init function:
+
+```js
+import sessionDataDefaults from './data/session-data-defaults.js'
+import locals from './locals.js'
+import routes from './routes.js'
+
+const prototype = NHSPrototypeKit.init({
+  serviceName: 'Your service name',
+  buildOptions: {
+    entryPoints: ['assets/sass/*.scss']
+  },
+  routes,
+  locals,
+  sessionDataDefaults
+})
 ```
 
 ### Using the Nunjucks filters only
@@ -71,11 +88,11 @@ NHSPrototypeKit.nunjucksFilters.addAll(nunjucksEnv)
 If you only want to use the Express middleware, you can do this to use everything:
 
 ```js
-app.use(NHSPrototypeKit.middleware.all({
-  serviceName: 'Your service name',
-  express: app,
-  routes: routes,
+NHSPrototypeKit.middleware.configure({
+  app: app,
+  serviceName: serviceName,
   locals: locals,
+  routes: routes,
   sessionDataDefaults: sessionDataDefaults
 }))
 ```
