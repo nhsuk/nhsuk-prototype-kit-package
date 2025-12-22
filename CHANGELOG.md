@@ -8,15 +8,21 @@ The NHS Prototype kit is now published as an NPM package.
 
 To use it, you should add `nhsuk-prototype-kit` to your `package.json` file and then run `npm install`. Then in your `app.js` file, add:
 
-```
+```js
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
+
+const locals = require('./app/locals')
+const routes = require('./app/routes')
+const sessionDataDefaults = require('./app/data/session-data-defaults')
 
 const prototype = NHSPrototypeKit.init({
   serviceName: 'Your service name',
-  express: app,
-  nunjucks: nunjucks,
-  routes: routes,
-  sessionDataDefaults: sessionDataDefaults
+  buildOptions: {
+    entryPoints: ['assets/sass/*.scss']
+  },
+  locals,
+  routes,
+  sessionDataDefaults
 })
 
 prototype.start()
