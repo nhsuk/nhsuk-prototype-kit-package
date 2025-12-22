@@ -76,10 +76,6 @@
       "require": "./lib/index.cjs",
       "default": "./lib/index.js"
     },
-    "./middleware": "./lib/middleware/index.js",
-    "./middleware/*": "./lib/middleware/*",
-    "./nunjucks-filters": "./lib/nunjucks-filters/index.js",
-    "./nunjucks-filters/*": "./lib/nunjucks-filters/*",
     "./utils": "./lib/utils/index.js",
     "./utils/*": "./lib/utils/*"
   },
