@@ -94,12 +94,6 @@ nunjucksEnv.addFilter('formatNhsNumber', nunjucksFilters.formatNhsNumber)
 nunjucksEnv.addFilter('startsWith', nunjucksFilters.startsWith)
 ```
 
-For backward compatibility, you can still use:
-
-```js
-NHSPrototypeKit.nunjucksFilters.addAll(nunjucksEnv)
-```
-
 ### Using the Express middleware only
 
 If you only want to use the Express middleware, you can import it separately:
@@ -124,24 +118,6 @@ import { middleware } from 'nhsuk-prototype-kit'
 app.use(middleware.autoRoutes)
 ```
 
-For backward compatibility, you can still use:
-
-```js
-NHSPrototypeKit.middleware.configure({
-  app: app,
-  serviceName: serviceName,
-  locals: locals,
-  routes: routes,
-  sessionDataDefaults: sessionDataDefaults
-}))
-```
-
-Or:
-
-```js
-app.use(NHSPrototypeKit.middleware.autoRoutes)
-```
-
 ### Using the utilities
 
 You can also import the utility functions separately:
@@ -150,10 +126,4 @@ You can also import the utility functions separately:
 import { utils } from 'nhsuk-prototype-kit'
 
 const port = await utils.findAvailablePort(3000)
-```
-
-For backward compatibility, you can still use:
-
-```js
-const port = await NHSPrototypeKit.utils.findAvailablePort(3000)
 ```
