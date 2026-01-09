@@ -4,6 +4,13 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
+      {% if messages.success %}
+        {{ notificationBanner({
+          text: (messages.success | first),
+          type: "success"
+        }) }}
+      {% endif %}
+
       <h1>{{ serviceName }}</h1>
 
       <p>Custom CSS: <span class="app-test">test</span>. Custom JavaScript: <span data-module="app-test"></span></p>
@@ -56,6 +63,7 @@
       </form>
 
       <p><a href="/custom-route">Custom route</a>.</p>
+      <p><a href="/test-flash">Test flash message</a>.</p>
       <p><a href="/containing-error">Template with a syntax error</a>.</p>
       <p><a href="/test-using-njk-extension">Test auto-routing with a <code>.njk</code> extension</a></p>
       <p><a href="/subfolder">Test auto-routing using an <code>index.html</code> file in a subfolder</a></p>
