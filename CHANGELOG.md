@@ -37,6 +37,7 @@ If you are upgrading a prototype which used a previous version of the kit, see [
 - Password page now has a show/hide button ([PR 108](https://github.com/nhsuk/nhsuk-prototype-kit-package/pull/108))
 - The kit now support ES modules as well as CommonJS ([PR 106](https://github.com/nhsuk/nhsuk-prototype-kit-package/pull/106))
 - Views can now use the `.njk` file extension, as well as `.html` ([PR #127](https://github.com/nhsuk/nhsuk-prototype-kit-package/pull/127))
+- The express-flash middleware is now included as default middleware ([PR 160](https://github.com/nhsuk/nhsuk-prototype-kit-package/pull/160))
 
 ## 7.1.0 - 20 October 2025
 
