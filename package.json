@@ -45,7 +45,7 @@
   },
   "peerDependencies": {
     "express": "^5.2.0",
-    "nhsuk-frontend": "^10.2.2",
+    "nhsuk-frontend": "^10.3.0",
     "nunjucks": "^3.2.4"
   },
   "devDependencies": {
