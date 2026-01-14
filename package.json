@@ -63,7 +63,7 @@
     "globals": "^17.0.0",
     "nunjucks": "^3.2.4",
     "prettier": "^3.7.4",
-    "supertest": "7.1.4",
+    "supertest": "7.2.2",
     "typescript-eslint": "^8.50.0"
   },
   "files": [
