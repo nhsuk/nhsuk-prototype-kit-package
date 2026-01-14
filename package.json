@@ -60,7 +60,7 @@
     "eslint-plugin-n": "^17.23.1",
     "eslint-plugin-promise": "^7.2.1",
     "express": "^5.2.1",
-    "globals": "^16.5.0",
+    "globals": "^17.0.0",
     "nunjucks": "^3.2.4",
     "prettier": "^3.7.4",
     "supertest": "7.1.4",
