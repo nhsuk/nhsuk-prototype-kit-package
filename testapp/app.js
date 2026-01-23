@@ -2,19 +2,19 @@ import { join } from 'node:path'
 
 import NHSPrototypeKit from 'nhsuk-prototype-kit'
 
-import sessionDataDefaults from './data/session-data-defaults.js'
-import locals from './locals.js'
-import routes from './routes.js'
+import sessionDataDefaults from './app/data/session-data-defaults.js'
+import locals from './app/locals.js'
+import routes from './app/routes.js'
 
 let port = 3000
 
 // Views folder for templates
-const viewsPath = join(import.meta.dirname, 'views')
+const viewsPath = join(import.meta.dirname, 'app/views')
 
 const prototype = NHSPrototypeKit.init({
   serviceName: 'Test service',
   buildOptions: {
-    entryPoints: ['assets/sass/*.scss', 'assets/javascript/*.js'],
+    entryPoints: ['app/assets/sass/*.scss', 'app/assets/javascript/*.js'],
     sassLoadPaths: ['../node_modules']
   },
   viewsPath,
