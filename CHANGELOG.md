@@ -4,7 +4,7 @@
 
 ### :boom: **Breaking changes**
 
-The NHS Prototype kit is now published as an NPM package.
+The NHS prototype kit is now published as an npm package.
 
 To use it, you should add `nhsuk-prototype-kit` to your `package.json` file and then run `npm install`. Then in your `app.js` file, add:
 
