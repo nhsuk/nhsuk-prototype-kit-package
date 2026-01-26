@@ -9,7 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^5.2.1",
-    "nhsuk-frontend": "^10.2.2",
+    "nhsuk-frontend": "^10.3.1",
     "nhsuk-prototype-kit": "*",
     "nunjucks": "^3.2.4"
   },
