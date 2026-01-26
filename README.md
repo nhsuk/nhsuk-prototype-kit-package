@@ -33,14 +33,14 @@ import NHSPrototypeKit from 'nhsuk-prototype-kit'
 
 Or, if using CommonJS:
 
-```js
+```cjs
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
 ```
 
 Initialise the prototype with a reference to your custom routes like this:
 
 ```js
-import routes from './routes.js'
+import routes from './app/routes.js'
 
 const prototype = NHSPrototypeKit.init({
   serviceName: 'Your service name',
@@ -60,9 +60,9 @@ prototype.start()
 If you want to set session data defaults, or locals, pass them to the init function:
 
 ```js
-import sessionDataDefaults from './data/session-data-defaults.js'
-import locals from './locals.js'
-import routes from './routes.js'
+import sessionDataDefaults from './app/data/session-data-defaults.js'
+import locals from './app/locals.js'
+import routes from './app/routes.js'
 
 const prototype = NHSPrototypeKit.init({
   serviceName: 'Your service name',

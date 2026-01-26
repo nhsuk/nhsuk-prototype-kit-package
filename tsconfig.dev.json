@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "strictNullChecks": false,
+    "types": ["node"]
+  },
+  "include": [
+    "./typings/express/index.d.ts",
+    "./lib/**/*.test.js",
+    "./testapp/**/*.test.js",
+    "./.prettierrc.js",
+    "./*.config.js"
+  ]
+}
