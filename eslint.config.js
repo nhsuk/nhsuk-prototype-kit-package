@@ -207,6 +207,7 @@ export default defineConfig([
     extends: [pluginTypeScript.configs.disableTypeChecked],
     rules: {
       '@typescript-eslint/no-unused-vars': 'off',
+      'n/no-missing-import': ['error', { resolvePaths: ['./testapp'] }],
       'no-undef': 'off'
     }
   },
