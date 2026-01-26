@@ -19,5 +19,6 @@
   "exclude": ["**/node_modules", "**/dist"],
   "typeAcquisition": {
     "enable": false
-  }
+  },
+  "typeRoots": ["./node_modules/@types", "./typings"]
 }

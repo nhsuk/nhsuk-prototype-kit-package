@@ -4,6 +4,7 @@
     "types": ["node"]
   },
   "include": [
+    "./typings/express/index.d.ts",
     "./lib/**/*.cjs",
     "./lib/**/*.js",
     "./lib/**/*.mjs",
