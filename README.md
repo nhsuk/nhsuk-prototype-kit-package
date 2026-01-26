@@ -42,12 +42,17 @@ Initialise the prototype with a reference to your custom routes like this:
 ```js
 import routes from './app/routes.js'
 
+const viewsPath = [
+  join(__dirname, 'app/views/')
+]
+
 const prototype = NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
     entryPoints: ['assets/sass/*.scss']
   },
-  routes
+  routes,
+  viewsPath
 })
 ```
 
@@ -64,6 +69,10 @@ import sessionDataDefaults from './app/data/session-data-defaults.js'
 import locals from './app/locals.js'
 import routes from './app/routes.js'
 
+const viewsPath = [
+  join(__dirname, 'app/views/')
+]
+
 const prototype = NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
@@ -71,7 +80,8 @@ const prototype = NHSPrototypeKit.init({
   },
   routes,
   locals,
-  sessionDataDefaults
+  sessionDataDefaults,
+  viewsPath
 })
 ```
 
