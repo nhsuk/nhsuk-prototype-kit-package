@@ -3,9 +3,10 @@ import { fileURLToPath } from 'node:url'
 
 import { includeIgnoreFile } from '@eslint/compat'
 import eslint from '@eslint/js'
-import markdown from '@eslint/markdown'
+import pluginMarkdown from '@eslint/markdown'
 import { defineConfig, globalIgnores } from 'eslint/config'
 import configPrettier from 'eslint-config-prettier/flat'
+import pluginESx from 'eslint-plugin-es-x'
 import pluginImport from 'eslint-plugin-import'
 import pluginJsdoc from 'eslint-plugin-jsdoc'
 import pluginNode from 'eslint-plugin-n'
@@ -18,7 +19,7 @@ const gitignorePath = join(rootPath, '.gitignore')
 
 export default defineConfig([
   {
-    files: ['**/*.{cjs,js,mjs}'],
+    files: ['**/*.{cjs,js}'],
     extends: [
       eslint.configs.recommended,
       pluginImport.flatConfigs.recommended,
@@ -29,14 +30,23 @@ export default defineConfig([
     ],
     languageOptions: {
       parserOptions: {
-        ecmaVersion: 'latest'
+        ecmaVersion: 'latest',
+        projectService: true,
+        tsconfigRootDir: rootPath
       }
     },
     rules: {
       // Turn off rules that are handled by TypeScript
       // https://typescript-eslint.io/troubleshooting/typed-linting/performance/#eslint-plugin-import
+      'import/default': 'off',
+      'import/named': 'off',
+      'import/namespace': 'off',
+      'import/no-cycle': 'off',
+      'import/no-deprecated': 'off',
       'import/no-named-as-default': 'off',
       'import/no-named-as-default-member': 'off',
+      'import/no-unresolved': 'off',
+      'import/no-unused-modules': 'off',
 
       // Always import Node.js packages from `node:*`
       'import/enforce-node-protocol-usage': ['error', 'always'],
@@ -92,7 +102,11 @@ export default defineConfig([
         {
           startLines: 1
         }
-      ]
+      ],
+
+      // Automatically use template strings
+      'no-useless-concat': 'error',
+      'prefer-template': 'error'
     },
     settings: {
       'import/resolver': {
@@ -103,7 +117,7 @@ export default defineConfig([
   },
   {
     // Configure ESLint for ES modules
-    files: ['**/*.mjs'],
+    files: ['**/*.js'],
     rules: {
       'import/extensions': [
         'error',
@@ -120,9 +134,21 @@ export default defineConfig([
     }
   },
   {
+    // Configure ESLint for CommonJS modules
+    files: ['**/*.cjs'],
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+      '@typescript-eslint/no-var-requires': 'off'
+    }
+  },
+  {
     // Configure ESLint for Node.js
-    files: ['**/*.{cjs,js,mjs}'],
-    ignores: ['app/assets/**/*.{cjs,js,mjs}', '!**/*.test.{cjs,js,mjs}'],
+    files: ['**/*.{cjs,js}'],
+    ignores: [
+      'lib/assets/**/*.js',
+      'testapp/app/assets/**/*.js',
+      '!**/*.test.js'
+    ],
     extends: [
       pluginTypeScript.configs.strict,
       pluginTypeScript.configs.stylistic,
@@ -145,11 +171,12 @@ export default defineConfig([
   },
   {
     // Configure ESLint for browsers
-    files: ['lib/assets/**/*.{cjs,js,mjs}'],
-    ignores: ['**/*.test.{cjs,js,mjs}'],
+    files: ['lib/assets/**/*.js', 'testapp/app/assets/**/*.js'],
+    ignores: ['**/*.test.js'],
     extends: [
-      pluginTypeScript.configs.strict,
-      pluginTypeScript.configs.stylistic
+      pluginTypeScript.configs.strictTypeChecked,
+      pluginTypeScript.configs.stylisticTypeChecked,
+      pluginESx.configs['flat/restrict-to-es2015']
     ],
     languageOptions: {
       globals: globals.browser,
@@ -160,17 +187,31 @@ export default defineConfig([
     }
   },
   {
-    // Configure ESLint for Markdown files
+    // Configure ESLint in test files
+    files: ['**/*.test.js'],
+    rules: {
+      '@typescript-eslint/no-empty-function': 'off',
+      'promise/always-return': 'off',
+      'promise/catch-or-return': 'off'
+    }
+  },
+  {
+    // Configure ESLint in Markdown files
     files: ['**/*.md'],
-    plugins: {
-      markdown
-    },
-    extends: ['markdown/recommended']
+    extends: [pluginMarkdown.configs.processor],
+    language: 'markdown/gfm'
+  },
+  {
+    // Configure ESLint in Markdown code blocks
+    files: ['**/*.md/*.{cjs,js}'],
+    extends: [pluginTypeScript.configs.disableTypeChecked],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+      'no-undef': 'off'
+    }
   },
   globalIgnores([
-    '**/app/**',
     '**/public/**',
-    'testapp/assets/javascript/application.js',
 
     // Enable dotfile linting
     '!.*',

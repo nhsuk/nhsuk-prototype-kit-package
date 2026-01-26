@@ -33,7 +33,7 @@ import NHSPrototypeKit from 'nhsuk-prototype-kit'
 
 Or, if using CommonJS:
 
-```js
+```cjs
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
 ```
 

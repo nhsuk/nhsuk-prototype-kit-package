@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "include": [
+    "./lib/**/*.cjs",
+    "./lib/**/*.js",
+    "./lib/**/*.mjs",
+    "./testapp/**/*.js"
+  ],
+  "exclude": [
+    "**/*.test.js",
+    "**/public",
+    "./lib/assets/**/*.js",
+    "./testapp/app/assets/**/*.js"
+  ]
+}
