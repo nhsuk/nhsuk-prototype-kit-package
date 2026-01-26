@@ -1,6 +1,6 @@
 # NHS Prototype kit
 
-This repo contains the code for the NHS Prototype kit that will be distributed as an npm package.
+This repo contains the code for the NHS Prototype kit is distributed as an npm package.
 
 The code contains:
 
@@ -13,7 +13,7 @@ The code contains:
 
 ### Using the template repository
 
-The simplest way to get started is to use the [NHS Prototype kit template repository](https://github.com/nhsuk/nhsuk-prototype-kit-package/pull/2).
+The simplest way to get started is to use the [NHS Prototype kit template repository](https://github.com/nhsuk/nhsuk-prototype-kit).
 
 From there, select 'Use this as a template' and follow the instructions.
 
@@ -42,12 +42,17 @@ Initialise the prototype with a reference to your custom routes like this:
 ```js
 import routes from './app/routes.js'
 
+const viewsPath = [
+  join(__dirname, 'app/views/')
+]
+
 const prototype = NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
     entryPoints: ['assets/sass/*.scss']
   },
-  routes
+  routes,
+  viewsPath
 })
 ```
 
@@ -64,6 +69,10 @@ import sessionDataDefaults from './app/data/session-data-defaults.js'
 import locals from './app/locals.js'
 import routes from './app/routes.js'
 
+const viewsPath = [
+  join(__dirname, 'app/views/')
+]
+
 const prototype = NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
@@ -71,7 +80,8 @@ const prototype = NHSPrototypeKit.init({
   },
   routes,
   locals,
-  sessionDataDefaults
+  sessionDataDefaults,
+  viewsPath
 })
 ```
 
