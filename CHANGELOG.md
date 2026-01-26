@@ -2,7 +2,7 @@
 
 ## 8.0.0 – 27 Jan 2026
 
-### Breaking changes
+### :boom: **Breaking changes**
 
 The NHS Prototype kit is now published as an NPM package.
 
@@ -15,6 +15,10 @@ const locals = require('./app/locals')
 const routes = require('./app/routes')
 const sessionDataDefaults = require('./app/data/session-data-defaults')
 
+const viewsPath = [
+  join(__dirname, 'app/views/')
+]
+
 const prototype = NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
@@ -22,7 +26,8 @@ const prototype = NHSPrototypeKit.init({
   },
   locals,
   routes,
-  sessionDataDefaults
+  sessionDataDefaults,
+  viewsPath
 })
 
 prototype.start()
