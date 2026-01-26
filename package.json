@@ -76,7 +76,7 @@
     "supertest": "7.2.2",
     "typed-query-selector": "^2.12.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.0"
+    "typescript-eslint": "^8.53.1"
   },
   "files": [
     "lib",
