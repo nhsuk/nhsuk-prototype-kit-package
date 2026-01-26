@@ -33,7 +33,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@inquirer/prompts": "^8.1.0",
+    "@inquirer/prompts": "^8.2.0",
     "body-parser": "^2.2.1",
     "browser-sync": "^3.0.4",
     "cookie-parser": "^1.4.7",
