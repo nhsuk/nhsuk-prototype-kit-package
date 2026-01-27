@@ -15,7 +15,7 @@ const locals = require('./app/locals')
 const routes = require('./app/routes')
 const sessionDataDefaults = require('./app/data/session-data-defaults')
 
-const prototype = NHSPrototypeKit.init({
+const prototype = await NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
     entryPoints: ['assets/sass/*.scss']

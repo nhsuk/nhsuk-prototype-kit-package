@@ -42,7 +42,7 @@ Initialise the prototype with a reference to your custom routes like this:
 ```js
 import routes from './app/routes.js'
 
-const prototype = NHSPrototypeKit.init({
+const prototype = await NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
     entryPoints: ['assets/sass/*.scss']
@@ -64,7 +64,7 @@ import sessionDataDefaults from './app/data/session-data-defaults.js'
 import locals from './app/locals.js'
 import routes from './app/routes.js'
 
-const prototype = NHSPrototypeKit.init({
+const prototype = await NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
     entryPoints: ['assets/sass/*.scss']

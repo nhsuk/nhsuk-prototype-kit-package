@@ -6,12 +6,10 @@ import sessionDataDefaults from './app/data/session-data-defaults.js'
 import locals from './app/locals.js'
 import routes from './app/routes.js'
 
-let port = 3000
-
 // Views folder for templates
 const viewsPath = join(import.meta.dirname, 'app/views')
 
-const prototype = NHSPrototypeKit.init({
+const prototype = await NHSPrototypeKit.init({
   serviceName: 'Test service',
   buildOptions: {
     entryPoints: ['app/assets/sass/*.scss', 'app/assets/javascript/*.js'],
@@ -23,4 +21,4 @@ const prototype = NHSPrototypeKit.init({
   sessionDataDefaults
 })
 
-prototype.start(port)
+prototype.start()
