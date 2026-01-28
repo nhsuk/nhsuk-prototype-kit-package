@@ -1,5 +1,3 @@
-import { join } from 'node:path'
-
 import NHSPrototypeKit from 'nhsuk-prototype-kit'
 
 import { sessionDataDefaults } from './app/data/session-data-defaults.js'
@@ -7,7 +5,7 @@ import { locals } from './app/locals.js'
 import { routes } from './app/routes.js'
 
 // Views folder for templates
-const viewsPath = join(import.meta.dirname, 'app/views')
+const viewsPath = ['app/views']
 
 const prototype = await NHSPrototypeKit.init({
   serviceName: 'Test service',
