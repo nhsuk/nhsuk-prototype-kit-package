@@ -3,8 +3,7 @@
     "allowJs": true,
     "checkJs": true,
     "esModuleInterop": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "NodeNext",
     "noEmit": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
@@ -13,7 +12,6 @@
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
-    "target": "ESNext",
     "types": []
   },
   "exclude": ["**/node_modules", "**/dist"],
