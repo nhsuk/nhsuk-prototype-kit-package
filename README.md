@@ -1,4 +1,4 @@
-# NHS Prototype kit
+# NHS prototype kit
 
 This repo contains the code for the NHS Prototype kit that will be distributed as an npm package.
 
