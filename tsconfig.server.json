@@ -7,7 +7,7 @@
     "./typings/express/index.d.ts",
     "./lib/**/*.cjs",
     "./lib/**/*.js",
-    "./lib/**/*.mjs",
+    "./testapp/**/*.cjs",
     "./testapp/**/*.js"
   ],
   "exclude": [
