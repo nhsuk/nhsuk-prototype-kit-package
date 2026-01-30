@@ -19,7 +19,7 @@ async function init() {
     sessionDataDefaults
   })
 
-  prototype.start()
+  prototype.start(2000)
 }
 
 init()

@@ -4,7 +4,7 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "start": "node --env-file .env ."
+    "start": "node ."
   },
   "license": "MIT",
   "dependencies": {

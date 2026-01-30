@@ -18,4 +18,4 @@ const prototype = await NHSPrototypeKit.init({
   sessionDataDefaults
 })
 
-prototype.start()
+prototype.start(2000)
