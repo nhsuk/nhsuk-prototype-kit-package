@@ -16,17 +16,11 @@ async function init() {
     viewsPath: ['app/views'],
     routes,
     locals,
+    filters,
     sessionDataDefaults
   })
 
-  // Add custom port number
   prototype.app?.set('port', config.port)
-
-  // Add custom Nunjucks filters
-  for (const [name, filter] of Object.entries(filters)) {
-    prototype.nunjucks?.addFilter(name, filter)
-  }
-
   prototype.start()
 }
 
