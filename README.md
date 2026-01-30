@@ -45,7 +45,7 @@ import routes from './app/routes.js'
 const prototype = await NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
-    entryPoints: ['assets/sass/*.scss']
+    entryPoints: ['app/stylesheets/*.scss']
   },
   routes
 })
@@ -67,7 +67,7 @@ import routes from './app/routes.js'
 const prototype = await NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
-    entryPoints: ['assets/sass/*.scss']
+    entryPoints: ['app/stylesheets/*.scss']
   },
   routes,
   locals,

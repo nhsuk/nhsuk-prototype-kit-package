@@ -11,6 +11,6 @@
     "target": "ES2015",
     "types": ["node", "typed-query-selector"]
   },
-  "include": ["./lib/assets/**/*.js", "./testapp/app/assets/**/*.js"],
+  "include": ["./lib/javascripts/**/*.js", "./testapp/app/javascripts/**/*.js"],
   "exclude": ["**/*.test.js"]
 }

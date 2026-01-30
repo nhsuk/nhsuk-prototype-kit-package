@@ -8,7 +8,7 @@ import { routes } from './app/routes.js'
 const prototype = await NHSPrototypeKit.init({
   serviceName: 'Test service',
   buildOptions: {
-    entryPoints: ['app/assets/sass/*.scss', 'app/assets/javascript/*.js'],
+    entryPoints: ['app/stylesheets/*.scss', 'app/javascripts/*.js'],
     sassLoadPaths: ['../node_modules']
   },
   viewsPath: ['app/views'],
