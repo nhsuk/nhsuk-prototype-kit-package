@@ -9,8 +9,7 @@ async function init() {
   const prototype = await NHSPrototypeKit.init({
     serviceName: 'Test service',
     buildOptions: {
-      entryPoints: ['app/stylesheets/*.scss', 'app/javascripts/*.js'],
-      sassLoadPaths: ['../node_modules']
+      entryPoints: ['app/stylesheets/*.scss', 'app/javascripts/*.js']
     },
     viewsPath: ['app/views'],
     routes,
