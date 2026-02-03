@@ -1,4 +1,4 @@
-# NHS Prototype kit
+# NHS prototype kit
 
 This repo contains the code for the NHS Prototype kit is distributed as an npm package.
 
@@ -43,13 +43,13 @@ Initialise the prototype with a reference to your custom routes like this:
 import routes from './app/routes.js'
 
 const viewsPath = [
-  join(__dirname, 'app/views/')
+  'app/views/'
 ]
 
-const prototype = NHSPrototypeKit.init({
+const prototype = await NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
-    entryPoints: ['assets/sass/*.scss']
+    entryPoints: ['app/stylesheets/*.scss']
   },
   routes,
   viewsPath
@@ -70,13 +70,13 @@ import locals from './app/locals.js'
 import routes from './app/routes.js'
 
 const viewsPath = [
-  join(__dirname, 'app/views/')
+  'app/views/'
 ]
 
-const prototype = NHSPrototypeKit.init({
+const prototype = await NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
-    entryPoints: ['assets/sass/*.scss']
+    entryPoints: ['app/stylesheets/*.scss']
   },
   routes,
   locals,

@@ -1,6 +1,6 @@
 # NHS prototype kit Changelog
 
-## 8.0.0 – 27 Jan 2026
+## 8.0.0 – 3 Feb 2026
 
 ### :boom: **Breaking changes**
 
@@ -16,13 +16,13 @@ const routes = require('./app/routes')
 const sessionDataDefaults = require('./app/data/session-data-defaults')
 
 const viewsPath = [
-  join(__dirname, 'app/views/')
+  'app/views/'
 ]
 
-const prototype = NHSPrototypeKit.init({
+const prototype = await NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
-    entryPoints: ['assets/sass/*.scss']
+    entryPoints: ['app/stylesheets/*.scss']
   },
   locals,
   routes,
