@@ -46,10 +46,14 @@ const viewsPath = [
   'app/views/'
 ]
 
+const entryPoints = [
+  'app/stylesheets/*.scss'
+]
+
 const prototype = await NHSPrototypeKit.init({
   serviceName: 'Your service name',
   buildOptions: {
-    entryPoints: ['app/stylesheets/*.scss']
+    entryPoints
   },
   routes,
   viewsPath
