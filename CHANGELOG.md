@@ -1,5 +1,11 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+### :wrench: **Fixes**
+
+- Override start port via `PORT` in development
+
 ## 8.0.0 – 3 Feb 2026
 
 ### :boom: **Breaking changes**
