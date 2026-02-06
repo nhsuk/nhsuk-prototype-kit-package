@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### :new: **New features**
+
+- Add new Nunjucks `globals` option
+
 ### :wrench: **Fixes**
 
 - Override start port via `PORT` in development
