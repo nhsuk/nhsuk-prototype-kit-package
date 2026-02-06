@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Content page</h1>
+
+      <p class="nhsuk-lede-text">Use images only if there is a real user need. Avoid unnecessary decoration.</p>
+
+      <p>To learn more about the image component and when to use it, visit the <a href="https://service-manual.nhs.uk/design-system/components/images">design system in the NHS digital service manual</a> for guidance, examples and options.</p>
+
+      {{ image({
+        alt: "16:9 image",
+        src: "/assets/images/placeholder-image-16-9.jpg",
+        caption: {
+          html: "Placeholder image from <code>app/assets/images</code>"
+        }
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}
