@@ -7,6 +7,7 @@
 - Override start port via `PORT` in development
 - Fix build options to support all esbuild options
 - Fix static asset routing via `/assets` or `/images`
+- Use start port for Browsersync in development
 
 ## 8.0.0 – 3 Feb 2026
 

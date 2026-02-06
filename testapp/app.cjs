@@ -18,7 +18,7 @@ async function init() {
     sessionDataDefaults
   })
 
-  prototype.start(2000)
+  prototype.start(3000)
 }
 
 init()
