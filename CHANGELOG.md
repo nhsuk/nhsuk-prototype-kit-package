@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### :new: **New features**
+
+- Add new Express `session` option for custom session stores
+- Add support for `.env` files
+
 ### :wrench: **Fixes**
 
 - Fix imports via `node_modules/` like GOV.UK Frontend
