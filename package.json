@@ -86,8 +86,7 @@
   },
   "files": [
     "lib",
-    "!lib/**/*.test.js",
-    "!lib/**/test-templates"
+    "!lib/**/*.test.js"
   ],
   "exports": {
     ".": {
