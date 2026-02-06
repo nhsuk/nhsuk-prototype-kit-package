@@ -1,4 +1,6 @@
-# NHS prototype kit: Test app
+# NHS prototype kit: Developing
+
+To make development easier, this project comes with a test app that you can use to develop and test new features and changes.
 
 To run the test app:
 
