@@ -5,6 +5,7 @@
 ### :wrench: **Fixes**
 
 - Override start port via `PORT` in development
+- Fix build options to support all esbuild options
 
 ## 8.0.0 – 3 Feb 2026
 
