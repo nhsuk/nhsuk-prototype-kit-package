@@ -2,6 +2,10 @@
 
 ## 8.0.1 – 6 Feb 2026
 
+### :new: **New features**
+
+- Add new Nunjucks `globals` option
+
 ### :wrench: **Fixes**
 
 - Override start port via `PORT` in development
