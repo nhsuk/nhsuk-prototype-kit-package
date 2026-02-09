@@ -1,5 +1,11 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+### :new: **New features**
+
+- Add package version info via new `modules` local
+
 ## 8.0.1 – 6 Feb 2026
 
 ### :wrench: **Fixes**
