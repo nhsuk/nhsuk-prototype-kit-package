@@ -5,6 +5,7 @@
 ### :wrench: **Fixes**
 
 - Trim spaces from Nunjucks blocks and tags
+- Turn off Browsersync notifications
 
 ## 8.0.1 – 6 Feb 2026
 
