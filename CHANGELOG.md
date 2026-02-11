@@ -5,6 +5,7 @@
 ### :new: **New features**
 
 - Add new Nunjucks `globals` option
+- Add new Express `session` option for custom session stores
 
 ## 8.0.1 – 6 Feb 2026
 
