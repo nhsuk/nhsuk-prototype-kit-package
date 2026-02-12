@@ -1,5 +1,11 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+### :new: **New features**
+
+- Add new Nunjucks `globals` option
+
 ## 8.0.1 – 6 Feb 2026
 
 ### :wrench: **Fixes**
