@@ -11,6 +11,7 @@
 - Trim spaces from Nunjucks blocks and tags
 - Turn off Browsersync notifications
 - Clean public directory when starting prototype
+- Fix imports via `node_modules/` like GOV.UK Frontend
 
 ## 8.0.1 – 6 Feb 2026
 
