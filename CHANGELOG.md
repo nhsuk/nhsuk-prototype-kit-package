@@ -6,6 +6,10 @@
 
 - Add package version info via new `modules` local
 
+### :wrench: **Fixes**
+
+- Fix imports via `node_modules/` like GOV.UK Frontend
+
 ## 8.0.1 – 6 Feb 2026
 
 ### :wrench: **Fixes**
