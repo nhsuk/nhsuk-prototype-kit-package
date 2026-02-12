@@ -1,5 +1,11 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+### :wrench: **Fixes**
+
+- Trim spaces from Nunjucks blocks and tags
+
 ## 8.0.1 – 6 Feb 2026
 
 ### :wrench: **Fixes**
