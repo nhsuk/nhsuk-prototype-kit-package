@@ -19,13 +19,13 @@
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
   {%- set nhsukPrototypeKitLink -%}
-    <a href="https://github.com/nhsuk/nhsuk-prototype-kit-package/releases/{{ prototypeKitVersion }}">
+    <a class="nhsuk-footer__list-item-link" href="https://github.com/nhsuk/nhsuk-prototype-kit-package/releases/{{ prototypeKitVersion }}">
       {{- "NHS prototype kit " + prototypeKitVersion -}}
     </a>
   {%- endset -%}
 
   {%- set nhsukFrontendLink -%}
-    <a href="https://github.com/nhsuk/nhsuk-frontend/releases/{{ nhsukFrontendVersion }}">
+    <a class="nhsuk-footer__list-item-link" href="https://github.com/nhsuk/nhsuk-frontend/releases/{{ nhsukFrontendVersion }}">
       {{- "NHS.UK frontend " + nhsukFrontendVersion -}}
     </a>
   {%- endset -%}
