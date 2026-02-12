@@ -20,8 +20,25 @@
 <!-- Edit the footer -->
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
+  {%- set nhsukPrototypeKitLink -%}
+    <a class="nhsuk-footer__list-item-link" href="{{ modules["nhsuk-prototype-kit"].href }}">
+      {{- modules["nhsuk-prototype-kit"].text }} {{ modules["nhsuk-prototype-kit"].version -}}
+    </a>
+  {%- endset -%}
+
+  {%- set nhsukFrontendLink -%}
+    <a class="nhsuk-footer__list-item-link" href="{{ modules["nhsuk-frontend"].href }}">
+      {{- modules["nhsuk-frontend"].text }} {{ modules["nhsuk-frontend"].version -}}
+    </a>
+  {%- endset -%}
+
+  {%- set footerMetaHtml -%}
+    <p class="nhsuk-body-s">Built on {{ nhsukPrototypeKitLink | safe }} and {{ nhsukFrontendLink | safe }}</p>
+  {%- endset -%}
+
   {{ footer({
     meta: {
+      html: footerMetaHtml | safe,
       items: [
         {
           href: "/",
