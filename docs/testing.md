@@ -14,12 +14,12 @@ There are also some tests to check that the code follows a style guide.
 
 To run these checks run:
 
-```bash
+```sh
 npm run lint
 ```
 
 You can also automatically fix any code style issues by running:
 
-```bash
+```sh
 npm run lint:fix
 ```
