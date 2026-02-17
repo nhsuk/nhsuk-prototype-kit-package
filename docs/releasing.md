@@ -24,4 +24,4 @@ If the release is a major or minor release, add some details about the new relea
 
 If the release contains new features or breaking changes, make sure these are documented on the prototype kit website.
 
-Announce the new release on the Service Manual Slack, NHS England Slack, and any other appropriate locations
+Announce the new release on the Service Manual Slack, NHS England Slack, and any other appropriate locations.
