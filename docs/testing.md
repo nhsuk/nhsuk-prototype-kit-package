@@ -4,7 +4,7 @@ Each bit of the kit should be covered with automated tests.
 
 To run all the tests, run:
 
-```bash
+```sh
 npm run test
 ```
 
