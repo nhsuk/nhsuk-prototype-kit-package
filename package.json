@@ -68,9 +68,9 @@
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-es-x": "^9.3.0",
+    "eslint-plugin-es-x": "^9.4.0",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsdoc": "^62.5.2",
+    "eslint-plugin-jsdoc": "^62.5.4",
     "eslint-plugin-n": "^17.23.2",
     "eslint-plugin-promise": "^7.2.1",
     "express": "^5.2.1",
@@ -80,7 +80,7 @@
     "supertest": "7.2.2",
     "typed-query-selector": "^2.12.0",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0"
+    "typescript-eslint": "^8.55.0"
   },
   "files": [
     "lib",
