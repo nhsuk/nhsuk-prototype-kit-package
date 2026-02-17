@@ -38,6 +38,7 @@
     "browser-sync": "^3.0.4",
     "cookie-parser": "^1.4.7",
     "esbuild": "^0.27.3",
+    "esbuild-clean-plugin": "^2.0.0",
     "esbuild-sass-plugin": "^3.3.1",
     "express-flash": "^0.0.2",
     "express-session": "^1.19.0",
