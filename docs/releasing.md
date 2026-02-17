@@ -2,7 +2,13 @@
 
 To release a new version of the kit to npm, follow these steps:
 
-1. Update the version number in `package.json` and run `npm install`
+1. Update the version number, following [semantic versioning](https://semver.org) guidlines to either update the major, minor or patch number:
+
+```bash
+npm version patch --no-git-tag-version
+npm version minor --no-git-tag-version
+npm version major --no-git-tag-version
+```
 
 2. Update the `CHANGELOG.md` to change the `## Unreleased` heading at the top to be the new version number and date
 
