@@ -9,6 +9,7 @@
 - Clean public directory when starting prototype
 - Add link to "/" from header
 - Update error pages to use nhsuk-heading-l
+- Support NHS.UK frontend v11.x previews and pre-releases
 
 ## 8.0.1 – 6 Feb 2026
 
