@@ -7,6 +7,7 @@
 - Trim spaces from Nunjucks blocks and tags
 - Turn off Browsersync notifications
 - Clean public directory when starting prototype
+- Support NHS.UK frontend v11.x previews and pre-releases
 
 ## 8.0.1 – 6 Feb 2026
 
