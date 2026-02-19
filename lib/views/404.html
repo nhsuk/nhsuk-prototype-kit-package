@@ -1,10 +1,14 @@
+---
+pageName: Page not found
+---
+
 {% extends "layout.html" %}
 
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
 
-      <h1>Page not found</h1>
+      <h1>{{ pageName }}</h1>
 
       <p>There is no page at <strong>{{ path }}</strong></p>
 
