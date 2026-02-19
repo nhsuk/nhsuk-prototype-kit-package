@@ -5,6 +5,7 @@
   "type": "module",
   "main": "lib/index.js",
   "scripts": {
+    "start": "npm start --workspace testapp",
     "test": "node --test",
     "test:ci": "node --test",
     "lint:prettier": "prettier --cache --cache-location .cache/prettier --cache-strategy content --check .",

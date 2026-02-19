@@ -5,7 +5,7 @@ To make development easier, this project comes with a test app that you can use 
 To run the test app:
 
 ```sh
-npm start --workspace testapp
+npm start
 ```
 
 ## Node.js module types
