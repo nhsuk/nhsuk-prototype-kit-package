@@ -7,6 +7,8 @@
 - Trim spaces from Nunjucks blocks and tags
 - Turn off Browsersync notifications
 - Clean public directory when starting prototype
+- Add link to "/" from header
+- Update error pages to use nhsuk-heading-l
 
 ## 8.0.1 – 6 Feb 2026
 
