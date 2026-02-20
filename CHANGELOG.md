@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### :new: **New features**
+
+- Add new Nunjucks `globals` option
+
 ### :wrench: **Fixes**
 
 - Trim spaces from Nunjucks blocks and tags
