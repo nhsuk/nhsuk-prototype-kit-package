@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### :new: **New features**
+
+- Add package version info via new `modules` local
+
 ### :wrench: **Fixes**
 
 - Trim spaces from Nunjucks blocks and tags
