@@ -9,7 +9,7 @@ import { routes } from './app/routes.js'
 const prototype = await NHSPrototypeKit.init({
   serviceName: config.serviceName,
   buildOptions: config.buildOptions,
-  viewsPath: config.viewsPath,
+  nunjucks: config.nunjucksEnv,
   routes,
   locals,
   filters,
