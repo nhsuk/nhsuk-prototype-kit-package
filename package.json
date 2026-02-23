@@ -100,7 +100,9 @@
     "./nunjucks-filters": "./lib/nunjucks-filters/index.js",
     "./nunjucks-filters/*": "./lib/nunjucks-filters/*",
     "./utils": "./lib/utils/index.js",
-    "./utils/*": "./lib/utils/*"
+    "./utils/*": "./lib/utils/*",
+    "./config": "./lib/nhsuk-prototype-kit.config.js",
+    "./package.json": "./package.json"
   },
   "workspaces": [
     ".",
