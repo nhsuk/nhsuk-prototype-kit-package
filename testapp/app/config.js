@@ -3,6 +3,8 @@ import { fileURLToPath } from 'node:url'
 
 import nunjucks from 'nunjucks'
 
+import { onLoad } from './onload.js'
+
 /**
  * Service name
  */
@@ -42,6 +44,8 @@ export const nunjucksEnv = nunjucks.configure(viewsPath, {
   lstripBlocks: true, // Remove leading spaces from a block/tag
   trimBlocks: true // Remove trailing newlines from a block/tag
 })
+
+nunjucksEnv.on('load', onLoad)
 
 /**
  * Build options for esbuild
