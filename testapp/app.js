@@ -1,3 +1,4 @@
+import cookieSession from 'cookie-session'
 import NHSPrototypeKit from 'nhsuk-prototype-kit'
 
 import * as config from './app/config.js'
@@ -15,6 +16,11 @@ const prototype = await NHSPrototypeKit.init({
   routes,
   locals,
   filters,
+  session: cookieSession({
+    name: config.sessionName,
+    secret: config.sessionName,
+    maxAge: 1000 * 60 * 60 * 4 // 4 hours
+  }),
   sessionDataDefaults
 })
 
