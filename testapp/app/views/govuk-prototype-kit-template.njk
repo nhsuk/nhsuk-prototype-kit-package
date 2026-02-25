@@ -1,0 +1,19 @@
+{% extends "govuk/template.njk" %}
+
+{% block pageTitle -%}
+  {%- if errors === true or (errors | length) %}Error: {% endif -%}
+  {%- if pageName %}{{ pageName }} – {% endif -%}
+  {{ serviceName }} – NHS
+{%- endblock %}
+
+{% set assetPath = "/govuk-frontend/assets" %}
+
+{% block bodyEnd %}
+  <script type="module" src="/govuk-frontend/govuk-frontend.min.js"></script>
+  <script type="module" src="/nhsuk-prototype-kit/javascripts/send-unchecked-checkboxes.js"></script>
+  <script type="module">
+    import { initAll } from '/govuk-frontend/govuk-frontend.min.js'
+    initAll()
+  </script>
+  {{ super() }}
+{% endblock %}

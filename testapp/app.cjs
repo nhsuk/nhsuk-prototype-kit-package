@@ -9,9 +9,10 @@ async function init() {
   const prototype = await NHSPrototypeKit.init({
     serviceName: 'Test service',
     buildOptions: {
-      entryPoints: ['app/stylesheets/*.scss', 'app/javascripts/*.js']
+      entryPoints: ['app/stylesheets/*.scss', 'app/javascripts/*.js'],
+      external: ['/govuk-frontend/*']
     },
-    viewsPath: ['app/views'],
+    viewsPath: ['app/views', '../node_modules/govuk-frontend/dist'],
     routes,
     locals,
     filters,
