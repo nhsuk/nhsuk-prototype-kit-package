@@ -1,5 +1,11 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+### :wrench: **Fixes**
+
+- Fix imports via `node_modules/` like GOV.UK Frontend
+
 ## 8.0.2 – 23 Feb 2026
 
 ### :wrench: **Fixes**
