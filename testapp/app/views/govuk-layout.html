@@ -17,6 +17,10 @@
 {% endblock %}
 
 {% block bodyEnd %}
+  <script type="module" src="/@x-govuk/govuk-prototype-components/govuk-prototype-components.min.js"></script>
   <script type="module" src="/javascripts/application.js"></script>
+  <script type="module">
+    window.GOVUKPrototypeComponents.initAll()
+  </script>
   {{ super() }}
 {% endblock %}

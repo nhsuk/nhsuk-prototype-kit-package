@@ -1,12 +1,22 @@
-import { dirname, join } from 'node:path'
+import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import express from 'express'
 
 export const routes = express.Router()
 
+const govukPrototypeComponentsPath = resolve(
+  fileURLToPath(import.meta.resolve('@x-govuk/govuk-prototype-components')),
+  '../../..'
+)
+
 const govukFrontendPath = fileURLToPath(
   dirname(import.meta.resolve('govuk-frontend/package.json'))
+)
+
+routes.use(
+  '/@x-govuk/govuk-prototype-components',
+  express.static(join(govukPrototypeComponentsPath, 'dist'))
 )
 
 routes.use(

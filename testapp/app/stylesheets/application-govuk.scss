@@ -2,3 +2,6 @@ $govuk-assets-path: "/govuk-frontend/assets/";
 
 // Import GOV.UK Frontend library
 @import "govuk-frontend/dist/govuk";
+
+// Import GOV.UK Prototype Components
+@import "@x-govuk/govuk-prototype-components/src/x-govuk";
