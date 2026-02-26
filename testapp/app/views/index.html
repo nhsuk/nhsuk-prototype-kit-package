@@ -19,7 +19,7 @@
 
       <p><code>organisationName</code>: {{ organisationName }}.</p>
 
-      <form action="/result" method="post" novalidate>
+      <form action="/example/result" method="post" novalidate>
 
         {{ input({
           name: "test",
@@ -67,7 +67,23 @@
       <p><a href="/test-flash">Test flash message</a>.</p>
       <p><a href="/containing-error">Template with a syntax error</a>.</p>
       <p><a href="/test-using-njk-extension">Test auto-routing with a <code>.njk</code> extension</a></p>
-      <p><a href="/subfolder">Test auto-routing using an <code>index.html</code> file in a subfolder</a></p>
+      <p><a href="/example">Test auto-routing using an <code>index.html</code> file in a subfolder</a></p>
+
+      {% macro pageIndex(params) %}
+        {% if params.children | length %}
+        <ul>
+          {% for page in params.children %}
+          <li>
+            <a href="{{ page.href }}">{{ page.text }}</a>
+            {{ pageIndex(page) }}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      {% endmacro %}
+
+      <h2>Page listing</h2>
+      {{ pageIndex({ children: pageListing() }) }}
 
     </div>
   </div>
