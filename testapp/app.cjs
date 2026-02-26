@@ -1,4 +1,3 @@
-const cookieSession = require('cookie-session')
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
 
 const config = require('./app/config.js')
@@ -6,6 +5,7 @@ const { sessionDataDefaults } = require('./app/data/session-data-defaults.js')
 const filters = require('./app/filters.js')
 const { locals } = require('./app/locals.js')
 const { routes } = require('./app/routes.js')
+const { session } = require('./app/session.js')
 
 async function init() {
   const prototype = await NHSPrototypeKit.init({
@@ -17,11 +17,7 @@ async function init() {
     routes,
     locals,
     filters,
-    session: cookieSession({
-      name: config.sessionName,
-      secret: config.sessionName,
-      maxAge: 1000 * 60 * 60 * 4 // 4 hours
-    }),
+    session,
     sessionDataDefaults
   })
 
