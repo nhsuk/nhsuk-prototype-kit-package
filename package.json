@@ -80,7 +80,7 @@
     "nunjucks": "^3.2.4",
     "prettier": "^3.8.1",
     "supertest": "7.2.2",
-    "typed-query-selector": "^2.12.0",
+    "typed-query-selector": "^2.12.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1"
   },
