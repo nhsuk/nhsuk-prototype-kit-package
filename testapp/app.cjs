@@ -1,7 +1,7 @@
 const NHSPrototypeKit = require('nhsuk-prototype-kit')
 
 const { sessionDataDefaults } = require('./app/data/session-data-defaults.js')
-const filters = require('./app/filters.js')
+const { filters } = require('./app/filters.js')
 const { locals } = require('./app/locals.js')
 const { routes } = require('./app/routes.js')
 

@@ -1,3 +1,13 @@
+import prototypeFilters from '@x-govuk/govuk-prototype-filters'
+
+export function filters() {
+  const filters = { ...prototypeFilters }
+
+  filters.sayHi = sayHi
+
+  return filters
+}
+
 /**
  * Say hi filter
  *
