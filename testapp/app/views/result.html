@@ -2,6 +2,8 @@
 
 {% block content %}
 
+  <p>Date of birth: <b>{{ data.dateOfBirth | formatDate }}</b>.</p>
+
   <p>You typed in: <b>{{ data.test }}</b>.</p>
 
   <p>You selected: <b>{% if (data.preferences | length) > 0 %}{{ data.preferences | join(", ") }}{% else %}no option{% endif %}</b></p>
