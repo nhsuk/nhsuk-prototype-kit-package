@@ -76,7 +76,7 @@
     "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-promise": "^7.2.1",
     "express": "^5.2.1",
-    "globals": "^17.3.0",
+    "globals": "^17.4.0",
     "nunjucks": "^3.2.4",
     "prettier": "^3.8.1",
     "supertest": "7.2.2",
