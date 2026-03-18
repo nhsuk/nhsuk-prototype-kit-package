@@ -8,6 +8,7 @@
 - Add new Express `session` option for custom session stores
 - Add support for `.env` files
 - Allow custom Sass plugin to override default
+- Increase limit for bodyParser plugin
 
 ### :wrench: **Fixes**
 
