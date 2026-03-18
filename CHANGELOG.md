@@ -4,6 +4,7 @@
 
 ### :new: **New features**
 
+- Add a `formatDate` filter for dates
 - Add new Nunjucks `globals` option
 - Add new Express `session` option for custom session stores
 - Add support for `.env` files

@@ -21,6 +21,17 @@
 
       <form action="/result" method="post" novalidate>
 
+        {{ dateInput({
+          namePrefix: "dateOfBirth",
+          values: data.dateOfBirth,
+          fieldset: {
+            legend: {
+              text: "Date of birth",
+              size: "s"
+            }
+          }
+        }) }}
+
         {{ input({
           name: "test",
           label: {
