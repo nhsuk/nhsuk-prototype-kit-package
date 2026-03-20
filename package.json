@@ -1,6 +1,6 @@
 {
   "name": "nhsuk-prototype-kit",
-  "version": "8.0.1",
+  "version": "8.1.0",
   "description": "Rapidly create HTML prototypes of NHS services",
   "type": "module",
   "main": "lib/index.js",
@@ -34,7 +34,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@inquirer/prompts": "^8.2.0",
+    "@inquirer/prompts": "^8.3.0",
     "body-parser": "^2.2.1",
     "browser-sync": "^3.0.4",
     "cookie-parser": "^1.4.7",
@@ -44,20 +44,20 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.19.0",
     "http-proxy-node16": "^1.0.6",
-    "nodemon": "^3.1.11",
+    "nodemon": "^3.1.14",
     "portscanner": "^2.2.0",
-    "sass-embedded": "^1.97.3",
+    "sass-embedded": "^1.98.0",
     "validator": "^13.15.26",
     "wait-on": "^9.0.4"
   },
   "peerDependencies": {
     "express": "^5.2.0",
-    "nhsuk-frontend": "^10.3.0",
+    "nhsuk-frontend": "^10.3.0 || >=11.0.0-preview || >=11.0.0-internal || >=11.0.0-beta",
     "nunjucks": "^3.2.4"
   },
   "devDependencies": {
-    "@eslint/compat": "^2.0.2",
-    "@eslint/js": "^9.36.0",
+    "@eslint/compat": "^2.0.3",
+    "@eslint/js": "^9.39.4",
     "@eslint/markdown": "^7.5.1",
     "@types/body-parser": "^1.19.6",
     "@types/browser-sync": "^2.29.1",
@@ -69,22 +69,23 @@
     "@types/portscanner": "^2.1.4",
     "@types/validator": "^13.15.10",
     "@types/wait-on": "^5.3.4",
-    "eslint": "^9.39.2",
+    "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-es-x": "^9.4.0",
+    "eslint-plugin-es-x": "^9.5.0",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsdoc": "^62.5.4",
-    "eslint-plugin-n": "^17.23.2",
+    "eslint-plugin-jsdoc": "^62.8.0",
+    "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-promise": "^7.2.1",
     "express": "^5.2.1",
-    "globals": "^17.3.0",
+    "globals": "^17.4.0",
+    "nhsuk-frontend": "^10.4.0",
     "nunjucks": "^3.2.4",
     "prettier": "^3.8.1",
     "supertest": "7.2.2",
-    "typed-query-selector": "^2.12.0",
+    "typed-query-selector": "^2.12.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.55.0"
+    "typescript-eslint": "^8.57.0"
   },
   "files": [
     "lib",
@@ -102,7 +103,9 @@
     "./nunjucks-filters": "./lib/nunjucks-filters/index.js",
     "./nunjucks-filters/*": "./lib/nunjucks-filters/*",
     "./utils": "./lib/utils/index.js",
-    "./utils/*": "./lib/utils/*"
+    "./utils/*": "./lib/utils/*",
+    "./config": "./lib/nhsuk-prototype-kit.config.js",
+    "./package.json": "./package.json"
   },
   "workspaces": [
     ".",
@@ -110,6 +113,6 @@
   ],
   "engines": {
     "node": "^22.16.0 || ^24.11.0",
-    "npm": "^11.6.1"
+    "npm": "^11.6.1 <11.6.3 || ^11.6.4"
   }
 }

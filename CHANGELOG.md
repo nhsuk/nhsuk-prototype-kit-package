@@ -1,6 +1,25 @@
 # NHS prototype kit Changelog
 
-## Unreleased
+### :wrench: **Fixes**
+
+- Avoid using 6000 port number
+
+## 8.1.0 - 18 March 2026
+
+### :new: **New features**
+
+- Add a `formatDate` filter for dates
+- Add new Nunjucks `globals` option
+- Add new Express `session` option for custom session stores
+- Add support for `.env` files
+- Allow custom Sass plugin to override default
+- Increase limit for bodyParser plugin
+
+### :wrench: **Fixes**
+
+- Fix imports via `node_modules/` like GOV.UK Frontend
+
+## 8.0.2 – 23 Feb 2026
 
 ### :wrench: **Fixes**
 
@@ -9,6 +28,8 @@
 - Clean public directory when starting prototype
 - Add link to "/" from header
 - Update error pages to use nhsuk-heading-l
+- Support NHS.UK frontend v11.x previews and pre-releases
+- Support version number via `prototypeKitVersion` local
 
 ## 8.0.1 – 6 Feb 2026
 
