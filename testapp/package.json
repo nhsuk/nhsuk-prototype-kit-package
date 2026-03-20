@@ -4,14 +4,18 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "start": "node ."
+    "start": "node --env-file-if-exists .env ."
   },
   "license": "MIT",
   "dependencies": {
+    "connect-pg-simple": "^10.0.0",
+    "cookie-session": "^2.1.1",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "nhsuk-frontend": "^10.3.1",
     "nhsuk-prototype-kit": "*",
-    "nunjucks": "^3.2.4"
+    "nunjucks": "^3.2.4",
+    "pg": "^8.19.0"
   },
   "files": [],
   "engines": {
