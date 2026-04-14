@@ -9,6 +9,7 @@
 ### :wrench: **Fixes**
 
 - Avoid using 6000 port number
+- Update NHS.UK frontend minimum version to 10.4
 - Dependency updates with security fixes
 
 ## 8.1.0 - 18 March 2026
