@@ -1,8 +1,16 @@
 # NHS prototype kit Changelog
 
+## 8.2.0 - 14 April 2026
+
+### :new: **New features**
+
+- Add a `formatPostcode` filter
+
 ### :wrench: **Fixes**
 
 - Avoid using 6000 port number
+- Update NHS.UK frontend minimum version to 10.4
+- Dependency updates with security fixes
 
 ## 8.1.0 - 18 March 2026
 
