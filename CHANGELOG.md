@@ -1,5 +1,9 @@
 # NHS prototype kit Changelog
 
+## 8.2.1 - 5 May 2026
+
+- Dependency updates including security fixes
+
 ## 8.2.0 - 14 April 2026
 
 ### :new: **New features**
