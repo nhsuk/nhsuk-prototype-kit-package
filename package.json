@@ -63,7 +63,7 @@
     "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
     "@types/express-flash": "^0.0.5",
-    "@types/express-session": "^1.18.2",
+    "@types/express-session": "^1.19.0",
     "@types/nunjucks": "^3.2.6",
     "@types/portscanner": "^2.1.4",
     "@types/wait-on": "^5.3.4",
