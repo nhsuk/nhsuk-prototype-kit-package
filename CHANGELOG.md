@@ -6,6 +6,8 @@
 
 - Make sure internal views use admin layout
 - Fix custom routes to Nunjucks views
+- Add import for NHS.UK frontend legend component
+- Import NHS.UK frontend components using namespace directory
 
 ## 8.2.1 - 5 May 2026
 
