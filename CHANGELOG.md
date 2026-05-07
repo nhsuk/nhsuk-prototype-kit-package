@@ -1,5 +1,11 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+### :wrench: **Fixes**
+
+- Fix 404 handling for unknown file types
+
 ## 8.2.2 - 7 May 2026
 
 ### :wrench: **Fixes**
