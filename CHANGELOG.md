@@ -1,5 +1,11 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+### :wrench: **Fixes**
+
+- Make sure internal views use admin layout
+
 ## 8.2.1 - 5 May 2026
 
 ### :wrench: **Fixes**
