@@ -5,6 +5,7 @@
 ### :wrench: **Fixes**
 
 - Make sure internal views use admin layout
+- Fix custom routes to Nunjucks views
 
 ## 8.2.1 - 5 May 2026
 
