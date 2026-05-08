@@ -7,17 +7,16 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1 class="nhsuk-heading-l">{{ pageName }}</h1>
-      <h2 class="nhsuk-heading-m">{{ error.name }}</h2>
+      <h2 class="nhsuk-heading-m nhsuk-u-margin-bottom-2">{{ error.name }}</h2>
+
+      <p class="nhsuk-caption-m nhsuk-u-reading-width">
+        {{- error.message | nl2br | nl2br | safe -}}
+      </p>
 
     </div>
   </div>
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
-
-      {{ code({
-        html: error.message | nl2br | nl2br,
-        classes: "nhsuk-u-reading-width"
-      }) }}
 
       {{ details({
         summaryText: "Stack trace",
