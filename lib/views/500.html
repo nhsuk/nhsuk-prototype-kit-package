@@ -7,17 +7,22 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <h1 class="nhsuk-heading-l">{{ pageName }}</h1>
+
+      <p class="nhsuk-body">
+        You can try and fix this yourself or <a class="nhsuk-link" href="https://prototype-kit.service-manual.nhs.uk/support/">contact the NHS prototype kit team</a> if you need help.
+      </p>
+
       <h2 class="nhsuk-heading-m">{{ error.name }}</h2>
+
+      <p>
+        {{- error.message | nl2br | nl2br | safe -}}
+      </p>
 
     </div>
   </div>
+{% if error.stack %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-full">
-
-      {{ code({
-        html: error.message | nl2br | nl2br,
-        classes: "nhsuk-u-reading-width"
-      }) }}
 
       {{ details({
         summaryText: "Stack trace",
@@ -31,5 +36,6 @@
 
     </div>
   </div>
+{% endif %}
 {% endblock %}
 
