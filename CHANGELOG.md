@@ -2,9 +2,11 @@
 
 ## Unreleased
 
-### :wrench: **Maintenance**
+### :wrench: **Maintenance and fixes**
 
 - Update to use NHS frontend 10.5 and the new `template-with-imports.njk` template.
+- Fix link to guidance on password not set error page
+- Add contact support message to error page
 
 ## 8.2.3 - 8 May 2026
 
