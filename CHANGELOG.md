@@ -1,5 +1,11 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+### :wrench: **Maintenance**
+
+- Update to use NHS frontend 10.5 and the new `template-with-imports.njk` template.
+
 ## 8.2.3 - 8 May 2026
 
 ### :wrench: **Fixes**
