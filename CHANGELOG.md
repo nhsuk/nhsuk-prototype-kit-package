@@ -1,12 +1,13 @@
 # NHS prototype kit Changelog
 
-## Unreleased
+## 8.3.0 - 4 June 2026
 
 ### :wrench: **Maintenance and fixes**
 
 - Update to use NHS.UK frontend 10.5 and the new `template-with-imports.njk` template.
 - Fix link to guidance on password not set error page
 - Add contact support message to error page
+- Dependency updates including security fixes
 
 ## 8.2.3 - 8 May 2026
 
