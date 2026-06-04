@@ -1,6 +1,6 @@
 # NHS prototype kit Changelog
 
-## Unreleased
+## 8.3.0 - 4 June 2026
 
 ### :wrench: **Maintenance and fixes**
 
