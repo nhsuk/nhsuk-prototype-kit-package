@@ -2,8 +2,9 @@
 
 ## Unreleased
 
-### :wrench: **Fixes**
+### :wrench: **Maintenance and fixes**
 
+- Update to use NHS.UK frontend 10.5 and the new `template-with-imports.njk` template.
 - Fix link to guidance on password not set error page
 - Add contact support message to error page
 
