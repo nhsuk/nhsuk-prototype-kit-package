@@ -8,7 +8,7 @@ The code contains:
 - some useful default settings for Express
 - some Nunjucks filters
 - Nunjucks views, including a template
-
+- Blah
 
 ## Installing the kit
 
