@@ -9,6 +9,7 @@ The code contains:
 - some Nunjucks filters
 - Nunjucks views, including a template
 
+
 ## Installing the kit
 
 ### Using the template repository
