@@ -82,7 +82,7 @@
     "prettier": "^3.9.4",
     "supertest": "7.2.2",
     "typed-query-selector": "^2.12.2",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "typescript-eslint": "^8.62.1"
   },
   "files": [
