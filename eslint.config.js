@@ -9,6 +9,7 @@ import configPrettier from 'eslint-config-prettier/flat'
 import pluginESx from 'eslint-plugin-es-x'
 import pluginJsdoc from 'eslint-plugin-jsdoc'
 import pluginNode from 'eslint-plugin-n'
+import pluginNodeImport from 'eslint-plugin-node-import'
 import pluginPromise from 'eslint-plugin-promise'
 import globals from 'globals'
 import pluginTypeScript from 'typescript-eslint'
@@ -101,7 +102,8 @@ export default defineConfig([
     extends: [
       pluginTypeScript.configs.strict,
       pluginTypeScript.configs.stylistic,
-      pluginNode.configs['flat/recommended']
+      pluginNode.configs['flat/recommended'],
+      pluginNodeImport.configs['flat/recommended']
     ],
     languageOptions: {
       globals: globals.node

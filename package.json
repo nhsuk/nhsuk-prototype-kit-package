@@ -72,6 +72,7 @@
     "eslint-plugin-es-x": "^10.0.0",
     "eslint-plugin-jsdoc": "^63.0.13",
     "eslint-plugin-n": "^18.2.1",
+    "eslint-plugin-node-import": "^1.2.0",
     "eslint-plugin-promise": "^7.3.0",
     "express": "^5.2.1",
     "globals": "^17.7.0",
