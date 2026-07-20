@@ -58,6 +58,7 @@
     "@eslint/config-helpers": "^0.6.0",
     "@eslint/js": "^10.0.1",
     "@eslint/markdown": "^8.0.3",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/body-parser": "^1.19.6",
     "@types/browser-sync": "^2.29.1",
     "@types/cookie-parser": "^1.4.10",
