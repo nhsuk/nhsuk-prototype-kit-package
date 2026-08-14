@@ -20,15 +20,19 @@ updates:
         patterns:
           - 'esbuild'
           - 'esbuild-*'
+          - 'sass-embedded'
 
       lint:
         patterns:
           - '@eslint/*'
+          - '@trivago/prettier-plugin-sort-imports'
+          - '@types/*'
           - 'eslint'
           - 'eslint-*'
           - 'globals'
           - 'prettier'
-          - 'typescript-eslint'
+          - 'typed-query-selector'
+          - 'typescript-*'
 
       test:
         patterns:
@@ -38,8 +42,10 @@ updates:
         patterns:
           - '@inquirer/prompts'
           - 'browser-sync'
-          - 'http-proxy-middleware'
+          - 'http-proxy-node16'
+          - 'nodemon'
           - 'portscanner'
+          - 'wait-on'
 
     schedule:
       interval: weekly
@@ -51,6 +57,12 @@ updates:
   # Update GitHub Actions
   - package-ecosystem: github-actions
     directory: /
+
+    # Group actions into shared PR
+    groups:
+      actions:
+        patterns:
+          - '*'
 
     schedule:
       interval: weekly
