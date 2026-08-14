@@ -36,7 +36,7 @@
           name: "test",
           label: {
             text: "Test",
-            classes: "nhsuk-label--s"
+            size: "s"
           },
           value: data.test
         }) }}
@@ -46,7 +46,7 @@
           fieldset: {
             legend: {
               text: "Checkboxes test",
-              classes: "nhsuk-fieldset__legend--s"
+              size: "s"
             }
           },
           values: data.preferences,
@@ -70,7 +70,9 @@
           ]
         }) }}
 
-        {{ button({ text: "Save" }) }}
+        {{ button({
+          text: "Save"
+        }) }}
       </form>
 
       <p><a href="/content-page">Content page</a>.</p>
