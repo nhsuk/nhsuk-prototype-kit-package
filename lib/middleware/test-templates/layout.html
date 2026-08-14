@@ -10,10 +10,13 @@
 
 {% block header %}
   {{ header({
+    logo: {
+      href: "/"
+    } if not serviceName,
     service: {
       text: serviceName,
       href: "/"
-    }
+    } if serviceName
   }) }}
 {% endblock %}
 
