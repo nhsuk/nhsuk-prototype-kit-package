@@ -20,8 +20,9 @@ npm version major --no-git-tag-version
 
 Update the [NHS prototype kit template](https://github.com/nhsuk/nhsuk-prototype-kit) with the new release version number.
 
-If the release is a major or minor release, add some details about the new release to the [What’s new page](https://github.com/nhsuk/nhsuk.service-manual.prototype-kit.docs/blob/main/app/views/whats-new/updates.html) on the prototype kit website.
+If the release is a major or minor release, add some details about the new release to the [What’s new page](https://github.com/nhsuk/nhsuk.service-manual.prototype-kit.docs/blob/main/app/updates.md) on the prototype kit website.
 
 If the release contains new features or breaking changes, make sure these are documented on the prototype kit website.
 
 Announce the new release on the Service Manual Slack, NHS England Slack, and any other appropriate locations.
+
