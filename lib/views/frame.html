@@ -15,6 +15,82 @@
         justify-content: center;
       }
 
+      .app-frame__outer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .app-frame__wrapper {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .app-frame__handle {
+        flex-shrink: 0;
+        position: relative;
+      }
+
+      .app-frame__handle::after {
+        content: '';
+        position: absolute;
+        background: #425563;
+        border-radius: 4px;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+
+      .app-frame__handle--left,
+      .app-frame__handle--right {
+        width: 24px;
+        height: 80px;
+        cursor: ew-resize;
+      }
+
+      .app-frame__handle--left::after,
+      .app-frame__handle--right::after {
+        top: 0;
+        width: 6px;
+        height: 100%;
+      }
+
+      .app-frame__handle--left::after {
+        right: 0;
+      }
+
+      .app-frame__handle--right::after {
+        left: 0;
+      }
+
+      .app-frame__handle--top,
+      .app-frame__handle--bottom {
+        width: 80px;
+        height: 24px;
+        cursor: ns-resize;
+      }
+
+      .app-frame__handle--top::after,
+      .app-frame__handle--bottom::after {
+        left: 0;
+        width: 100%;
+        height: 6px;
+      }
+
+      .app-frame__handle--top::after {
+        bottom: 0;
+      }
+
+      .app-frame__handle--bottom::after {
+        top: 0;
+      }
+
+      .app-frame__outer:has(.app-frame__handle:hover) .app-frame__handle::after,
+      .app-frame__outer:has(.app-frame__handle--dragging) .app-frame__handle::after {
+        opacity: 1;
+      }
+
       .app-frame__container {
         position: relative;
         background-color: black;
@@ -28,6 +104,11 @@
         overflow: hidden;
         transform: translateZ(0);
         outline: 6px solid #f9fbfb;
+        transition: border-radius 0.3s;
+      }
+
+      .app-frame__container--tablet {
+        border-radius: 20px;
       }
 
       .app-frame__iframe {
@@ -40,6 +121,11 @@
         left: 0;
         scrollbar-width: none;
         -ms-overflow-style: none;
+        transition: border-radius 0.3s;
+      }
+
+      .app-frame__container--tablet .app-frame__iframe {
+        border-radius: 8px;
       }
 
       .app-frame__iframe::-webkit-scrollbar {
@@ -56,26 +142,91 @@
         border-radius: 20px;
         background: black;
         z-index: 10;
+        opacity: 1;
+        transition: opacity 0.3s;
+      }
+
+      .app-frame__container--tablet .app-frame__dynamic-island {
+        opacity: 0;
+        pointer-events: none;
       }
     </style>
   </head>
   <body>
-    <div class="app-frame__container">
-      <div class="app-frame__dynamic-island" aria-hidden="true"></div>
-      <iframe
-        class="app-frame__iframe"
-        title="Prototype"
-        src="{{ iframeSrc }}">
-      </iframe>
+    <div class="app-frame__outer">
+      <div class="app-frame__handle app-frame__handle--top" aria-hidden="true"></div>
+      <div class="app-frame__wrapper">
+        <div class="app-frame__handle app-frame__handle--left" aria-hidden="true"></div>
+        <div class="app-frame__container">
+          <div class="app-frame__dynamic-island" aria-hidden="true"></div>
+          <iframe
+            class="app-frame__iframe"
+            title="Prototype"
+            src="{{ iframeSrc }}">
+          </iframe>
+        </div>
+        <div class="app-frame__handle app-frame__handle--right" aria-hidden="true"></div>
+      </div>
+      <div class="app-frame__handle app-frame__handle--bottom" aria-hidden="true"></div>
     </div>
     <script>
+      const container = document.querySelector('.app-frame__container')
+      const handles = document.querySelectorAll('.app-frame__handle')
       const iframe = document.querySelector('.app-frame__iframe')
+      let injectedStyle = null
+
+      function setTabletMode(isTablet) {
+        container.classList.toggle('app-frame__container--tablet', isTablet)
+        if (injectedStyle) {
+          injectedStyle.textContent = isTablet
+            ? 'html { background-color: white; }'
+            : 'html { padding-top: 59px; background-color: white; }'
+        }
+      }
+
+      handles.forEach((handle) => {
+        const isLeft = handle.classList.contains('app-frame__handle--left')
+        const isVertical = handle.classList.contains('app-frame__handle--top') || handle.classList.contains('app-frame__handle--bottom')
+        let startPos, startSize
+
+        handle.addEventListener('pointerdown', (e) => {
+          e.preventDefault()
+          handle.setPointerCapture(e.pointerId)
+          startPos = isVertical ? e.clientY : e.clientX
+          startSize = isVertical ? container.offsetHeight : container.offsetWidth
+          handle.classList.add('app-frame__handle--dragging')
+          document.body.style.cursor = isVertical ? 'ns-resize' : 'ew-resize'
+          document.body.style.userSelect = 'none'
+        })
+
+        handle.addEventListener('pointermove', (e) => {
+          if (!handle.hasPointerCapture(e.pointerId)) return
+          const delta = (isVertical ? e.clientY : e.clientX) - startPos
+          if (isVertical) {
+            const isTop = handle.classList.contains('app-frame__handle--top')
+            const newHeight = isTop ? startSize - delta : startSize + delta
+            container.style.height = Math.max(568, newHeight) + 'px'
+          } else {
+            const newWidth = isLeft ? startSize - delta : startSize + delta
+            container.style.width = Math.max(320, newWidth) + 'px'
+            setTabletMode(newWidth >= 744)
+          }
+        })
+
+        handle.addEventListener('pointerup', (e) => {
+          handle.releasePointerCapture(e.pointerId)
+          handle.classList.remove('app-frame__handle--dragging')
+          document.body.style.cursor = ''
+          document.body.style.userSelect = ''
+        })
+      })
+
       // Emulate iOS safe area: push content below Dynamic Island, html background fills behind it
       iframe.addEventListener('load', () => {
         try {
-          const style = iframe.contentDocument.createElement('style')
-          style.textContent = 'html { padding-top: 59px; background-color: white; }'
-          iframe.contentDocument.head.appendChild(style)
+          injectedStyle = iframe.contentDocument.createElement('style')
+          injectedStyle.textContent = 'html { padding-top: 59px; background-color: white; }'
+          iframe.contentDocument.head.appendChild(injectedStyle)
           document.title = iframe.contentDocument.title || 'NHS prototype kit'
 
           // Keep ?url= in sync so reloads return to the current page
