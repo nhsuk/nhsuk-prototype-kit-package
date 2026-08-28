@@ -300,9 +300,7 @@
       cameraCutout.addEventListener('click', () => {
         device = device === 'pixel' ? 'ios' : 'pixel'
         container.classList.toggle('app-frame__container--pixel', device === 'pixel')
-        container.style.width = ''
-        container.style.height = ''
-        setTabletMode(false)
+        setTabletMode(container.classList.contains('app-frame__container--tablet'))
         cameraCutout.title = device === 'pixel' ? 'Switch to iOS' : 'Switch to Pixel'
         if (injectedStyle) {
           injectedStyle.textContent = getIframeStyle(false)
