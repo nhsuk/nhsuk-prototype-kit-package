@@ -16,21 +16,12 @@
       }
 
       .app-frame__outer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .app-frame__wrapper {
-        display: flex;
-        align-items: center;
-        gap: 8px;
+        position: relative;
+        padding: 32px;
       }
 
       .app-frame__handle {
-        flex-shrink: 0;
-        position: relative;
+        position: absolute;
         z-index: 1;
       }
 
@@ -45,9 +36,9 @@
 
       .app-frame__handle--left,
       .app-frame__handle--right {
-        /* extends into the black frame border; negative margin keeps container in place */
+        top: 79px;
+        bottom: 79px;
         width: 44px;
-        align-self: stretch;
         cursor: ew-resize;
       }
 
@@ -60,7 +51,7 @@
       }
 
       .app-frame__handle--left {
-        margin-right: -20px;
+        left: 0;
       }
 
       .app-frame__handle--left::after {
@@ -68,7 +59,7 @@
       }
 
       .app-frame__handle--right {
-        margin-left: -20px;
+        right: 0;
       }
 
       .app-frame__handle--right::after {
@@ -77,10 +68,8 @@
 
       .app-frame__handle--top,
       .app-frame__handle--bottom {
-        align-self: stretch;
-        /* inset by side handle width + gap to match container width */
-        margin-inline: calc(24px + 8px);
-        /* extends into the black frame border; negative margin keeps container in place */
+        left: 79px;
+        right: 79px;
         height: 44px;
         cursor: ns-resize;
       }
@@ -94,7 +83,7 @@
       }
 
       .app-frame__handle--top {
-        margin-bottom: -20px;
+        top: 0;
       }
 
       .app-frame__handle--top::after {
@@ -102,16 +91,60 @@
       }
 
       .app-frame__handle--bottom {
-        margin-top: -20px;
+        bottom: 0;
       }
 
       .app-frame__handle--bottom::after {
         top: 20px;
       }
 
-      .app-frame__outer:has(.app-frame__handle:hover) .app-frame__handle::after,
-      .app-frame__outer:has(.app-frame__handle--dragging) .app-frame__handle::after {
+      .app-frame__handles--horizontal,
+      .app-frame__handles--vertical {
+        display: contents;
+      }
+
+      .app-frame__handles--horizontal:has(:hover, .app-frame__handle--dragging) .app-frame__handle::after,
+      .app-frame__handles--vertical:has(:hover, .app-frame__handle--dragging) .app-frame__handle::after,
+      .app-frame__outer:has(.app-frame__handle--corner:hover, .app-frame__handle--corner.app-frame__handle--dragging) .app-frame__handle::after {
         opacity: 1;
+      }
+
+      .app-frame__handle--corner {
+        width: 80px;
+        height: 80px;
+        z-index: 2;
+      }
+
+      .app-frame__handle--corner::after {
+        display: none;
+      }
+
+      .app-frame__handle--top-left {
+        top: 0;
+        left: 0;
+        cursor: nwse-resize;
+        clip-path: polygon(0 0, 80px 0, 80px 44px, 44px 44px, 44px 80px, 0 80px);
+      }
+
+      .app-frame__handle--top-right {
+        top: 0;
+        right: 0;
+        cursor: nesw-resize;
+        clip-path: polygon(0 0, 80px 0, 80px 80px, 36px 80px, 36px 44px, 0 44px);
+      }
+
+      .app-frame__handle--bottom-left {
+        bottom: 0;
+        left: 0;
+        cursor: nesw-resize;
+        clip-path: polygon(0 0, 44px 0, 44px 36px, 80px 36px, 80px 80px, 0 80px);
+      }
+
+      .app-frame__handle--bottom-right {
+        bottom: 0;
+        right: 0;
+        cursor: nwse-resize;
+        clip-path: polygon(36px 0, 80px 0, 80px 80px, 0 80px, 0 36px, 36px 36px);
       }
 
       .app-frame__container {
@@ -194,20 +227,26 @@
   </head>
   <body>
     <div class="app-frame__outer">
-      <div class="app-frame__handle app-frame__handle--top" aria-hidden="true"></div>
-      <div class="app-frame__wrapper">
+      <div class="app-frame__container">
+        <div class="app-frame__camera-cutout" aria-hidden="true" title="Switch to Pixel"></div>
+        <iframe
+          class="app-frame__iframe"
+          title="Prototype"
+          src="{{ iframeSrc }}">
+        </iframe>
+      </div>
+      <div class="app-frame__handles--horizontal">
         <div class="app-frame__handle app-frame__handle--left" aria-hidden="true"></div>
-        <div class="app-frame__container">
-          <div class="app-frame__camera-cutout" aria-hidden="true" title="Switch to Pixel"></div>
-          <iframe
-            class="app-frame__iframe"
-            title="Prototype"
-            src="{{ iframeSrc }}">
-          </iframe>
-        </div>
         <div class="app-frame__handle app-frame__handle--right" aria-hidden="true"></div>
       </div>
-      <div class="app-frame__handle app-frame__handle--bottom" aria-hidden="true"></div>
+      <div class="app-frame__handles--vertical">
+        <div class="app-frame__handle app-frame__handle--top" aria-hidden="true"></div>
+        <div class="app-frame__handle app-frame__handle--bottom" aria-hidden="true"></div>
+      </div>
+      <div class="app-frame__handle app-frame__handle--corner app-frame__handle--top-left" aria-hidden="true"></div>
+      <div class="app-frame__handle app-frame__handle--corner app-frame__handle--top-right" aria-hidden="true"></div>
+      <div class="app-frame__handle app-frame__handle--corner app-frame__handle--bottom-left" aria-hidden="true"></div>
+      <div class="app-frame__handle app-frame__handle--corner app-frame__handle--bottom-right" aria-hidden="true"></div>
     </div>
     <script>
       const container = document.querySelector('.app-frame__container')
@@ -260,29 +299,58 @@
       if (initHeight) container.style.height = initHeight + 'px'
 
       handles.forEach((handle) => {
-        const isLeft = handle.classList.contains('app-frame__handle--left')
+        const isCorner = handle.classList.contains('app-frame__handle--corner')
+        const isLeft = handle.classList.contains('app-frame__handle--left') || handle.classList.contains('app-frame__handle--top-left') || handle.classList.contains('app-frame__handle--bottom-left')
+        const isTop = handle.classList.contains('app-frame__handle--top') || handle.classList.contains('app-frame__handle--top-left') || handle.classList.contains('app-frame__handle--top-right')
         const isVertical = handle.classList.contains('app-frame__handle--top') || handle.classList.contains('app-frame__handle--bottom')
-        let startPos, startSize
+        let startX, startY, startWidth, startHeight
 
         handle.addEventListener('pointerdown', (e) => {
           e.preventDefault()
           handle.setPointerCapture(e.pointerId)
-          startPos = isVertical ? e.clientY : e.clientX
-          startSize = isVertical ? container.offsetHeight : container.offsetWidth
+          startX = e.clientX
+          startY = e.clientY
+          startWidth = container.offsetWidth
+          startHeight = container.offsetHeight
           handle.classList.add('app-frame__handle--dragging')
-          document.body.style.cursor = isVertical ? 'ns-resize' : 'ew-resize'
+          if (isCorner) {
+            document.body.style.cursor = (handle.classList.contains('app-frame__handle--top-left') || handle.classList.contains('app-frame__handle--bottom-right')) ? 'nwse-resize' : 'nesw-resize'
+          } else {
+            document.body.style.cursor = isVertical ? 'ns-resize' : 'ew-resize'
+          }
           document.body.style.userSelect = 'none'
         })
 
         handle.addEventListener('pointermove', (e) => {
           if (!handle.hasPointerCapture(e.pointerId)) return
-          const delta = (isVertical ? e.clientY : e.clientX) - startPos
-          if (isVertical) {
-            const isTop = handle.classList.contains('app-frame__handle--top')
-            const newHeight = isTop ? startSize - 2 * delta : startSize + 2 * delta
+          const deltaX = e.clientX - startX
+          const deltaY = e.clientY - startY
+
+          if (isCorner) {
+            const aspectRatio = startWidth / startHeight
+            const xSign = isLeft ? -1 : 1
+            const ySign = isTop ? -1 : 1
+            const diagLen = Math.sqrt(startWidth * startWidth + startHeight * startHeight)
+            const projected = (deltaX * xSign * startWidth + deltaY * ySign * startHeight) / diagLen
+            const scale = 1 + (2 * projected) / diagLen
+            let newWidth = startWidth * scale
+            let newHeight = startHeight * scale
+            if (newWidth < 320) {
+              newWidth = 320
+              newHeight = newWidth / aspectRatio
+            }
+            if (newHeight < 568) {
+              newHeight = 568
+              newWidth = newHeight * aspectRatio
+            }
+            container.style.width = newWidth + 'px'
+            container.style.height = newHeight + 'px'
+            setTabletMode(newWidth >= 744)
+          } else if (isVertical) {
+            const newHeight = isTop ? startHeight - 2 * deltaY : startHeight + 2 * deltaY
             container.style.height = Math.max(568, newHeight) + 'px'
           } else {
-            const newWidth = isLeft ? startSize - 2 * delta : startSize + 2 * delta
+            const newWidth = isLeft ? startWidth - 2 * deltaX : startWidth + 2 * deltaX
             container.style.width = Math.max(320, newWidth) + 'px'
             setTabletMode(newWidth >= 744)
           }
