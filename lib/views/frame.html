@@ -31,6 +31,7 @@
       .app-frame__handle {
         flex-shrink: 0;
         position: relative;
+        z-index: 1;
       }
 
       .app-frame__handle::after {
@@ -44,46 +45,68 @@
 
       .app-frame__handle--left,
       .app-frame__handle--right {
-        width: 24px;
-        height: 80px;
+        /* extends into the black frame border; negative margin keeps container in place */
+        width: 44px;
+        align-self: stretch;
         cursor: ew-resize;
       }
 
       .app-frame__handle--left::after,
       .app-frame__handle--right::after {
-        top: 0;
+        top: 50%;
+        transform: translateY(-50%);
         width: 6px;
-        height: 100%;
+        height: 80px;
+      }
+
+      .app-frame__handle--left {
+        margin-right: -20px;
       }
 
       .app-frame__handle--left::after {
-        right: 0;
+        right: 20px;
+      }
+
+      .app-frame__handle--right {
+        margin-left: -20px;
       }
 
       .app-frame__handle--right::after {
-        left: 0;
+        left: 20px;
       }
 
       .app-frame__handle--top,
       .app-frame__handle--bottom {
-        width: 80px;
-        height: 24px;
+        align-self: stretch;
+        /* inset by side handle width + gap to match container width */
+        margin-inline: calc(24px + 8px);
+        /* extends into the black frame border; negative margin keeps container in place */
+        height: 44px;
         cursor: ns-resize;
       }
 
       .app-frame__handle--top::after,
       .app-frame__handle--bottom::after {
-        left: 0;
-        width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
         height: 6px;
       }
 
+      .app-frame__handle--top {
+        margin-bottom: -20px;
+      }
+
       .app-frame__handle--top::after {
-        bottom: 0;
+        bottom: 20px;
+      }
+
+      .app-frame__handle--bottom {
+        margin-top: -20px;
       }
 
       .app-frame__handle--bottom::after {
-        top: 0;
+        top: 20px;
       }
 
       .app-frame__outer:has(.app-frame__handle:hover) .app-frame__handle::after,
