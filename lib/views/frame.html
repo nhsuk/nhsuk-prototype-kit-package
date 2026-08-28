@@ -132,7 +132,7 @@
         display: none;
       }
 
-      .app-frame__dynamic-island {
+      .app-frame__camera-cutout {
         position: absolute;
         top: 12px;
         left: 50%;
@@ -143,12 +143,31 @@
         background: black;
         z-index: 10;
         opacity: 1;
-        transition: opacity 0.3s;
+        cursor: pointer;
+        transition: opacity 0.3s, width 0.3s, height 0.3s, border-radius 0.3s, top 0.3s;
       }
 
-      .app-frame__container--tablet .app-frame__dynamic-island {
+      .app-frame__container--tablet .app-frame__camera-cutout {
         opacity: 0;
         pointer-events: none;
+      }
+
+      .app-frame__container--pixel {
+        width: 412px;
+        height: 915px;
+        border-radius: 28px;
+      }
+
+      .app-frame__container--pixel .app-frame__iframe {
+        border-radius: 16px;
+      }
+
+      /* Android punch-hole camera */
+      .app-frame__container--pixel .app-frame__camera-cutout {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        top: 14px;
       }
     </style>
   </head>
@@ -158,7 +177,7 @@
       <div class="app-frame__wrapper">
         <div class="app-frame__handle app-frame__handle--left" aria-hidden="true"></div>
         <div class="app-frame__container">
-          <div class="app-frame__dynamic-island" aria-hidden="true"></div>
+          <div class="app-frame__camera-cutout" aria-hidden="true" title="Switch to Pixel"></div>
           <iframe
             class="app-frame__iframe"
             title="Prototype"
@@ -173,14 +192,21 @@
       const container = document.querySelector('.app-frame__container')
       const handles = document.querySelectorAll('.app-frame__handle')
       const iframe = document.querySelector('.app-frame__iframe')
+      const dynamicIsland = document.querySelector('.app-frame__camera-cutout')
       let injectedStyle = null
+      let isPixel = false
+
+      function getIframeStyle(isTablet) {
+        if (isTablet) return 'html { background-color: white; }'
+        return isPixel
+          ? 'html { padding-top: 40px; background-color: white; }'
+          : 'html { padding-top: 59px; background-color: white; }'
+      }
 
       function setTabletMode(isTablet) {
         container.classList.toggle('app-frame__container--tablet', isTablet)
         if (injectedStyle) {
-          injectedStyle.textContent = isTablet
-            ? 'html { background-color: white; }'
-            : 'html { padding-top: 59px; background-color: white; }'
+          injectedStyle.textContent = getIframeStyle(isTablet)
         }
       }
 
@@ -221,11 +247,23 @@
         })
       })
 
-      // Emulate iOS safe area: push content below Dynamic Island, html background fills behind it
+      dynamicIsland.addEventListener('click', () => {
+        isPixel = !isPixel
+        container.classList.toggle('app-frame__container--pixel', isPixel)
+        container.style.width = ''
+        container.style.height = ''
+        setTabletMode(false)
+        dynamicIsland.title = isPixel ? 'Switch to iPhone' : 'Switch to Pixel'
+        if (injectedStyle) {
+          injectedStyle.textContent = getIframeStyle(false)
+        }
+      })
+
+      // Emulate device safe area and push content below camera cutout
       iframe.addEventListener('load', () => {
         try {
           injectedStyle = iframe.contentDocument.createElement('style')
-          injectedStyle.textContent = 'html { padding-top: 59px; background-color: white; }'
+          injectedStyle.textContent = getIframeStyle(container.classList.contains('app-frame__container--tablet'))
           iframe.contentDocument.head.appendChild(injectedStyle)
           document.title = iframe.contentDocument.title || 'NHS prototype kit'
 
