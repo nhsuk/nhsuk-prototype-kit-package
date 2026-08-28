@@ -200,7 +200,12 @@
         z-index: 10;
         opacity: 1;
         cursor: pointer;
-        transition: opacity 0.3s, width 0.3s, height 0.3s, border-radius 0.3s, top 0.3s;
+        transition: opacity 0.3s, width 0.3s, height 0.3s, border-radius 0.3s, top 0.3s, left 0.3s, right 0.3s, transform 0.3s;
+      }
+
+      /* Disables the transition above so rotating the frame moves the cutout instantly */
+      .app-frame__camera-cutout--instant {
+        transition: none;
       }
 
       .app-frame__container--tablet .app-frame__camera-cutout {
@@ -222,6 +227,73 @@
         height: 14px;
         border-radius: 50%;
         top: 14px;
+      }
+
+      /* Rotated orientation: move the camera cutout to the side to simulate the phone being turned */
+      .app-frame__container--rotate-left .app-frame__camera-cutout,
+      .app-frame__container--rotate-right .app-frame__camera-cutout {
+        top: 50%;
+        width: 37px;
+        height: 126px;
+        transform: translateY(-50%);
+      }
+
+      .app-frame__container--rotate-left .app-frame__camera-cutout {
+        left: 12px;
+        right: auto;
+      }
+
+      .app-frame__container--rotate-right .app-frame__camera-cutout {
+        left: auto;
+        right: 12px;
+      }
+
+      .app-frame__container--pixel.app-frame__container--rotate-left .app-frame__camera-cutout,
+      .app-frame__container--pixel.app-frame__container--rotate-right .app-frame__camera-cutout {
+        width: 14px;
+        height: 14px;
+      }
+
+      .app-frame__container--pixel.app-frame__container--rotate-left .app-frame__camera-cutout {
+        left: 14px;
+      }
+
+      .app-frame__container--pixel.app-frame__container--rotate-right .app-frame__camera-cutout {
+        right: 14px;
+      }
+
+      .app-frame__rotate-controls {
+        position: absolute;
+        bottom: -32px;
+        left: 79px;
+        right: 79px;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+
+      .app-frame__rotate-controls:hover,
+      .app-frame__rotate-controls:focus-within {
+        opacity: 1;
+      }
+
+      .app-frame__rotate-btn {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: #425563;
+        color: white;
+        font-size: 16px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .app-frame__rotate-btn:hover {
+        background: #005eb8;
       }
     </style>
   </head>
@@ -247,14 +319,26 @@
       <div class="app-frame__handle app-frame__handle--corner app-frame__handle--top-right" aria-hidden="true"></div>
       <div class="app-frame__handle app-frame__handle--corner app-frame__handle--bottom-left" aria-hidden="true"></div>
       <div class="app-frame__handle app-frame__handle--corner app-frame__handle--bottom-right" aria-hidden="true"></div>
+      <div class="app-frame__rotate-controls">
+        <button type="button" class="app-frame__rotate-btn app-frame__rotate-btn--left" aria-label="Rotate frame left" title="Rotate left">&#8634;</button>
+        <button type="button" class="app-frame__rotate-btn app-frame__rotate-btn--right" aria-label="Rotate frame right" title="Rotate right">&#8635;</button>
+      </div>
     </div>
     <script>
+      const DEFAULT_WIDTH = 393
+      const DEFAULT_HEIGHT = 852
       const container = document.querySelector('.app-frame__container')
       const handles = document.querySelectorAll('.app-frame__handle')
       const iframe = document.querySelector('.app-frame__iframe')
       const cameraCutout = document.querySelector('.app-frame__camera-cutout')
+      const rotateLeftBtn = document.querySelector('.app-frame__rotate-btn--left')
+      const rotateRightBtn = document.querySelector('.app-frame__rotate-btn--right')
       let injectedStyle = null
       let device = new URLSearchParams(window.location.search).get('device') || 'ios'
+      let orientation = 'portrait'
+      // Unrotated (portrait) dimensions – null means "use the default size"
+      let frameWidth = null
+      let frameHeight = null
 
       if (device === 'pixel') {
         container.classList.add('app-frame__container--pixel')
@@ -263,9 +347,10 @@
 
       function getIframeStyle(isTablet) {
         if (isTablet) return 'html { background-color: #f0f4f5; }'
-        return device === 'pixel'
-          ? 'html { padding-top: 40px; background-color: #f0f4f5; }'
-          : 'html { padding-top: 59px; background-color: #f0f4f5; }'
+        const inset = device === 'pixel' ? 40 : 59
+        // Landscape keeps content centred by insetting both sides equally, not just the notch side
+        if (orientation === 'left' || orientation === 'right') return `html { padding-left: ${inset}px; padding-right: ${inset}px; background-color: #f0f4f5; }`
+        return `html { padding-top: ${inset}px; background-color: #f0f4f5; }`
       }
 
       function setTabletMode(isTablet) {
@@ -275,16 +360,58 @@
         }
       }
 
+      // Renders the portrait width/height, swapped when rotated left/right
+      function renderSize() {
+        const isRotated = orientation !== 'portrait'
+        if (frameWidth === null && frameHeight === null && !isRotated) {
+          container.style.removeProperty('width')
+          container.style.removeProperty('height')
+          return
+        }
+        const width = frameWidth !== null ? frameWidth : DEFAULT_WIDTH
+        const height = frameHeight !== null ? frameHeight : DEFAULT_HEIGHT
+        container.style.width = (isRotated ? height : width) + 'px'
+        container.style.height = (isRotated ? width : height) + 'px'
+      }
+
+      // width/height are in rendered (on-screen) pixels, converted to portrait dimensions for storage
+      function setFrameSize(renderedWidth, renderedHeight) {
+        const isRotated = orientation !== 'portrait'
+        frameWidth = isRotated ? renderedHeight : renderedWidth
+        frameHeight = isRotated ? renderedWidth : renderedHeight
+        renderSize()
+        setTabletMode(frameWidth >= 744)
+      }
+
+      function setOrientation(newOrientation) {
+        orientation = newOrientation
+        // Suppress the cutout's transition so it snaps to its new position instantly, in sync with the frame resize
+        cameraCutout.classList.add('app-frame__camera-cutout--instant')
+        container.classList.toggle('app-frame__container--rotate-left', orientation === 'left')
+        container.classList.toggle('app-frame__container--rotate-right', orientation === 'right')
+        // Only the button for the opposite direction stays visible, and resets back to portrait
+        rotateLeftBtn.hidden = orientation === 'left'
+        rotateRightBtn.hidden = orientation === 'right'
+        renderSize()
+        if (injectedStyle) {
+          injectedStyle.textContent = getIframeStyle(container.classList.contains('app-frame__container--tablet'))
+        }
+        void cameraCutout.offsetWidth
+        cameraCutout.classList.remove('app-frame__camera-cutout--instant')
+      }
+
       function persistToUrl(urlParam) {
         const frameUrl = new URL(window.location.href)
         const currentUrl = urlParam !== undefined ? urlParam : frameUrl.searchParams.get('url')
         frameUrl.searchParams.delete('device')
         frameUrl.searchParams.delete('width')
         frameUrl.searchParams.delete('height')
+        frameUrl.searchParams.delete('orientation')
         frameUrl.searchParams.delete('url')
         if (device !== 'ios') frameUrl.searchParams.set('device', device)
-        if (container.style.width) frameUrl.searchParams.set('width', parseInt(container.style.width))
-        if (container.style.height) frameUrl.searchParams.set('height', parseInt(container.style.height))
+        if (frameWidth !== null) frameUrl.searchParams.set('width', frameWidth)
+        if (frameHeight !== null) frameUrl.searchParams.set('height', frameHeight)
+        if (orientation !== 'portrait') frameUrl.searchParams.set('orientation', orientation)
         if (currentUrl !== null) frameUrl.searchParams.set('url', currentUrl)
         history.replaceState(null, '', frameUrl)
       }
@@ -292,11 +419,15 @@
       const initParams = new URLSearchParams(window.location.search)
       const initWidth = initParams.get('width')
       const initHeight = initParams.get('height')
-      if (initWidth) {
-        container.style.width = initWidth + 'px'
-        setTabletMode(parseInt(initWidth) >= 744)
+      const initOrientation = initParams.get('orientation')
+      if (initWidth) frameWidth = parseInt(initWidth)
+      if (initHeight) frameHeight = parseInt(initHeight)
+      if (frameWidth !== null) setTabletMode(frameWidth >= 744)
+      if (initOrientation === 'left' || initOrientation === 'right') {
+        setOrientation(initOrientation)
+      } else {
+        renderSize()
       }
-      if (initHeight) container.style.height = initHeight + 'px'
 
       handles.forEach((handle) => {
         const isCorner = handle.classList.contains('app-frame__handle--corner')
@@ -343,16 +474,13 @@
               newHeight = 568
               newWidth = newHeight * aspectRatio
             }
-            container.style.width = newWidth + 'px'
-            container.style.height = newHeight + 'px'
-            setTabletMode(newWidth >= 744)
+            setFrameSize(newWidth, newHeight)
           } else if (isVertical) {
             const newHeight = isTop ? startHeight - 2 * deltaY : startHeight + 2 * deltaY
-            container.style.height = Math.max(568, newHeight) + 'px'
+            setFrameSize(startWidth, Math.max(568, newHeight))
           } else {
             const newWidth = isLeft ? startWidth - 2 * deltaX : startWidth + 2 * deltaX
-            container.style.width = Math.max(320, newWidth) + 'px'
-            setTabletMode(newWidth >= 744)
+            setFrameSize(Math.max(320, newWidth), startHeight)
           }
         })
 
@@ -373,6 +501,16 @@
         if (injectedStyle) {
           injectedStyle.textContent = getIframeStyle(false)
         }
+        persistToUrl()
+      })
+
+      rotateLeftBtn.addEventListener('click', () => {
+        setOrientation(orientation === 'portrait' ? 'left' : 'portrait')
+        persistToUrl()
+      })
+
+      rotateRightBtn.addEventListener('click', () => {
+        setOrientation(orientation === 'portrait' ? 'right' : 'portrait')
         persistToUrl()
       })
 
