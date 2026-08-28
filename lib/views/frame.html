@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHS prototype kit</title>
+    <style>
+      body {
+        background-color: #f9fbfb;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .app-frame__container {
+        position: relative;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 852px;
+        width: 393px;
+        border: 12px solid black;
+        border-radius: 47px;
+        overflow: hidden;
+        transform: translateZ(0);
+        outline: 6px solid #f9fbfb;
+      }
+
+      .app-frame__iframe {
+        height: 100%;
+        width: 100%;
+        border: none;
+        border-radius: 35px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .app-frame__iframe::-webkit-scrollbar {
+        display: none;
+      }
+
+      .app-frame__dynamic-island {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 126px;
+        height: 37px;
+        border-radius: 20px;
+        background: black;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-frame__container">
+      <div class="app-frame__dynamic-island" aria-hidden="true"></div>
+      <iframe
+        class="app-frame__iframe"
+        title="Prototype"
+        src="{{ iframeSrc }}">
+      </iframe>
+    </div>
+    <script>
+      const iframe = document.querySelector('.app-frame__iframe')
+      // Emulate iOS safe area: push content below Dynamic Island, html background fills behind it
+      iframe.addEventListener('load', () => {
+        try {
+          const style = iframe.contentDocument.createElement('style')
+          style.textContent = 'html { padding-top: 59px; background-color: white; }'
+          iframe.contentDocument.head.appendChild(style)
+          document.title = iframe.contentDocument.title || 'NHS prototype kit'
+
+          // Keep ?url= in sync so reloads return to the current page
+          const { pathname, search } = iframe.contentDocument.location
+          const frameUrl = new URL(window.location.href)
+          frameUrl.searchParams.set('url', pathname + search)
+          history.replaceState(null, '', frameUrl)
+        } catch (_) {
+          // Cross-origin – cannot inject styles
+        }
+      })
+    </script>
+  </body>
+</html>
