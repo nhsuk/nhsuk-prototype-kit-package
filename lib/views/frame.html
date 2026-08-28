@@ -279,10 +279,10 @@
           const delta = (isVertical ? e.clientY : e.clientX) - startPos
           if (isVertical) {
             const isTop = handle.classList.contains('app-frame__handle--top')
-            const newHeight = isTop ? startSize - delta : startSize + delta
+            const newHeight = isTop ? startSize - 2 * delta : startSize + 2 * delta
             container.style.height = Math.max(568, newHeight) + 'px'
           } else {
-            const newWidth = isLeft ? startSize - delta : startSize + delta
+            const newWidth = isLeft ? startSize - 2 * delta : startSize + 2 * delta
             container.style.width = Math.max(320, newWidth) + 'px'
             setTabletMode(newWidth >= 744)
           }
