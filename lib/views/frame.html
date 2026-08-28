@@ -215,18 +215,18 @@
       const container = document.querySelector('.app-frame__container')
       const handles = document.querySelectorAll('.app-frame__handle')
       const iframe = document.querySelector('.app-frame__iframe')
-      const dynamicIsland = document.querySelector('.app-frame__camera-cutout')
+      const cameraCutout = document.querySelector('.app-frame__camera-cutout')
       let injectedStyle = null
-      let isPixel = new URLSearchParams(window.location.search).get('device') === 'pixel'
+      let device = new URLSearchParams(window.location.search).get('device') || 'ios'
 
-      if (isPixel) {
+      if (device === 'pixel') {
         container.classList.add('app-frame__container--pixel')
-        dynamicIsland.title = 'Switch to iPhone'
+        cameraCutout.title = 'Switch to iOS'
       }
 
       function getIframeStyle(isTablet) {
         if (isTablet) return 'html { background-color: white; }'
-        return isPixel
+        return device === 'pixel'
           ? 'html { padding-top: 40px; background-color: white; }'
           : 'html { padding-top: 59px; background-color: white; }'
       }
@@ -245,7 +245,7 @@
         frameUrl.searchParams.delete('width')
         frameUrl.searchParams.delete('height')
         frameUrl.searchParams.delete('url')
-        if (isPixel) frameUrl.searchParams.set('device', 'pixel')
+        if (device !== 'ios') frameUrl.searchParams.set('device', device)
         if (container.style.width) frameUrl.searchParams.set('width', parseInt(container.style.width))
         if (container.style.height) frameUrl.searchParams.set('height', parseInt(container.style.height))
         if (currentUrl !== null) frameUrl.searchParams.set('url', currentUrl)
@@ -299,13 +299,13 @@
         })
       })
 
-      dynamicIsland.addEventListener('click', () => {
-        isPixel = !isPixel
-        container.classList.toggle('app-frame__container--pixel', isPixel)
+      cameraCutout.addEventListener('click', () => {
+        device = device === 'pixel' ? 'ios' : 'pixel'
+        container.classList.toggle('app-frame__container--pixel', device === 'pixel')
         container.style.width = ''
         container.style.height = ''
         setTabletMode(false)
-        dynamicIsland.title = isPixel ? 'Switch to iPhone' : 'Switch to Pixel'
+        cameraCutout.title = device === 'pixel' ? 'Switch to iOS' : 'Switch to Pixel'
         if (injectedStyle) {
           injectedStyle.textContent = getIframeStyle(false)
         }
