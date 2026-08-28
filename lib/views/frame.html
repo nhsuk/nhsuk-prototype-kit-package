@@ -217,7 +217,12 @@
       const iframe = document.querySelector('.app-frame__iframe')
       const dynamicIsland = document.querySelector('.app-frame__camera-cutout')
       let injectedStyle = null
-      let isPixel = false
+      let isPixel = new URLSearchParams(window.location.search).get('device') === 'pixel'
+
+      if (isPixel) {
+        container.classList.add('app-frame__container--pixel')
+        dynamicIsland.title = 'Switch to iPhone'
+      }
 
       function getIframeStyle(isTablet) {
         if (isTablet) return 'html { background-color: white; }'
@@ -232,6 +237,29 @@
           injectedStyle.textContent = getIframeStyle(isTablet)
         }
       }
+
+      function persistToUrl(urlParam) {
+        const frameUrl = new URL(window.location.href)
+        const currentUrl = urlParam !== undefined ? urlParam : frameUrl.searchParams.get('url')
+        frameUrl.searchParams.delete('device')
+        frameUrl.searchParams.delete('width')
+        frameUrl.searchParams.delete('height')
+        frameUrl.searchParams.delete('url')
+        if (isPixel) frameUrl.searchParams.set('device', 'pixel')
+        if (container.style.width) frameUrl.searchParams.set('width', parseInt(container.style.width))
+        if (container.style.height) frameUrl.searchParams.set('height', parseInt(container.style.height))
+        if (currentUrl !== null) frameUrl.searchParams.set('url', currentUrl)
+        history.replaceState(null, '', frameUrl)
+      }
+
+      const initParams = new URLSearchParams(window.location.search)
+      const initWidth = initParams.get('width')
+      const initHeight = initParams.get('height')
+      if (initWidth) {
+        container.style.width = initWidth + 'px'
+        setTabletMode(parseInt(initWidth) >= 744)
+      }
+      if (initHeight) container.style.height = initHeight + 'px'
 
       handles.forEach((handle) => {
         const isLeft = handle.classList.contains('app-frame__handle--left')
@@ -267,6 +295,7 @@
           handle.classList.remove('app-frame__handle--dragging')
           document.body.style.cursor = ''
           document.body.style.userSelect = ''
+          persistToUrl()
         })
       })
 
@@ -280,6 +309,7 @@
         if (injectedStyle) {
           injectedStyle.textContent = getIframeStyle(false)
         }
+        persistToUrl()
       })
 
       // Emulate device safe area and push content below camera cutout
@@ -292,9 +322,7 @@
 
           // Keep ?url= in sync so reloads return to the current page
           const { pathname, search } = iframe.contentDocument.location
-          const frameUrl = new URL(window.location.href)
-          frameUrl.searchParams.set('url', pathname + search)
-          history.replaceState(null, '', frameUrl)
+          persistToUrl(pathname + search)
         } catch (_) {
           // Cross-origin – cannot inject styles
         }
