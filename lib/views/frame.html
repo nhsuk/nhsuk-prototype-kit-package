@@ -348,11 +348,15 @@
       }
 
       function getIframeStyle(isTablet) {
-        if (isTablet) return 'html { background-color: #d8dde0; }'
-        const inset = device === 'pixel' ? 40 : 59
-        // Landscape keeps content centred by insetting both sides equally, not just the notch side
-        if (orientation === 'left' || orientation === 'right') return `html { padding-left: ${inset}px; padding-right: ${inset}px; background-color: #d8dde0; }`
-        return `html { padding-top: ${inset}px; background-color: #d8dde0; }`
+        let padding = ''
+        if (!isTablet) {
+          const inset = device === 'pixel' ? 40 : 59
+          // Landscape keeps content centred by insetting both sides equally, not just the notch side
+          padding = orientation === 'left' || orientation === 'right'
+            ? `padding-left: ${inset}px; padding-right: ${inset}px; `
+            : `padding-top: ${inset}px; `
+        }
+        return `html { ${padding}background-color: #d8dde0; }`
       }
 
       function setTabletMode(isTablet) {
