@@ -6,6 +6,11 @@
 
 - Add a `/frame` view to mock up prototypes in phone and Android tablet device frames
 
+### :wrench: **Maintenance and fixes**
+
+- Update to use NHS.UK frontend 10.6.1
+- Dependency updates including security fixes
+
 ## 8.4.0 - 14 August 2026
 
 ### :wrench: **Maintenance and fixes**
