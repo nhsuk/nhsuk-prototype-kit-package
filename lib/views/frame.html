@@ -327,6 +327,8 @@
     <script>
       const DEFAULT_WIDTH = 393
       const DEFAULT_HEIGHT = 852
+      // Keeps resize handles and rotate controls clear of the viewport edge
+      const VIEWPORT_MARGIN = 48
       const container = document.querySelector('.app-frame__container')
       const handles = document.querySelectorAll('.app-frame__handle')
       const iframe = document.querySelector('.app-frame__iframe')
@@ -376,6 +378,10 @@
 
       // width/height are in rendered (on-screen) pixels, converted to portrait dimensions for storage
       function setFrameSize(renderedWidth, renderedHeight) {
+        const maxWidth = window.innerWidth - VIEWPORT_MARGIN * 2
+        const maxHeight = window.innerHeight - VIEWPORT_MARGIN * 2
+        renderedWidth = Math.min(renderedWidth, maxWidth)
+        renderedHeight = Math.min(renderedHeight, maxHeight)
         const isRotated = orientation !== 'portrait'
         frameWidth = isRotated ? renderedHeight : renderedWidth
         frameHeight = isRotated ? renderedWidth : renderedHeight
@@ -420,8 +426,8 @@
       const initWidth = initParams.get('width')
       const initHeight = initParams.get('height')
       const initOrientation = initParams.get('orientation')
-      if (initWidth) frameWidth = parseInt(initWidth)
-      if (initHeight) frameHeight = parseInt(initHeight)
+      if (initWidth) frameWidth = Math.min(parseInt(initWidth), window.innerWidth - VIEWPORT_MARGIN * 2)
+      if (initHeight) frameHeight = Math.min(parseInt(initHeight), window.innerHeight - VIEWPORT_MARGIN * 2)
       if (frameWidth !== null) setTabletMode(frameWidth >= 744)
       if (initOrientation === 'left' || initOrientation === 'right') {
         setOrientation(initOrientation)
