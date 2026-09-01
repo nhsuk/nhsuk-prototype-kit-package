@@ -327,6 +327,8 @@
     <script>
       const DEFAULT_WIDTH = 393
       const DEFAULT_HEIGHT = 852
+      const MIN_WIDTH = 320
+      const MIN_HEIGHT = 568
       // Keeps resize handles and rotate controls clear of the viewport edge
       const VIEWPORT_MARGIN = 48
       const container = document.querySelector('.app-frame__container')
@@ -467,6 +469,11 @@
           const deltaX = e.clientX - startX
           const deltaY = e.clientY - startY
 
+          // Rendered width/height are swapped relative to portrait width/height when rotated, so their minimums swap too
+          const isRotated = orientation !== 'portrait'
+          const minRenderedWidth = isRotated ? MIN_HEIGHT : MIN_WIDTH
+          const minRenderedHeight = isRotated ? MIN_WIDTH : MIN_HEIGHT
+
           if (isCorner) {
             const aspectRatio = startWidth / startHeight
             const xSign = isLeft ? -1 : 1
@@ -476,21 +483,21 @@
             const scale = 1 + (2 * projected) / diagLen
             let newWidth = startWidth * scale
             let newHeight = startHeight * scale
-            if (newWidth < 320) {
-              newWidth = 320
+            if (newWidth < minRenderedWidth) {
+              newWidth = minRenderedWidth
               newHeight = newWidth / aspectRatio
             }
-            if (newHeight < 568) {
-              newHeight = 568
+            if (newHeight < minRenderedHeight) {
+              newHeight = minRenderedHeight
               newWidth = newHeight * aspectRatio
             }
             setFrameSize(newWidth, newHeight)
           } else if (isVertical) {
             const newHeight = isTop ? startHeight - 2 * deltaY : startHeight + 2 * deltaY
-            setFrameSize(startWidth, Math.max(568, newHeight))
+            setFrameSize(startWidth, Math.max(minRenderedHeight, newHeight))
           } else {
             const newWidth = isLeft ? startWidth - 2 * deltaX : startWidth + 2 * deltaX
-            setFrameSize(Math.max(320, newWidth), startHeight)
+            setFrameSize(Math.max(minRenderedWidth, newWidth), startHeight)
           }
         })
 
