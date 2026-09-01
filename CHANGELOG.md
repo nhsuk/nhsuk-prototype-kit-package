@@ -1,5 +1,10 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+- Update to use NHS.UK frontend 10.6.1
+- Dependency updates including security fixes
+
 ## 8.4.0 - 14 August 2026
 
 ### :wrench: **Maintenance and fixes**
