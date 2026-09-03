@@ -475,23 +475,9 @@
           const minRenderedHeight = isRotated ? MIN_WIDTH : MIN_HEIGHT
 
           if (isCorner) {
-            const aspectRatio = startWidth / startHeight
-            const xSign = isLeft ? -1 : 1
-            const ySign = isTop ? -1 : 1
-            const diagLen = Math.sqrt(startWidth * startWidth + startHeight * startHeight)
-            const projected = (deltaX * xSign * startWidth + deltaY * ySign * startHeight) / diagLen
-            const scale = 1 + (2 * projected) / diagLen
-            let newWidth = startWidth * scale
-            let newHeight = startHeight * scale
-            if (newWidth < minRenderedWidth) {
-              newWidth = minRenderedWidth
-              newHeight = newWidth / aspectRatio
-            }
-            if (newHeight < minRenderedHeight) {
-              newHeight = minRenderedHeight
-              newWidth = newHeight * aspectRatio
-            }
-            setFrameSize(newWidth, newHeight)
+            const newWidth = isLeft ? startWidth - 2 * deltaX : startWidth + 2 * deltaX
+            const newHeight = isTop ? startHeight - 2 * deltaY : startHeight + 2 * deltaY
+            setFrameSize(Math.max(minRenderedWidth, newWidth), Math.max(minRenderedHeight, newHeight))
           } else if (isVertical) {
             const newHeight = isTop ? startHeight - 2 * deltaY : startHeight + 2 * deltaY
             setFrameSize(startWidth, Math.max(minRenderedHeight, newHeight))
