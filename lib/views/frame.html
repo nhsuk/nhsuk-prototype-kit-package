@@ -263,10 +263,10 @@
       }
 
       .app-frame__rotate-controls {
-        position: absolute;
-        bottom: -32px;
-        left: 79px;
-        right: 79px;
+        position: fixed;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
         display: flex;
         justify-content: center;
         gap: 8px;
@@ -274,8 +274,12 @@
         transition: opacity 0.2s;
       }
 
-      .app-frame__rotate-controls:hover,
       .app-frame__rotate-controls:focus-within {
+        opacity: 1;
+      }
+
+      /* Show rotate controls on hover anywhere on the page, except over the iframe content itself */
+      body:hover:not(:has(.app-frame__iframe:hover)) .app-frame__rotate-controls {
         opacity: 1;
       }
 
@@ -319,24 +323,24 @@
       <div class="app-frame__handle app-frame__handle--corner app-frame__handle--top-right" aria-hidden="true"></div>
       <div class="app-frame__handle app-frame__handle--corner app-frame__handle--bottom-left" aria-hidden="true"></div>
       <div class="app-frame__handle app-frame__handle--corner app-frame__handle--bottom-right" aria-hidden="true"></div>
-      <div class="app-frame__rotate-controls">
-        <button type="button" class="app-frame__rotate-btn app-frame__rotate-btn--left" aria-label="Rotate frame left" title="Rotate left">&#8634;</button>
-        <button type="button" class="app-frame__rotate-btn app-frame__rotate-btn--right" aria-label="Rotate frame right" title="Rotate right">&#8635;</button>
-      </div>
+    </div>
+    <div class="app-frame__rotate-controls">
+      <button type="button" class="app-frame__rotate-btn" aria-label="Rotate frame right" title="Rotate right">&#8635;</button>
     </div>
     <script>
       const DEFAULT_WIDTH = 393
       const DEFAULT_HEIGHT = 852
       const MIN_WIDTH = 320
       const MIN_HEIGHT = 568
-      // Keeps resize handles and rotate controls clear of the viewport edge
-      const VIEWPORT_MARGIN = 48
+      // Keeps resize handles clear of the viewport edge, and the iframe clear of the fixed rotate controls at the bottom
+      const VIEWPORT_MARGIN = 64
       const container = document.querySelector('.app-frame__container')
       const handles = document.querySelectorAll('.app-frame__handle')
       const iframe = document.querySelector('.app-frame__iframe')
       const cameraCutout = document.querySelector('.app-frame__camera-cutout')
-      const rotateLeftBtn = document.querySelector('.app-frame__rotate-btn--left')
-      const rotateRightBtn = document.querySelector('.app-frame__rotate-btn--right')
+      const rotateBtn = document.querySelector('.app-frame__rotate-btn')
+      // Clockwise rotation order, skipping the upside-down position
+      const ORIENTATIONS = ['portrait', 'right', 'left']
       let injectedStyle = null
       let device = new URLSearchParams(window.location.search).get('device') || 'ios'
       let orientation = 'portrait'
@@ -401,9 +405,6 @@
         cameraCutout.classList.add('app-frame__camera-cutout--instant')
         container.classList.toggle('app-frame__container--rotate-left', orientation === 'left')
         container.classList.toggle('app-frame__container--rotate-right', orientation === 'right')
-        // Only the button for the opposite direction stays visible, and resets back to portrait
-        rotateLeftBtn.hidden = orientation === 'left'
-        rotateRightBtn.hidden = orientation === 'right'
         renderSize()
         if (injectedStyle) {
           injectedStyle.textContent = getIframeStyle(container.classList.contains('app-frame__container--tablet'))
@@ -507,14 +508,50 @@
         persistToUrl()
       })
 
-      rotateLeftBtn.addEventListener('click', () => {
-        setOrientation(orientation === 'portrait' ? 'left' : 'portrait')
+      rotateBtn.addEventListener('click', (e) => {
+        const direction = e.altKey ? -1 : 1
+        const nextIndex = (ORIENTATIONS.indexOf(orientation) + direction + ORIENTATIONS.length) % ORIENTATIONS.length
+        setOrientation(ORIENTATIONS[nextIndex])
         persistToUrl()
       })
 
-      rotateRightBtn.addEventListener('click', () => {
-        setOrientation(orientation === 'portrait' ? 'right' : 'portrait')
-        persistToUrl()
+      // Holding option/alt while hovering flips the button to indicate it'll rotate the other way
+      let isAltPressed = false
+      let isHoveringRotateBtn = false
+
+      function updateRotateBtnDirection() {
+        const reversed = isAltPressed && isHoveringRotateBtn
+        rotateBtn.textContent = reversed ? '\u21BA' : '\u21BB'
+        rotateBtn.setAttribute('aria-label', reversed ? 'Rotate frame left' : 'Rotate frame right')
+        rotateBtn.title = reversed ? 'Rotate left' : 'Rotate right'
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key !== 'Alt' || isAltPressed) return
+        isAltPressed = true
+        updateRotateBtnDirection()
+      })
+
+      window.addEventListener('keyup', (e) => {
+        if (e.key !== 'Alt') return
+        isAltPressed = false
+        updateRotateBtnDirection()
+      })
+
+      // Alt can be released while the window is unfocused, so the keyup above never fires
+      window.addEventListener('blur', () => {
+        isAltPressed = false
+        updateRotateBtnDirection()
+      })
+
+      rotateBtn.addEventListener('mouseenter', () => {
+        isHoveringRotateBtn = true
+        updateRotateBtnDirection()
+      })
+
+      rotateBtn.addEventListener('mouseleave', () => {
+        isHoveringRotateBtn = false
+        updateRotateBtnDirection()
       })
 
       // Emulate device safe area and push content below camera cutout
