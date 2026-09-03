@@ -46,7 +46,7 @@
     "http-proxy-node16": "^1.0.6",
     "nodemon": "^3.1.14",
     "portscanner": "^2.2.0",
-    "sass-embedded": "^1.103.1",
+    "temporal-polyfill-lite": "^0.4.2",
     "wait-on": "^9.1.0"
   },
   "peerDependencies": {
