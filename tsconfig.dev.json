@@ -2,7 +2,7 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "strictNullChecks": false,
-    "types": ["node"]
+    "types": ["node", "temporal-polyfill-lite/types/global"]
   },
   "include": [
     "./typings/express/index.d.ts",
