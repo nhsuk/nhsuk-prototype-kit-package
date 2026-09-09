@@ -34,7 +34,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@inquirer/prompts": "^8.7.0",
+    "@inquirer/prompts": "^8.7.1",
     "body-parser": "^2.3.0",
     "browser-sync": "^3.0.4",
     "cookie-parser": "^1.4.7",
@@ -46,7 +46,7 @@
     "http-proxy-node16": "^1.0.6",
     "nodemon": "^3.1.14",
     "portscanner": "^2.2.0",
-    "sass-embedded": "^1.103.1",
+    "sass-embedded": "^1.104.0",
     "temporal-polyfill-lite": "^0.4.2",
     "wait-on": "^9.1.0"
   },
