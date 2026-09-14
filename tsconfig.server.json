@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "types": ["node", "temporal-polyfill-lite/types/global"]
+    "types": ["node", "temporal-polyfill/types/global"]
   },
   "include": [
     "./typings/express/index.d.ts",
