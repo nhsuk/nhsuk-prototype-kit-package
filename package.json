@@ -47,6 +47,7 @@
     "nodemon": "^3.1.14",
     "portscanner": "^2.2.0",
     "sass-embedded": "^1.104.0",
+    "temporal-polyfill": "^1.0.5",
     "wait-on": "^9.1.0"
   },
   "peerDependencies": {
@@ -100,6 +101,7 @@
     "./middleware/*": "./lib/middleware/*",
     "./nunjucks-filters": "./lib/nunjucks-filters/index.js",
     "./nunjucks-filters/*": "./lib/nunjucks-filters/*",
+    "./nunjucks-filters/utils/*": null,
     "./utils": "./lib/utils/index.js",
     "./utils/*": "./lib/utils/*",
     "./config": "./lib/nhsuk-prototype-kit.config.js",
