@@ -1,6 +1,14 @@
 # NHS prototype kit Changelog
 
-## Unreleased
+## 8.5.0 - 16 September 2026
+
+### :new: **New features**
+
+- Add a `formatTime` filter for formatting times
+- Add a `formatTime24Hour` filter for formatting times using 24 hour clock
+- Update `formatDate` filter to allow it to format full ISO 8601 datetime strings, with an new `timeZone` option for translating the date into a local time zone
+
+### :wrench: **Maintenance and fixes**
 
 - Update to use NHS.UK frontend 10.6.1
 - Dependency updates including security fixes
