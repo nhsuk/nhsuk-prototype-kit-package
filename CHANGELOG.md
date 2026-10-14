@@ -1,5 +1,11 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+### :wrench: **Maintenance and fixes**
+
+- Only render view paths that begin `views/`
+
 ## 8.5.1 - 6 October 2026
 
 ### :wrench: **Maintenance and fixes**
