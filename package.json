@@ -76,7 +76,7 @@
     "eslint-plugin-n": "^18.4.0",
     "eslint-plugin-node-import": "^1.2.0",
     "eslint-plugin-promise": "^7.3.0",
-    "express": "^5.2.1",
+    "express": "^5.3.0",
     "globals": "^17.13.0",
     "nhsuk-frontend": "^10.6.1",
     "nunjucks": "^3.2.4",
