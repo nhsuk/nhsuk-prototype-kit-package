@@ -6,6 +6,13 @@
 
 - Add a new `/frame` view for demonstrating prototypes within a mocked-up phone or tablet frame
 
+## 8.5.2 - 19 October 2026
+
+### :wrench: **Maintenance and fixes**
+
+- Bug fix: only render view paths that begin `views/`
+- Dependency updates including security fixes
+
 ## 8.5.1 - 6 October 2026
 
 ### :wrench: **Maintenance and fixes**
