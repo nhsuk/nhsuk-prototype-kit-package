@@ -1,5 +1,11 @@
 # NHS prototype kit Changelog
 
+## Unreleased
+
+### :new: **New features**
+
+- Add a new `/frame` view for demonstrating prototypes within a mocked-up phone or tablet frame
+
 ## 8.5.1 - 6 October 2026
 
 ### :wrench: **Maintenance and fixes**
