@@ -2,9 +2,12 @@
 
 ## Unreleased
 
+## 8.5.2 - 19 October 2026
+
 ### :wrench: **Maintenance and fixes**
 
-- Only render view paths that begin `views/`
+- Bug fix: only render view paths that begin `views/`
+- Dependency updates including security fixes
 
 ## 8.5.1 - 6 October 2026
 
