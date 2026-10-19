@@ -1,0 +1,202 @@
+body {
+  background-color: #f9fbfb;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-frame {
+  position: relative;
+  padding: 32px;
+}
+
+.app-frame__handle {
+  position: absolute;
+  z-index: 1;
+  touch-action: none;
+}
+
+.app-frame__handle::after {
+  content: '';
+  position: absolute;
+  background: #425563;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.app-frame__handle--left,
+.app-frame__handle--right {
+  top: 79px;
+  bottom: 79px;
+  width: 44px;
+  cursor: ew-resize;
+}
+
+.app-frame__handle--left::after,
+.app-frame__handle--right::after {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 80px;
+}
+
+.app-frame__handle--left {
+  left: 0;
+}
+
+.app-frame__handle--left::after {
+  right: 20px;
+}
+
+.app-frame__handle--right {
+  right: 0;
+}
+
+.app-frame__handle--right::after {
+  left: 20px;
+}
+
+.app-frame__handle--top,
+.app-frame__handle--bottom {
+  left: 79px;
+  right: 79px;
+  height: 44px;
+  cursor: ns-resize;
+}
+
+.app-frame__handle--top::after,
+.app-frame__handle--bottom::after {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 6px;
+}
+
+.app-frame__handle--top {
+  top: 0;
+}
+
+.app-frame__handle--top::after {
+  bottom: 20px;
+}
+
+.app-frame__handle--bottom {
+  bottom: 0;
+}
+
+.app-frame__handle--bottom::after {
+  top: 20px;
+}
+
+.app-frame__handles--horizontal,
+.app-frame__handles--vertical {
+  display: contents;
+}
+
+.app-frame__handles--horizontal:has(
+    .app-frame__handle:hover,
+    .app-frame__handle--dragging
+  )
+  .app-frame__handle::after,
+.app-frame__handles--vertical:has(
+    .app-frame__handle:hover,
+    .app-frame__handle--dragging
+  )
+  .app-frame__handle::after,
+.app-frame:has(
+    .app-frame__handle--corner:hover,
+    .app-frame__handle--corner.app-frame__handle--dragging
+  )
+  .app-frame__handle::after {
+  opacity: 1;
+}
+
+.app-frame__handle--corner {
+  width: 80px;
+  height: 80px;
+  z-index: 2;
+}
+
+.app-frame__handle--corner::after {
+  display: none;
+}
+
+.app-frame__handle--top-left {
+  top: 0;
+  left: 0;
+  cursor: nwse-resize;
+  clip-path: polygon(0 0, 80px 0, 80px 44px, 44px 44px, 44px 80px, 0 80px);
+}
+
+.app-frame__handle--top-right {
+  top: 0;
+  right: 0;
+  cursor: nesw-resize;
+  clip-path: polygon(0 0, 80px 0, 80px 80px, 36px 80px, 36px 44px, 0 44px);
+}
+
+.app-frame__handle--bottom-left {
+  bottom: 0;
+  left: 0;
+  cursor: nesw-resize;
+  clip-path: polygon(0 0, 44px 0, 44px 36px, 80px 36px, 80px 80px, 0 80px);
+}
+
+.app-frame__handle--bottom-right {
+  bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
+  clip-path: polygon(36px 0, 80px 0, 80px 80px, 0 80px, 0 36px, 36px 36px);
+}
+
+.app-frame__container {
+  position: relative;
+  background-color: black;
+  height: 852px;
+  width: 393px;
+  border: 12px solid black;
+  border-radius: 47px;
+  overflow: hidden;
+  transform: translateZ(0);
+  outline: 6px solid #f9fbfb;
+  transition: border-radius 0.3s;
+}
+
+.app-frame__container--tablet {
+  border-radius: 20px;
+}
+
+.app-frame__iframe {
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-radius: 35px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  transition: border-radius 0.3s;
+}
+
+/* Keep the drag cursor when passing over other handles or the iframe */
+.app-frame--resizing,
+.app-frame--resizing * {
+  cursor: inherit !important;
+}
+
+.app-frame--resizing .app-frame__iframe {
+  pointer-events: none;
+}
+
+.app-frame__container--tablet .app-frame__iframe {
+  border-radius: 8px;
+}
+
+.app-frame__iframe::-webkit-scrollbar {
+  display: none;
+}

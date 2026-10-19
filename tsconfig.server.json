@@ -13,6 +13,7 @@
   "exclude": [
     "**/*.test.js",
     "**/public",
+    "./lib/frame/**/*.js",
     "./lib/javascripts/**/*.js",
     "./testapp/app/javascripts/**/*.js"
   ]
