@@ -103,8 +103,8 @@
         display: contents;
       }
 
-      .app-frame__handles--horizontal:has(:hover, .app-frame__handle--dragging) .app-frame__handle::after,
-      .app-frame__handles--vertical:has(:hover, .app-frame__handle--dragging) .app-frame__handle::after,
+      .app-frame__handles--horizontal:has(.app-frame__handle:hover, .app-frame__handle--dragging) .app-frame__handle::after,
+      .app-frame__handles--vertical:has(.app-frame__handle:hover, .app-frame__handle--dragging) .app-frame__handle::after,
       .app-frame__outer:has(.app-frame__handle--corner:hover, .app-frame__handle--corner.app-frame__handle--dragging) .app-frame__handle::after {
         opacity: 1;
       }
