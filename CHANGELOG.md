@@ -31,7 +31,7 @@
 
 ### :new: **New features**
 
-- Add a `/frame` view to mock up prototypes in phone and Android tablet device frames
+- Add a `/frame` view to mock up prototypes in generic phone or tablet device frame
 
 ### :wrench: **Maintenance and fixes**
 
