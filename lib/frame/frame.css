@@ -6,6 +6,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Handles extend past the viewport when the frame is at its maximum size */
+  overflow: hidden;
 }
 
 .app-frame {
@@ -32,7 +34,7 @@ body {
 .app-frame__handle--right {
   top: 79px;
   bottom: 79px;
-  width: 44px;
+  width: 68px;
   cursor: ew-resize;
 }
 
@@ -45,7 +47,7 @@ body {
 }
 
 .app-frame__handle--left {
-  left: 0;
+  left: -24px;
 }
 
 .app-frame__handle--left::after {
@@ -53,7 +55,7 @@ body {
 }
 
 .app-frame__handle--right {
-  right: 0;
+  right: -24px;
 }
 
 .app-frame__handle--right::after {
@@ -64,7 +66,7 @@ body {
 .app-frame__handle--bottom {
   left: 79px;
   right: 79px;
-  height: 44px;
+  height: 68px;
   cursor: ns-resize;
 }
 
@@ -77,7 +79,7 @@ body {
 }
 
 .app-frame__handle--top {
-  top: 0;
+  top: -24px;
 }
 
 .app-frame__handle--top::after {
@@ -85,7 +87,7 @@ body {
 }
 
 .app-frame__handle--bottom {
-  bottom: 0;
+  bottom: -24px;
 }
 
 .app-frame__handle--bottom::after {
@@ -116,8 +118,8 @@ body {
 }
 
 .app-frame__handle--corner {
-  width: 80px;
-  height: 80px;
+  width: 104px;
+  height: 104px;
   z-index: 2;
 }
 
@@ -126,31 +128,59 @@ body {
 }
 
 .app-frame__handle--top-left {
-  top: 0;
-  left: 0;
+  top: -24px;
+  left: -24px;
   cursor: nwse-resize;
-  clip-path: polygon(0 0, 80px 0, 80px 44px, 44px 44px, 44px 80px, 0 80px);
+  clip-path: polygon(
+    0 0,
+    104px 0,
+    104px 68px,
+    68px 68px,
+    68px 104px,
+    0 104px
+  );
 }
 
 .app-frame__handle--top-right {
-  top: 0;
-  right: 0;
+  top: -24px;
+  right: -24px;
   cursor: nesw-resize;
-  clip-path: polygon(0 0, 80px 0, 80px 80px, 36px 80px, 36px 44px, 0 44px);
+  clip-path: polygon(
+    0 0,
+    104px 0,
+    104px 104px,
+    36px 104px,
+    36px 68px,
+    0 68px
+  );
 }
 
 .app-frame__handle--bottom-left {
-  bottom: 0;
-  left: 0;
+  bottom: -24px;
+  left: -24px;
   cursor: nesw-resize;
-  clip-path: polygon(0 0, 44px 0, 44px 36px, 80px 36px, 80px 80px, 0 80px);
+  clip-path: polygon(
+    0 0,
+    68px 0,
+    68px 36px,
+    104px 36px,
+    104px 104px,
+    0 104px
+  );
 }
 
 .app-frame__handle--bottom-right {
-  bottom: 0;
-  right: 0;
+  bottom: -24px;
+  right: -24px;
   cursor: nwse-resize;
-  clip-path: polygon(36px 0, 80px 0, 80px 80px, 0 80px, 0 36px, 36px 36px);
+  clip-path: polygon(
+    36px 0,
+    104px 0,
+    104px 104px,
+    0 104px,
+    0 36px,
+    36px 36px
+  );
 }
 
 .app-frame__container {
