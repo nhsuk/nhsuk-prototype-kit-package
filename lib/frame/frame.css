@@ -159,28 +159,24 @@ body {
   height: 852px;
   width: 393px;
   border: 12px solid black;
-  border-radius: 47px;
+  border-radius: 36px;
+  corner-shape: squircle;
   overflow: hidden;
   transform: translateZ(0);
   outline: 6px solid #f9fbfb;
-  transition: border-radius 0.3s;
-}
-
-.app-frame__container--tablet {
-  border-radius: 20px;
 }
 
 .app-frame__iframe {
   height: 100%;
   width: 100%;
   border: none;
-  border-radius: 35px;
+  border-radius: 24px;
+  corner-shape: squircle;
   position: absolute;
   top: 0;
   left: 0;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  transition: border-radius 0.3s;
 }
 
 /* Keep the drag cursor when passing over other handles or the iframe */
@@ -191,10 +187,6 @@ body {
 
 .app-frame--resizing .app-frame__iframe {
   pointer-events: none;
-}
-
-.app-frame__container--tablet .app-frame__iframe {
-  border-radius: 8px;
 }
 
 .app-frame__iframe::-webkit-scrollbar {
