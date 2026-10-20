@@ -10,6 +10,11 @@ body {
   overflow: hidden;
 }
 
+/* Viewport is shorter than the frame's minimum height */
+.app-frame-scrollable {
+  overflow-y: auto;
+}
+
 .app-frame {
   position: relative;
   padding: 32px;
