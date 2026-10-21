@@ -186,6 +186,31 @@ body {
   -ms-overflow-style: none;
 }
 
+body:has(.app-frame__handle--dragging) {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+body:has(.app-frame__handle--dragging.app-frame__handle--left),
+body:has(.app-frame__handle--dragging.app-frame__handle--right) {
+  cursor: ew-resize;
+}
+
+body:has(.app-frame__handle--dragging.app-frame__handle--top),
+body:has(.app-frame__handle--dragging.app-frame__handle--bottom) {
+  cursor: ns-resize;
+}
+
+body:has(.app-frame__handle--dragging.app-frame__handle--top-right),
+body:has(.app-frame__handle--dragging.app-frame__handle--bottom-left) {
+  cursor: nesw-resize;
+}
+
+body:has(.app-frame__handle--dragging.app-frame__handle--top-left),
+body:has(.app-frame__handle--dragging.app-frame__handle--bottom-right) {
+  cursor: nwse-resize;
+}
+
 /* Keep the drag cursor when passing over other handles or the iframe */
 .app-frame--resizing,
 .app-frame--resizing * {
