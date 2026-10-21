@@ -192,10 +192,6 @@ body {
   cursor: inherit !important;
 }
 
-.app-frame--resizing .app-frame__iframe {
-  pointer-events: none;
-}
-
 .app-frame__iframe::-webkit-scrollbar {
   display: none;
 }
