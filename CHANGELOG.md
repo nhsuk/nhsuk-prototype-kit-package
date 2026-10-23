@@ -29,12 +29,6 @@
 
 ### :wrench: **Maintenance and fixes**
 
-### :new: **New features**
-
-- Add a `/frame` view to mock up prototypes in generic phone or tablet device frame
-
-### :wrench: **Maintenance and fixes**
-
 - Update to use NHS.UK frontend 10.6.1
 - Dependency updates including security fixes
 
