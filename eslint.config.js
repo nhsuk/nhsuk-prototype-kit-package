@@ -95,6 +95,7 @@ export default defineConfig([
     // Configure ESLint for Node.js
     files: ['**/*.{cjs,js}'],
     ignores: [
+      'lib/frame/**/*.js',
       'lib/javascripts/**/*.js',
       'testapp/app/javascripts/**/*.js',
       '!**/*.test.js'
@@ -122,7 +123,11 @@ export default defineConfig([
   },
   {
     // Configure ESLint for browsers
-    files: ['lib/javascripts/**/*.js', 'testapp/app/javascripts/**/*.js'],
+    files: [
+      'lib/frame/**/*.js',
+      'lib/javascripts/**/*.js',
+      'testapp/app/javascripts/**/*.js'
+    ],
     ignores: ['**/*.test.js'],
     extends: [
       pluginTypeScript.configs.strictTypeChecked,

@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### :new: **New features**
+
+- Add a new `/frame` view for demonstrating prototypes within a mocked-up phone or tablet frame
+
 ## 8.5.2 - 19 October 2026
 
 ### :wrench: **Maintenance and fixes**

@@ -1,0 +1,222 @@
+body {
+  background-color: #f9fbfb;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Handles extend past the viewport when the frame is at its maximum size */
+  overflow: hidden;
+}
+
+/* Viewport is shorter than the frame's minimum height */
+.app-frame-scrollable {
+  overflow-y: auto;
+}
+
+.app-frame {
+  position: relative;
+  padding: 32px;
+}
+
+.app-frame__handle {
+  position: absolute;
+  z-index: 1;
+  touch-action: none;
+}
+
+.app-frame__handle::after {
+  content: '';
+  position: absolute;
+  background: #425563;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.app-frame__handle--left,
+.app-frame__handle--right {
+  top: 79px;
+  bottom: 79px;
+  width: 68px;
+  cursor: ew-resize;
+}
+
+.app-frame__handle--left::after,
+.app-frame__handle--right::after {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 80px;
+}
+
+.app-frame__handle--left {
+  left: -24px;
+}
+
+.app-frame__handle--left::after {
+  right: 20px;
+}
+
+.app-frame__handle--right {
+  right: -24px;
+}
+
+.app-frame__handle--right::after {
+  left: 20px;
+}
+
+.app-frame__handle--top,
+.app-frame__handle--bottom {
+  left: 79px;
+  right: 79px;
+  height: 68px;
+  cursor: ns-resize;
+}
+
+.app-frame__handle--top::after,
+.app-frame__handle--bottom::after {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 6px;
+}
+
+.app-frame__handle--top {
+  top: -24px;
+}
+
+.app-frame__handle--top::after {
+  bottom: 20px;
+}
+
+.app-frame__handle--bottom {
+  bottom: -24px;
+}
+
+.app-frame__handle--bottom::after {
+  top: 20px;
+}
+
+.app-frame__handles--horizontal,
+.app-frame__handles--vertical {
+  display: contents;
+}
+
+.app-frame__handles--horizontal:has(
+    .app-frame__handle:hover,
+    .app-frame__handle--dragging
+  )
+  .app-frame__handle::after,
+.app-frame__handles--vertical:has(
+    .app-frame__handle:hover,
+    .app-frame__handle--dragging
+  )
+  .app-frame__handle::after,
+.app-frame:has(
+    .app-frame__handle--corner:hover,
+    .app-frame__handle--corner.app-frame__handle--dragging
+  )
+  .app-frame__handle::after {
+  opacity: 1;
+}
+
+.app-frame__handle--corner {
+  width: 104px;
+  height: 104px;
+  z-index: 2;
+}
+
+.app-frame__handle--corner::after {
+  display: none;
+}
+
+.app-frame__handle--top-left {
+  top: -24px;
+  left: -24px;
+  cursor: nwse-resize;
+  clip-path: polygon(0 0, 104px 0, 104px 68px, 68px 68px, 68px 104px, 0 104px);
+}
+
+.app-frame__handle--top-right {
+  top: -24px;
+  right: -24px;
+  cursor: nesw-resize;
+  clip-path: polygon(0 0, 104px 0, 104px 104px, 36px 104px, 36px 68px, 0 68px);
+}
+
+.app-frame__handle--bottom-left {
+  bottom: -24px;
+  left: -24px;
+  cursor: nesw-resize;
+  clip-path: polygon(0 0, 68px 0, 68px 36px, 104px 36px, 104px 104px, 0 104px);
+}
+
+.app-frame__handle--bottom-right {
+  bottom: -24px;
+  right: -24px;
+  cursor: nwse-resize;
+  clip-path: polygon(36px 0, 104px 0, 104px 104px, 0 104px, 0 36px, 36px 36px);
+}
+
+.app-frame__container {
+  position: relative;
+  background-color: black;
+  height: 852px;
+  width: 393px;
+  border: 12px solid black;
+  border-radius: 36px;
+  corner-shape: squircle;
+  overflow: hidden;
+  transform: translateZ(0);
+  outline: 6px solid #f9fbfb;
+}
+
+.app-frame__iframe {
+  height: 100%;
+  width: 100%;
+  border: none;
+  border-radius: 24px;
+  corner-shape: squircle;
+  position: absolute;
+  top: 0;
+  left: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body:has(.app-frame__handle--dragging) {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+body:has(.app-frame__handle--dragging.app-frame__handle--left),
+body:has(.app-frame__handle--dragging.app-frame__handle--right) {
+  cursor: ew-resize;
+}
+
+body:has(.app-frame__handle--dragging.app-frame__handle--top),
+body:has(.app-frame__handle--dragging.app-frame__handle--bottom) {
+  cursor: ns-resize;
+}
+
+body:has(.app-frame__handle--dragging.app-frame__handle--top-right),
+body:has(.app-frame__handle--dragging.app-frame__handle--bottom-left) {
+  cursor: nesw-resize;
+}
+
+body:has(.app-frame__handle--dragging.app-frame__handle--top-left),
+body:has(.app-frame__handle--dragging.app-frame__handle--bottom-right) {
+  cursor: nwse-resize;
+}
+
+/* Keep the drag cursor when passing over other handles or the iframe */
+.app-frame--resizing,
+.app-frame--resizing * {
+  cursor: inherit !important;
+}
+
+.app-frame__iframe::-webkit-scrollbar {
+  display: none;
+}

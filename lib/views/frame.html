@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHS prototype kit</title>
+    <link href="/nhsuk-prototype-kit/frame/frame.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="app-frame">
+      <div class="app-frame__container">
+        <iframe
+          class="app-frame__iframe"
+          title="Prototype inside a generic device frame"
+          src="{{ iframeSrc }}">
+        </iframe>
+      </div>
+      <div class="app-frame__handles app-frame__handles--horizontal">
+        <div class="app-frame__handle app-frame__handle--left" aria-hidden="true"></div>
+        <div class="app-frame__handle app-frame__handle--right" aria-hidden="true"></div>
+      </div>
+      <div class="app-frame__handles app-frame__handles--vertical">
+        <div class="app-frame__handle app-frame__handle--top" aria-hidden="true"></div>
+        <div class="app-frame__handle app-frame__handle--bottom" aria-hidden="true"></div>
+      </div>
+      <div class="app-frame__handle app-frame__handle--corner app-frame__handle--top-left" aria-hidden="true"></div>
+      <div class="app-frame__handle app-frame__handle--corner app-frame__handle--top-right" aria-hidden="true"></div>
+      <div class="app-frame__handle app-frame__handle--corner app-frame__handle--bottom-left" aria-hidden="true"></div>
+      <div class="app-frame__handle app-frame__handle--corner app-frame__handle--bottom-right" aria-hidden="true"></div>
+    </div>
+    <script type="module">
+      import { Frame } from '/nhsuk-prototype-kit/frame/frame.js'
+      new Frame()
+    </script>
+  </body>
+</html>
