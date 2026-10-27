@@ -46,7 +46,7 @@
     "http-proxy-node16": "^1.0.6",
     "nodemon": "^3.1.14",
     "portscanner": "^2.2.0",
-    "sass-embedded": "^1.105.2",
+    "sass-embedded": "^1.106.1",
     "temporal-polyfill": "^1.0.6",
     "wait-on": "^9.5.1"
   },
