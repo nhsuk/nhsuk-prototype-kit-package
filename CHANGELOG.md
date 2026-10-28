@@ -8,6 +8,7 @@
 
 ### :wrench: **Maintenance and fixes**
 
+- Update to use NHS.UK frontend 10.7.0
 - Dependency updates including security fixes
 
 ## 8.5.2 - 19 October 2026
