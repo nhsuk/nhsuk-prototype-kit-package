@@ -108,7 +108,6 @@
     "./package.json": "./package.json"
   },
   "workspaces": [
-    ".",
     "testapp"
   ],
   "engines": {
