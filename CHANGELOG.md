@@ -10,6 +10,7 @@
 
 - Update to use NHS.UK frontend 10.7.0
 - Dependency updates including security fixes
+- Mark the kit as compatible with Node.js 26 (LTS) and npm v12
 
 ## 8.5.2 - 19 October 2026
 
