@@ -9,6 +9,7 @@
 ### :wrench: **Maintenance and fixes**
 
 - Update to use NHS.UK frontend 10.7.0
+- Bug fix: stop nested session data defaults being shared between sessions, so form or query data from one browser can no longer change the defaults for others
 - Dependency updates including security fixes
 
 ## 8.5.2 - 19 October 2026
