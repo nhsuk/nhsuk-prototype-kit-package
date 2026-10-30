@@ -108,11 +108,15 @@
     "./package.json": "./package.json"
   },
   "workspaces": [
-    ".",
     "testapp"
   ],
   "engines": {
-    "node": "^22.16.0 || ^24.11.0",
-    "npm": "^11.6.1 <11.6.3 || ^11.6.4"
+    "node": "^22.16.0 || ^24.11.0 || >= 26.13.0",
+    "npm": "^11.6.1 <11.6.3 || ^11.6.4 || ^12.1.0"
+  },
+  "allowScripts": {
+    "fsevents": false,
+    "esbuild": false,
+    "@parcel/watcher": false
   }
 }
