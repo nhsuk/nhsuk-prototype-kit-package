@@ -9,7 +9,7 @@
 ### :wrench: **Maintenance and fixes**
 
 - Update to use NHS.UK frontend 10.7.0
-- Bug fix: stop nested session data defaults being shared between sessions, so form or query data from one browser can no longer change the defaults for others
+- Bug fix: stop nested session data defaults being shared between sessions, so form or query data from one browser can no longer change the defaults for others. Session data defaults must now only contain values that can be cloned, such as strings, numbers, arrays and objects, and the kit shows an error when it starts if they include functions
 - Dependency updates including security fixes
 
 ## 8.5.2 - 19 October 2026
