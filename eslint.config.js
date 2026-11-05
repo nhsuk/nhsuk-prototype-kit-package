@@ -118,6 +118,17 @@ export default defineConfig([
           argsIgnorePattern: '^_',
           varsIgnorePattern: '^_'
         }
+      ],
+
+      'n/no-unsupported-features/node-builtins': [
+        'error',
+        {
+          ignores: [
+            // Ignore Node.js 22 experimental features
+            'assert.partialDeepStrictEqual',
+            'assert/strict.partialDeepStrictEqual'
+          ]
+        }
       ]
     }
   },
