@@ -1,0 +1,17 @@
+{% extends "prototype-kit-admin-layout.html" %}
+
+{% set pageName = "Prototype unavailable" %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-l">{{ pageName }}</h1>
+      <p>Check the terminal for details. You can try and fix the error yourself, and this page will then automatically reload.</p>
+      <p><a class="nhsuk-link" href="https://prototype-kit.service-manual.nhs.uk/support/">Contact the NHS prototype kit team</a> if you need help.</p>
+    </div>
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  <script async src="/browser-sync/browser-sync-client.js"></script>
+{% endblock %}
