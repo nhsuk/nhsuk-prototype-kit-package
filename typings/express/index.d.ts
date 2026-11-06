@@ -1,5 +1,6 @@
 import express from 'express'
 import session from 'express-session'
+import { type ObjectNested } from 'nhsuk-frontend'
 import {
   type ApplicationData,
   type ApplicationLocals
@@ -7,12 +8,12 @@ import {
 
 declare module 'express-serve-static-core' {
   interface Locals extends ApplicationLocals {
-    data: Record<string, unknown> & ApplicationData
+    data: ObjectNested & ApplicationData
   }
 }
 
 declare module 'express-session' {
   interface SessionData {
-    data: Record<string, unknown> & ApplicationData
+    data: ObjectNested & ApplicationData
   }
 }
