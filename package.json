@@ -53,8 +53,7 @@
   },
   "peerDependencies": {
     "express": "^5.2.0",
-    "nhsuk-frontend": "^10.7.0 || >=11.0.0-preview || >=11.0.0-internal || >=11.0.0-beta",
-    "nunjucks": "^3.2.4"
+    "nhsuk-frontend": "^10.7.0 || >=11.0.0-preview || >=11.0.0-internal || >=11.0.0-beta"
   },
   "devDependencies": {
     "@eslint/config-helpers": "^0.7.0",
@@ -80,7 +79,6 @@
     "express": "^5.3.0",
     "globals": "^17.13.0",
     "nhsuk-frontend": "^10.7.0",
-    "nunjucks": "^3.2.4",
     "prettier": "^3.9.10",
     "supertest": "7.3.1",
     "typed-query-selector": "^2.12.3",
