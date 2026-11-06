@@ -5,7 +5,7 @@
 ### :new: **New features**
 
 - Add a new `/frame` view for demonstrating prototypes within a mocked-up phone or tablet frame
-- Add a `formatPhoneNumber` filter for formatting UK phone numbers in the NHS style, for example `01273 800 900`
+- Add a `formatPhoneNumber` filter for formatting phone numbers in the NHS style, for example `01273 800 900`
 
 ### :wrench: **Maintenance and fixes**
 
