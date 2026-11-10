@@ -10,7 +10,6 @@
 ### :wrench: **Maintenance and fixes**
 
 - Update to use NHS.UK frontend 10.7.0
-- Dependency updates including security fixes
 - Mark the kit as compatible with Node.js 26 (LTS) and npm v12
 - Prevent updates to session data defaults affecting other sessions
 - Dependency updates including security fixes
