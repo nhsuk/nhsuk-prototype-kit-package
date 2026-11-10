@@ -5,6 +5,7 @@ const { sessionDataDefaults } = require('./app/data/session-data-defaults.js')
 const filters = require('./app/filters.js')
 const { locals } = require('./app/locals.js')
 const { routes } = require('./app/routes.js')
+const { session } = require('./app/session.js')
 
 async function init() {
   const prototype = await NHSPrototypeKit.init({
@@ -16,6 +17,7 @@ async function init() {
     routes,
     locals,
     filters,
+    session,
     sessionDataDefaults
   })
 
