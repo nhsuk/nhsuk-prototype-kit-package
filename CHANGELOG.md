@@ -1,6 +1,6 @@
 # NHS prototype kit Changelog
 
-## Unreleased
+## 8.6.0 - 10 November 2026
 
 ### :new: **New features**
 
