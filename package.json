@@ -47,7 +47,7 @@
     "libphonenumber-js": "^1.13.16",
     "nodemon": "^3.1.14",
     "portscanner": "^2.2.0",
-    "sass-embedded": "^1.107.1",
+    "sass-embedded": "^1.108.2",
     "temporal-polyfill": "^1.0.8",
     "wait-on": "^9.5.1"
   },
