@@ -1,0 +1,23 @@
+services:
+  db:
+    env_file: .env
+    image: postgres
+    restart: always
+    shm_size: 128mb
+
+    ports:
+      - 5432:5432
+
+    volumes:
+      - data_sql:/var/lib/postgresql
+      - ../node_modules/connect-pg-simple/table.sql:/docker-entrypoint-initdb.d/init.sql
+
+  adminer:
+    image: adminer
+    restart: always
+
+    ports:
+      - 8080:8080
+
+volumes:
+  data_sql:
